@@ -10,6 +10,7 @@
     --bg: #0a0a0f;
     --surface: #111118;
     --surface2: #18181f;
+    --surface3: #1e1e28;
     --border: #2a2a38;
     --accent: #ff6d3b;
     --accent2: #a259ff;
@@ -20,151 +21,38 @@
     --muted: #7070a0;
     --dim: #404060;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    padding: 40px 24px;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; min-height: 100vh; padding: 40px 24px; }
 
   /* HEADER */
-  .header {
-    max-width: 1400px;
-    margin: 0 auto 48px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 28px;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .header-left h1 {
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .header-left .sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 8px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .header-right {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
+  .header { max-width: 1400px; margin: 0 auto 48px; display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 28px; gap: 24px; flex-wrap: wrap; }
+  .header-left h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header-left .sub { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-top: 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .header-right { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .badge { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
   .badge-orange { background: rgba(255,109,59,.15); color: var(--accent); border: 1px solid rgba(255,109,59,.3); }
   .badge-purple { background: rgba(162,89,255,.15); color: var(--accent2); border: 1px solid rgba(162,89,255,.3); }
-  .badge-green  { background: rgba(0,212,170,.15);  color: var(--accent3); border: 1px solid rgba(0,212,170,.3); }
+  .badge-green  { background: rgba(0,212,170,.15); color: var(--accent3); border: 1px solid rgba(0,212,170,.3); }
 
   /* SEARCH */
-  .search-bar {
-    max-width: 1400px;
-    margin: 0 auto 36px;
-  }
-
-  .search-bar input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 18px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--text);
-    outline: none;
-    transition: border-color .2s;
-  }
-
+  .search-bar { max-width: 1400px; margin: 0 auto 36px; }
+  .search-bar input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text); outline: none; transition: border-color .2s; }
   .search-bar input:focus { border-color: var(--accent); }
   .search-bar input::placeholder { color: var(--muted); }
 
-  /* CATEGORY TABS */
-  .tabs {
-    max-width: 1400px;
-    margin: 0 auto 32px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .tab {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    transition: all .2s;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    user-select: none;
-  }
-
+  /* TABS */
+  .tabs { max-width: 1400px; margin: 0 auto 32px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .tab { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 6px 14px; border-radius: 20px; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); transition: all .2s; text-transform: uppercase; letter-spacing: 0.05em; user-select: none; }
   .tab.active, .tab:hover { background: var(--surface2); color: var(--text); border-color: var(--dim); }
   .tab.active { color: var(--accent); border-color: var(--accent); }
 
   /* GRID */
-  .grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 16px;
-  }
+  .grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
 
   /* CARD */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    transition: border-color .2s, transform .2s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 10px 10px 0 0;
-  }
-
-  .card:hover { border-color: var(--dim); transform: translateY(-2px); }
-
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: border-color .2s, transform .2s, box-shadow .2s; cursor: pointer; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 10px 10px 0 0; }
+  .card:hover { border-color: var(--dim); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
   .card.cat-core::before       { background: var(--accent); }
   .card.cat-flow::before       { background: var(--accent2); }
   .card.cat-data::before       { background: var(--accent3); }
@@ -173,112 +61,76 @@
   .card.cat-ai::before          { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
   .card.cat-util::before        { background: var(--muted); }
 
-  .card-head {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .node-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
+  .card-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+  .node-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
   .card-title-wrap { flex: 1; }
-
-  .node-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-  }
-
-  .node-cat {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 2px;
-  }
-
-  .node-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.55;
-    margin-bottom: 12px;
-  }
-
-  .node-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  /* tag colors per category */
+  .node-name { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+  .node-cat { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .node-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+  .node-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; padding: 2px 8px; border-radius: 3px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
   .cat-core .tag       { background: rgba(255,109,59,.12); color: var(--accent); }
   .cat-flow .tag       { background: rgba(162,89,255,.12); color: var(--accent2); }
-  .cat-data .tag       { background: rgba(0,212,170,.12);  color: var(--accent3); }
+  .cat-data .tag       { background: rgba(0,212,170,.12); color: var(--accent3); }
   .cat-trigger .tag    { background: rgba(247,201,72,.12); color: var(--accent4); }
   .cat-integration .tag { background: rgba(74,158,255,.12); color: var(--accent5); }
   .cat-ai .tag          { background: rgba(255,109,59,.12); color: var(--accent); }
   .cat-util .tag        { background: rgba(112,112,160,.12); color: var(--muted); }
 
-  /* SECTION HEADER */
-  .section-title {
-    max-width: 1400px;
-    margin: 40px auto 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  /* Click hint */
+  .click-hint { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--dim); margin-top: 10px; text-align: right; transition: color .2s; }
+  .card:hover .click-hint { color: var(--muted); }
 
-  .section-title span {
-    font-size: 0.7rem;
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-  }
+  /* MODAL OVERLAY */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
 
-  .section-line { flex: 1; height: 1px; background: var(--border); }
+  /* MODAL */
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; width: 100%; max-width: 720px; max-height: 88vh; overflow-y: auto; position: relative; animation: modalIn .2s ease; }
+  @keyframes modalIn { from { opacity:0; transform: scale(.95) translateY(12px); } to { opacity:1; transform: scale(1) translateY(0); } }
 
-  /* FOOTER */
-  .footer {
-    max-width: 1400px;
-    margin: 60px auto 0;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+  .modal-top-bar { height: 3px; border-radius: 14px 14px 0 0; }
+  .modal-header { padding: 24px 28px 0; }
+  .modal-title-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .modal-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+  .modal-name { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; font-weight: 700; }
+  .modal-category { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+  .modal-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; padding: 0 28px 20px; border-bottom: 1px solid var(--border); }
 
-  .footer span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--dim); }
+  .modal-body { padding: 20px 28px 28px; }
+  .ops-title { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
 
-  /* HIDE */
+  /* OPERATION ITEMS */
+  .op-list { display: flex; flex-direction: column; gap: 10px; }
+  .op-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; transition: border-color .15s; }
+  .op-item:hover { border-color: var(--dim); }
+  .op-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; letter-spacing: 0.04em; }
+  .op-content { flex: 1; }
+  .op-name { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .op-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  /* op badge colors */
+  .ob-orange { background: rgba(255,109,59,.15); color: var(--accent); }
+  .ob-purple { background: rgba(162,89,255,.15); color: var(--accent2); }
+  .ob-green  { background: rgba(0,212,170,.15); color: var(--accent3); }
+  .ob-yellow { background: rgba(247,201,72,.15); color: var(--accent4); }
+  .ob-blue   { background: rgba(74,158,255,.15); color: var(--accent5); }
+  .ob-gray   { background: rgba(112,112,160,.15); color: var(--muted); }
+  .ob-red    { background: rgba(255,80,80,.15); color: #ff6060; }
+
+  /* TIPS section */
+  .tips-section { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .tip-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .tip-icon { font-size: 0.8rem; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 0.77rem; color: var(--muted); line-height: 1.5; }
+
+  /* Close btn */
+  .modal-close { position: absolute; top: 16px; right: 20px; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+  .modal-close:hover { color: var(--text); border-color: var(--dim); }
+
   .card.hidden { display: none; }
-
+  .footer { max-width: 1400px; margin: 60px auto 0; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--dim); }
 </style>
 </head>
 <body>
@@ -287,7 +139,7 @@
 <header class="header">
   <div class="header-left">
     <h1>n8n Nodes</h1>
-    <p class="sub">Cheatsheet de referencia · Nodos esenciales &amp; funcionalidad</p>
+    <p class="sub">Cheatsheet de referencia · Click en cualquier nodo para ver sus operaciones</p>
   </div>
   <div class="header-right">
     <span class="badge badge-orange">Triggers</span>
@@ -314,813 +166,879 @@
 </div>
 
 <!-- GRID -->
-<div class="grid" id="cardsGrid">
+<div class="grid" id="cardsGrid"></div>
 
-  <!-- ═══════════════════════════════ TRIGGERS ═══════════════════════════════ -->
-
-  <div class="card cat-trigger" data-cat="trigger" data-name="Webhook Trigger">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">⚡</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Webhook</div>
-        <div class="node-cat">Trigger</div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-top-bar" id="modalTopBar"></div>
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="modal-header">
+      <div class="modal-title-row">
+        <div class="modal-icon" id="modalIcon"></div>
+        <div>
+          <div class="modal-name" id="modalName"></div>
+          <div class="modal-category" id="modalCat"></div>
+        </div>
       </div>
     </div>
-    <p class="node-desc">Expone una URL HTTP única. Dispara el workflow al recibir una solicitud GET, POST, PUT o DELETE. Es el trigger más universal para integraciones externas, formularios y webhooks de terceros.</p>
-    <div class="node-tags">
-      <span class="tag">HTTP</span><span class="tag">POST/GET</span><span class="tag">Entrada</span><span class="tag">Externo</span>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-body">
+      <div class="ops-title">📋 Operaciones disponibles</div>
+      <div class="op-list" id="modalOps"></div>
+      <div class="tips-section" id="modalTips"></div>
     </div>
   </div>
+</div>
 
-  <div class="card cat-trigger" data-cat="trigger" data-name="Schedule Trigger Cron">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">🕐</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Schedule Trigger</div>
-        <div class="node-cat">Trigger</div>
-      </div>
-    </div>
-    <p class="node-desc">Ejecuta el workflow en intervalos definidos: cada X minutos, horas, días o con expresiones CRON personalizadas. Ideal para tareas programadas, reportes automáticos y sincronizaciones periódicas.</p>
-    <div class="node-tags">
-      <span class="tag">CRON</span><span class="tag">Periódico</span><span class="tag">Timer</span><span class="tag">Automatización</span>
-    </div>
-  </div>
-
-  <div class="card cat-trigger" data-cat="trigger" data-name="Manual Trigger">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">▶️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Manual Trigger</div>
-        <div class="node-cat">Trigger</div>
-      </div>
-    </div>
-    <p class="node-desc">Permite iniciar el workflow manualmente con un clic desde la UI de n8n. No requiere evento externo. Perfecto para pruebas, flujos on-demand y workflows ejecutados por humanos.</p>
-    <div class="node-tags">
-      <span class="tag">Manual</span><span class="tag">Pruebas</span><span class="tag">On-demand</span>
-    </div>
-  </div>
-
-  <div class="card cat-trigger" data-cat="trigger" data-name="Email Trigger IMAP">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">📧</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Email Trigger (IMAP)</div>
-        <div class="node-cat">Trigger</div>
-      </div>
-    </div>
-    <p class="node-desc">Monitorea una bandeja de correo vía IMAP y dispara el workflow cuando llegan nuevos emails. Soporta filtros por carpeta, remitente y asunto. Útil para automatizar respuestas o procesamiento de correos.</p>
-    <div class="node-tags">
-      <span class="tag">Email</span><span class="tag">IMAP</span><span class="tag">Inbox</span>
-    </div>
-  </div>
-
-  <div class="card cat-trigger" data-cat="trigger" data-name="RSS Feed Trigger">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">📡</div>
-      <div class="card-title-wrap">
-        <div class="node-name">RSS Feed Trigger</div>
-        <div class="node-cat">Trigger</div>
-      </div>
-    </div>
-    <p class="node-desc">Monitorea feeds RSS/Atom y dispara el workflow cuando aparecen nuevos artículos. Permite hacer seguimiento de noticias, blogs y publicaciones automáticamente sin APIs propietarias.</p>
-    <div class="node-tags">
-      <span class="tag">RSS</span><span class="tag">Feed</span><span class="tag">Noticias</span>
-    </div>
-  </div>
-
-  <div class="card cat-trigger" data-cat="trigger" data-name="Form Trigger">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(247,201,72,.15)">📋</div>
-      <div class="card-title-wrap">
-        <div class="node-name">n8n Form Trigger</div>
-        <div class="node-cat">Trigger</div>
-      </div>
-    </div>
-    <p class="node-desc">Genera un formulario web con campos personalizados hospedado directamente en n8n. Cuando alguien lo envía, dispara el workflow con los datos del formulario. Sin necesidad de servicios externos.</p>
-    <div class="node-tags">
-      <span class="tag">Formulario</span><span class="tag">UI</span><span class="tag">Input</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ FLOW ═══════════════════════════════ -->
-
-  <div class="card cat-flow" data-cat="flow" data-name="IF Condicional">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔀</div>
-      <div class="card-title-wrap">
-        <div class="node-name">IF</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Bifurca el flujo en dos ramas (TRUE / FALSE) basado en condiciones definidas sobre los datos de entrada. Compara strings, números, booleanos, fechas y más. El nodo condicional fundamental de n8n.</p>
-    <div class="node-tags">
-      <span class="tag">Condicional</span><span class="tag">Bifurcación</span><span class="tag">Lógica</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Switch Router">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔃</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Switch</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Enruta items a múltiples salidas (ramas) según reglas o valores. Similar al IF pero con N salidas posibles. Perfecto para enrutar por tipo de evento, estado o categoría de dato.</p>
-    <div class="node-tags">
-      <span class="tag">Router</span><span class="tag">Multi-ruta</span><span class="tag">Switch-case</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Merge Combinar">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔗</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Merge</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Combina datos de múltiples ramas en una sola salida. Modos: Append (concatenar), Merge by Index, Merge by Key, Multiplex, o esperar ambas ramas (Wait). Esencial para reunir flujos paralelos.</p>
-    <div class="node-tags">
-      <span class="tag">Combinar</span><span class="tag">Join</span><span class="tag">Paralelo</span><span class="tag">Wait</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Loop Over Items SplitInBatches">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔁</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Loop Over Items</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Itera sobre items en lotes (batches) de tamaño configurable. Procesa N items por ciclo y vuelve a sí mismo hasta agotar la lista. Útil para respetar rate limits de APIs o procesar grandes volúmenes.</p>
-    <div class="node-tags">
-      <span class="tag">Loop</span><span class="tag">Batch</span><span class="tag">Iteración</span><span class="tag">Rate limit</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Wait Pause Esperar">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">⏸️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Wait</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Pausa la ejecución del workflow por un tiempo definido, hasta una fecha/hora específica, o hasta recibir un webhook de reanudación. Permite flujos asincrónicos con aprobaciones humanas o delays.</p>
-    <div class="node-tags">
-      <span class="tag">Pausa</span><span class="tag">Delay</span><span class="tag">Aprobación</span><span class="tag">Async</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Error Trigger Catch">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🚨</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Error Trigger</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Se activa cuando otro workflow falla. Recibe los datos del error (mensaje, nodo origen, stack trace). Permite crear workflows de manejo de errores centralizados con notificaciones o reintentos.</p>
-    <div class="node-tags">
-      <span class="tag">Error</span><span class="tag">Try/Catch</span><span class="tag">Alertas</span>
-    </div>
-  </div>
-
-  <div class="card cat-flow" data-cat="flow" data-name="Stop End Workflow">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🛑</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Stop and Error</div>
-        <div class="node-cat">Flow &amp; Lógica</div>
-      </div>
-    </div>
-    <p class="node-desc">Detiene la ejecución del workflow y lanza un error personalizado con mensaje configurable. Ideal para validaciones: si una condición crítica no se cumple, termina el flujo con un mensaje claro.</p>
-    <div class="node-tags">
-      <span class="tag">Error</span><span class="tag">Validación</span><span class="tag">Stop</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ CORE ═══════════════════════════════ -->
-
-  <div class="card cat-core" data-cat="core" data-name="HTTP Request API REST">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">🌐</div>
-      <div class="card-title-wrap">
-        <div class="node-name">HTTP Request</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Realiza peticiones HTTP a cualquier API o URL. Soporta todos los métodos (GET, POST, PUT, PATCH, DELETE), headers personalizados, autenticación (Basic, Bearer, OAuth, API Key), body JSON/form y paginación.</p>
-    <div class="node-tags">
-      <span class="tag">API</span><span class="tag">REST</span><span class="tag">HTTP</span><span class="tag">Universal</span>
-    </div>
-  </div>
-
-  <div class="card cat-core" data-cat="core" data-name="Code JavaScript Python">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">💻</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Code</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Ejecuta código JavaScript o Python directamente en el workflow. Accede y transforma los items de entrada con lógica personalizada. El nodo más flexible para transformaciones complejas o lógica de negocio.</p>
-    <div class="node-tags">
-      <span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Custom</span><span class="tag">Lógica</span>
-    </div>
-  </div>
-
-  <div class="card cat-core" data-cat="core" data-name="Execute Workflow Sub-workflow">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">⚙️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Execute Workflow</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Llama a otro workflow de n8n y opcionalmente espera su respuesta. Permite modularizar lógica en sub-workflows reutilizables. Soporta pasar datos de entrada y recibir datos de salida del workflow hijo.</p>
-    <div class="node-tags">
-      <span class="tag">Sub-workflow</span><span class="tag">Modular</span><span class="tag">Reutilizable</span>
-    </div>
-  </div>
-
-  <div class="card cat-core" data-cat="core" data-name="Set Variables Datos">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">✏️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Set</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Agrega, modifica o elimina campos en los items. Permite crear nuevas propiedades con valores fijos, expresiones dinámicas o datos de otros campos. También puede limpiar todos los campos existentes.</p>
-    <div class="node-tags">
-      <span class="tag">Variables</span><span class="tag">Mapping</span><span class="tag">Transformar</span>
-    </div>
-  </div>
-
-  <div class="card cat-core" data-cat="core" data-name="Edit Fields Mapping">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">🗂️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Edit Fields (Set v2)</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Versión mejorada del nodo Set. Permite mapear campos de forma visual con drag &amp; drop, renombrar claves, asignar valores con expresiones y controlar qué campos se incluyen en la salida.</p>
-    <div class="node-tags">
-      <span class="tag">Mapeo</span><span class="tag">Renombrar</span><span class="tag">Transformar</span>
-    </div>
-  </div>
-
-  <div class="card cat-core" data-cat="core" data-name="Respond Webhook Response">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(255,109,59,.15)">↩️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Respond to Webhook</div>
-        <div class="node-cat">Core</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía una respuesta HTTP personalizada al cliente que disparó el Webhook Trigger. Configura código de estado, headers y body de respuesta. Esencial para workflows que funcionan como APIs.</p>
-    <div class="node-tags">
-      <span class="tag">Response</span><span class="tag">HTTP</span><span class="tag">API</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ DATA ═══════════════════════════════ -->
-
-  <div class="card cat-data" data-cat="data" data-name="Filter Filtrar Items">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔍</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Filter</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Filtra items que cumplen condiciones definidas. Los que pasan la condición continúan; los que no, se descartan. Soporta múltiples condiciones con AND/OR, comparaciones de strings, números y fechas.</p>
-    <div class="node-tags">
-      <span class="tag">Filtrar</span><span class="tag">Condición</span><span class="tag">WHERE</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Aggregate Sumarizar Agrupar">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">📦</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Aggregate</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Convierte múltiples items en uno solo. Puede agrupar todos los valores de un campo en un array, combinar items o aplicar funciones de agregación (suma, media, min, max, conteo). Inverso del Split Out.</p>
-    <div class="node-tags">
-      <span class="tag">Agrupar</span><span class="tag">Reducir</span><span class="tag">Array</span><span class="tag">GROUP BY</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Split Out Expandir Array">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">📤</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Split Out</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Expande un campo array: convierte cada elemento del array en un item individual separado. El inverso del Aggregate. Ideal para procesar listas elemento por elemento en el resto del workflow.</p>
-    <div class="node-tags">
-      <span class="tag">Expandir</span><span class="tag">Unnest</span><span class="tag">Array</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Sort Ordenar">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔢</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Sort</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Ordena los items por uno o más campos en dirección ascendente o descendente. Soporta ordenamiento por strings (alfabético), números y fechas. También permite orden aleatorio (shuffle).</p>
-    <div class="node-tags">
-      <span class="tag">Ordenar</span><span class="tag">ASC</span><span class="tag">DESC</span><span class="tag">ORDER BY</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Remove Duplicates Deduplicar">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">🧹</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Remove Duplicates</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Elimina items duplicados basándose en el valor de uno o más campos clave. Puede mantener el primer o el último duplicado. También puede comparar con ejecuciones anteriores para detectar items nuevos.</p>
-    <div class="node-tags">
-      <span class="tag">Dedup</span><span class="tag">Unique</span><span class="tag">DISTINCT</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Limit Limitar Items">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">✂️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Limit</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Limita el número de items que pasan al siguiente nodo. Se puede mantener los primeros N o los últimos N items. Útil para pruebas, paginación manual o limitar procesamiento costoso.</p>
-    <div class="node-tags">
-      <span class="tag">Límite</span><span class="tag">Paginación</span><span class="tag">LIMIT</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Summarize Sumarizar Estadísticas">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">📊</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Summarize</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Agrupa items por un campo y calcula estadísticas para cada grupo: suma, promedio, mínimo, máximo, conteo, valores únicos. Similar a un GROUP BY con funciones de agregación en SQL.</p>
-    <div class="node-tags">
-      <span class="tag">GROUP BY</span><span class="tag">Estadísticas</span><span class="tag">Suma</span><span class="tag">Media</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="XML JSON CSV Convert">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔄</div>
-      <div class="card-title-wrap">
-        <div class="node-name">XML / JSON / CSV Convert</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Convierte datos entre formatos: XML↔JSON, CSV↔JSON. Permite parsear strings XML a objetos JavaScript, serializar JSON a XML o procesar archivos CSV línea a línea. Fundamental para integraciones con sistemas legacy.</p>
-    <div class="node-tags">
-      <span class="tag">XML</span><span class="tag">JSON</span><span class="tag">CSV</span><span class="tag">Parse</span>
-    </div>
-  </div>
-
-  <div class="card cat-data" data-cat="data" data-name="Crypto Encriptar Hash">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔐</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Crypto</div>
-        <div class="node-cat">Data</div>
-      </div>
-    </div>
-    <p class="node-desc">Aplica funciones criptográficas a datos: hashing (MD5, SHA1, SHA256, SHA512), HMAC, y generación de firmas. Útil para verificar integridad de webhooks, generar tokens o firmar solicitudes.</p>
-    <div class="node-tags">
-      <span class="tag">Hash</span><span class="tag">SHA256</span><span class="tag">HMAC</span><span class="tag">Firma</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ AI ═══════════════════════════════ -->
-
-  <div class="card cat-ai" data-cat="ai" data-name="AI Agent Agente Inteligente">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🤖</div>
-      <div class="card-title-wrap">
-        <div class="node-name">AI Agent</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Crea un agente AI autónomo con acceso a herramientas (tools). El agente decide qué herramientas usar, las ejecuta en ciclos iterativos y produce una respuesta final. Soporta ReAct, OpenAI Functions y más.</p>
-    <div class="node-tags">
-      <span class="tag">LLM</span><span class="tag">Agente</span><span class="tag">Tools</span><span class="tag">ReAct</span><span class="tag">Autónomo</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="Basic LLM Chain Chat">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">💬</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Basic LLM Chain</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía un prompt a un LLM (OpenAI, Anthropic, Google, etc.) y devuelve la respuesta. La cadena más simple: prompt → modelo → texto. Configurable con system prompt, temperatura y modelo.</p>
-    <div class="node-tags">
-      <span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag">Chat</span><span class="tag">Completions</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="OpenAI GPT Chat Message">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🧠</div>
-      <div class="card-title-wrap">
-        <div class="node-name">OpenAI</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Integración nativa con la API de OpenAI. Soporta chat completions (GPT-4, GPT-4o), generación de imágenes (DALL-E), embeddings, moderación, análisis de audio (Whisper) y TTS desde un solo nodo.</p>
-    <div class="node-tags">
-      <span class="tag">GPT-4</span><span class="tag">DALL-E</span><span class="tag">Embeddings</span><span class="tag">Whisper</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="Vector Store Embeddings Retrieval">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🗄️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Vector Store</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Inserta o consulta documentos en una base de datos vectorial (Pinecone, Qdrant, Supabase, PGVector, Weaviate, etc.). Fundamental para sistemas RAG (Retrieval Augmented Generation) y búsqueda semántica.</p>
-    <div class="node-tags">
-      <span class="tag">RAG</span><span class="tag">Embeddings</span><span class="tag">Semántica</span><span class="tag">Pinecone</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="Memory Chat History Buffer">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">🧩</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Memory (Buffer / Window)</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Almacena y recupera el historial de conversación para agentes o chains. Tipos: Buffer Memory (historial completo), Window Memory (últimos N mensajes), Summary Memory (resumen comprimido).</p>
-    <div class="node-tags">
-      <span class="tag">Memoria</span><span class="tag">Historia</span><span class="tag">Conversación</span><span class="tag">Context</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="Document Loader Chunking RAG">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">📄</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Document Loader / Text Splitter</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Carga documentos (PDF, HTML, JSON, CSV, texto plano) y los divide en chunks para ingesta en vector stores. El Text Splitter controla tamaño y overlap de fragmentos. Primer paso de pipelines RAG.</p>
-    <div class="node-tags">
-      <span class="tag">PDF</span><span class="tag">Chunking</span><span class="tag">RAG</span><span class="tag">Ingesta</span>
-    </div>
-  </div>
-
-  <div class="card cat-ai" data-cat="ai" data-name="Sentiment Analysis Text Classificiation">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(162,89,255,.15)">💡</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Information Extractor</div>
-        <div class="node-cat">AI</div>
-      </div>
-    </div>
-    <p class="node-desc">Usa un LLM para extraer información estructurada de texto libre. Define un schema de salida (campos y tipos) y el modelo completa los valores a partir del texto de entrada. Ideal para parsear emails, reviews o documentos.</p>
-    <div class="node-tags">
-      <span class="tag">Extracción</span><span class="tag">Structured Output</span><span class="tag">Schema</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ INTEGRATIONS ═══════════════════════════════ -->
-
-  <div class="card cat-integration" data-cat="integration" data-name="Gmail Email Google Correo">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">📩</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Gmail</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Lee, envía, mueve y elimina emails de Gmail. Busca mensajes con filtros, obtiene adjuntos, marca como leído, añade etiquetas. También tiene trigger para nuevos emails sin necesidad de IMAP.</p>
-    <div class="node-tags">
-      <span class="tag">Email</span><span class="tag">Google</span><span class="tag">SMTP</span><span class="tag">Adjuntos</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Google Sheets Spreadsheet Hojas">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">📗</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Google Sheets</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Lee, escribe, actualiza y elimina filas en Google Sheets. Soporta append (agregar al final), update por coincidencia de clave, lectura de rangos y creación de hojas. El "mini-database" más popular en n8n.</p>
-    <div class="node-tags">
-      <span class="tag">Spreadsheet</span><span class="tag">Google</span><span class="tag">Database</span><span class="tag">CRUD</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Slack Mensajes Chat">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">💬</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Slack</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía mensajes, crea canales, obtiene usuarios, reacciona a mensajes y gestiona archivos en Slack. Soporta Block Kit para mensajes enriquecidos. Trigger disponible para eventos de workspace.</p>
-    <div class="node-tags">
-      <span class="tag">Mensajes</span><span class="tag">Notificación</span><span class="tag">Block Kit</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Postgres MySQL SQL Database">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">🗃️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Postgres / MySQL / SQL</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Ejecuta consultas SQL en bases de datos relacionales. Soporta SELECT, INSERT, UPDATE, DELETE y queries personalizadas. Mapea automáticamente resultados a items de n8n. También disponible: SQLite, MS SQL, MariaDB.</p>
-    <div class="node-tags">
-      <span class="tag">SQL</span><span class="tag">Database</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Airtable Database NoCode">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">🗂️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Airtable</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Lee, crea, actualiza y elimina registros en bases de Airtable. Soporta búsquedas con fórmulas, campos de archivo y relaciones entre tablas. Trigger para cambios en registros. Popular como CRM ligero.</p>
-    <div class="node-tags">
-      <span class="tag">NoCode DB</span><span class="tag">CRM</span><span class="tag">CRUD</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Notion Pages Database Blocks">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">📒</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Notion</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Crea, lee, actualiza y busca páginas y entradas de bases de datos en Notion. Soporta todos los tipos de bloques (texto, listas, tablas) y propiedades de bases de datos (fecha, select, relación, etc.).</p>
-    <div class="node-tags">
-      <span class="tag">Pages</span><span class="tag">Database</span><span class="tag">PKM</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Telegram Bot Mensajes">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">✈️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Telegram</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía mensajes, fotos, documentos y stickers vía Telegram Bot API. Trigger para recibir mensajes o comandos. Soporta inline keyboards, grupos y canales. Ideal para bots de notificación o chatbots.</p>
-    <div class="node-tags">
-      <span class="tag">Bot</span><span class="tag">Mensajes</span><span class="tag">Notificación</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="GitHub Issues PRs Repos">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">🐙</div>
-      <div class="card-title-wrap">
-        <div class="node-name">GitHub</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Interactúa con repositorios de GitHub: crea/actualiza issues, pull requests, comentarios, releases y archivos. Trigger para eventos de repo (push, PR abierto, issue creado). Ideal para pipelines de DevOps.</p>
-    <div class="node-tags">
-      <span class="tag">Issues</span><span class="tag">PR</span><span class="tag">DevOps</span><span class="tag">CI/CD</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Stripe Pagos Facturación">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">💳</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Stripe</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Gestiona clientes, cargos, suscripciones, facturas y reembolsos en Stripe. Trigger vía webhooks de Stripe para eventos de pago. Permite automatizar flujos post-compra, notificaciones y actualizaciones de estado.</p>
-    <div class="node-tags">
-      <span class="tag">Pagos</span><span class="tag">Suscripciones</span><span class="tag">E-commerce</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="HubSpot CRM Contactos">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">🏢</div>
-      <div class="card-title-wrap">
-        <div class="node-name">HubSpot</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Crea y actualiza contactos, empresas, deals y tickets en HubSpot CRM. Gestiona propiedades personalizadas, listas, flujos de trabajo y emails. Ideal para sincronizar leads entre sistemas de marketing y ventas.</p>
-    <div class="node-tags">
-      <span class="tag">CRM</span><span class="tag">Leads</span><span class="tag">Marketing</span><span class="tag">Sales</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="Google Drive Archivos Cloud">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">📁</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Google Drive</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Sube, descarga, mueve, copia y elimina archivos en Google Drive. Crea carpetas, lista archivos con filtros y comparte con permisos específicos. Trigger para cambios en carpetas o archivos.</p>
-    <div class="node-tags">
-      <span class="tag">Archivos</span><span class="tag">Cloud</span><span class="tag">Google</span>
-    </div>
-  </div>
-
-  <div class="card cat-integration" data-cat="integration" data-name="WhatsApp Business API Mensajes">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(74,158,255,.15)">📱</div>
-      <div class="card-title-wrap">
-        <div class="node-name">WhatsApp Business</div>
-        <div class="node-cat">Integración</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía mensajes de texto, plantillas aprobadas, imágenes, documentos y mensajes interactivos vía la API oficial de WhatsApp Business. Trigger para mensajes entrantes. Requiere cuenta WhatsApp Business API.</p>
-    <div class="node-tags">
-      <span class="tag">WhatsApp</span><span class="tag">Mensajes</span><span class="tag">Plantillas</span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ UTILITIES ═══════════════════════════════ -->
-
-  <div class="card cat-util" data-cat="util" data-name="Date Time Fecha Hora">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">📅</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Date &amp; Time</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Formatea, convierte y calcula fechas y horas. Cambia zonas horarias, suma/resta intervalos (días, horas, minutos), calcula diferencias entre fechas y extrae componentes (mes, año, día de la semana).</p>
-    <div class="node-tags">
-      <span class="tag">Fechas</span><span class="tag">Timezone</span><span class="tag">Formateo</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="Send Email SMTP Correo">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">📮</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Send Email (SMTP)</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Envía emails vía cualquier servidor SMTP configurado. Soporta HTML o texto plano, múltiples destinatarios (To/CC/BCC), adjuntos y headers personalizados. Alternativa genérica a Gmail cuando no se usa Google.</p>
-    <div class="node-tags">
-      <span class="tag">SMTP</span><span class="tag">Email</span><span class="tag">HTML</span><span class="tag">Adjuntos</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="Read Write Binary File Archivo">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">💾</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Read/Write Files</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Lee y escribe archivos binarios o de texto en el sistema de archivos donde corre n8n. Útil en instancias self-hosted para leer CSVs locales, guardar PDFs procesados o manejar adjuntos temporales.</p>
-    <div class="node-tags">
-      <span class="tag">Archivos</span><span class="tag">Binario</span><span class="tag">Local</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="Compression ZIP Comprimir">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">🗜️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Compression</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Comprime archivos en formato ZIP o GZIP, y descomprime archivos ZIP recibidos. Permite empaquetar múltiples archivos en un solo ZIP para enviarlos por email o almacenarlos en la nube.</p>
-    <div class="node-tags">
-      <span class="tag">ZIP</span><span class="tag">GZIP</span><span class="tag">Comprimir</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="HTML Extract Scraping Web">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">🕸️</div>
-      <div class="card-title-wrap">
-        <div class="node-name">HTML Extract</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Extrae datos de HTML usando selectores CSS. Ideal para web scraping básico sobre HTML ya descargado (desde HTTP Request). Obtiene texto, atributos (href, src) o HTML interno de elementos.</p>
-    <div class="node-tags">
-      <span class="tag">Scraping</span><span class="tag">CSS</span><span class="tag">Parse HTML</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="Markdown HTML Convert">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">📝</div>
-      <div class="card-title-wrap">
-        <div class="node-name">Markdown</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">Convierte Markdown a HTML y viceversa. Útil para preparar contenido generado por LLMs (que suelen devolver Markdown) para enviarlo como email HTML o almacenarlo como texto limpio.</p>
-    <div class="node-tags">
-      <span class="tag">Markdown</span><span class="tag">HTML</span><span class="tag">Conversión</span>
-    </div>
-  </div>
-
-  <div class="card cat-util" data-cat="util" data-name="HTTP Response Webhook API Nodo">
-    <div class="card-head">
-      <div class="node-icon" style="background:rgba(112,112,160,.15)">🔔</div>
-      <div class="card-title-wrap">
-        <div class="node-name">No-Op (No Operation)</div>
-        <div class="node-cat">Utilidades</div>
-      </div>
-    </div>
-    <p class="node-desc">No hace nada. Pasa los datos tal cual al siguiente nodo. Útil como marcador de posición durante desarrollo, para documentar bifurcaciones vacías o como punto de conexión temporal en un flujo.</p>
-    <div class="node-tags">
-      <span class="tag">Placeholder</span><span class="tag">Debug</span><span class="tag">Dev</span>
-    </div>
-  </div>
-
-</div><!-- end grid -->
-
-<!-- FOOTER -->
 <footer class="footer">
-  <span>n8n Cheatsheet · Referencia de Nodos Esenciales</span>
+  <span>n8n Cheatsheet · Click en cada nodo para ver sus operaciones</span>
   <span>400+ nodos disponibles · docs.n8n.io</span>
 </footer>
 
 <script>
-  let activeCategory = 'all';
-  let searchQuery = '';
+// ─── NODE DATA ───────────────────────────────────────────────────────────────
+const nodes = [
 
-  function filterCards() {
-    searchQuery = document.getElementById('searchInput').value.toLowerCase();
-    applyFilters();
+  // ═══════════ TRIGGERS ═══════════
+  {
+    name: "Webhook", cat: "trigger", icon: "⚡", iconBg: "rgba(247,201,72,.15)",
+    desc: "Expone una URL HTTP única. Dispara el workflow al recibir una solicitud externa. Es el trigger más universal para integraciones, formularios y webhooks de terceros.",
+    tags: ["HTTP","POST/GET","Entrada","Externo"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"GET", bc:"ob-green", name:"Recibir GET", desc:"Escucha peticiones GET con query params. Ideal para callbacks de servicios externos que envían datos en la URL (ej: confirmaciones de email)." },
+      { badge:"POST", bc:"ob-orange", name:"Recibir POST", desc:"Acepta datos en el body (JSON, form-data, XML). El más usado para webhooks de Stripe, GitHub, Typeform, etc." },
+      { badge:"PUT/PATCH", bc:"ob-blue", name:"Recibir PUT o PATCH", desc:"Para actualizaciones parciales o completas de recursos. Útil cuando un sistema externo notifica cambios en entidades." },
+      { badge:"DELETE", bc:"ob-red", name:"Recibir DELETE", desc:"Escucha solicitudes de eliminación. Permite disparar flujos de borrado o archivado cuando se llama el endpoint." },
+      { badge:"AUTH", bc:"ob-purple", name:"Autenticación del Webhook", desc:"Protege el endpoint con Header Auth, Basic Auth o verificación de firma HMAC. Evita llamadas no autorizadas al workflow." },
+      { badge:"RESP", bc:"ob-gray", name:"Respuesta inmediata vs asíncrona", desc:"Puede responder al caller de inmediato (200 OK) mientras el workflow sigue corriendo, o esperar al nodo 'Respond to Webhook' para enviar datos elaborados." },
+    ],
+    tips: [
+      "💡 Usa el modo Test URL en desarrollo y Production URL en producción.",
+      "🔒 Siempre protege webhooks públicos con algún tipo de autenticación.",
+      "⚡ Combínalo con 'Respond to Webhook' para construir mini-APIs completas."
+    ]
+  },
+  {
+    name: "Schedule Trigger", cat: "trigger", icon: "🕐", iconBg: "rgba(247,201,72,.15)",
+    desc: "Ejecuta el workflow en intervalos definidos usando intervalos simples o expresiones CRON. Ideal para tareas programadas, reportes y sincronizaciones periódicas.",
+    tags: ["CRON","Periódico","Timer","Automatización"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"INTERVAL", bc:"ob-yellow", name:"Cada X minutos/horas", desc:"Ejecuta el workflow cada N minutos, horas o días. Configuración simple sin necesidad de saber CRON. Ej: cada 30 minutos, cada 6 horas." },
+      { badge:"DAILY", bc:"ob-green", name:"Diario a hora específica", desc:"Corre el workflow una vez al día a la hora exacta que configures. Útil para reportes de fin de día o sincronizaciones nocturnas." },
+      { badge:"WEEKLY", bc:"ob-blue", name:"Semanal", desc:"Seleccionás día(s) de la semana y hora. Perfecto para resúmenes semanales o procesos que solo deben correr un día específico." },
+      { badge:"MONTHLY", bc:"ob-purple", name:"Mensual", desc:"Ejecuta en un día específico del mes (ej: día 1 de cada mes). Ideal para facturación, reportes mensuales o renovaciones." },
+      { badge:"CRON", bc:"ob-orange", name:"Expresión CRON personalizada", desc:"Control total con sintaxis CRON estándar (ej: '0 9 * * 1-5' = 9am lunes a viernes). Para schedules complejos o múltiples horarios." },
+      { badge:"TZ", bc:"ob-gray", name:"Timezone", desc:"Define en qué zona horaria se interpreta el horario. Crítico para evitar errores cuando el servidor corre en UTC pero el negocio está en otro huso horario." },
+    ],
+    tips: ["💡 Usá crontab.guru para construir y validar expresiones CRON.", "🌍 Siempre especificá el timezone para evitar confusiones en producción."]
+  },
+  {
+    name: "Manual Trigger", cat: "trigger", icon: "▶️", iconBg: "rgba(247,201,72,.15)",
+    desc: "Permite iniciar el workflow manualmente con un clic desde la UI de n8n. No requiere evento externo. Perfecto para pruebas, flujos on-demand y workflows ejecutados por humanos.",
+    tags: ["Manual","Pruebas","On-demand"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"RUN", bc:"ob-yellow", name:"Ejecutar workflow", desc:"Al hacer clic en 'Test Workflow' o 'Execute Workflow' desde el editor de n8n, este nodo envía un item vacío (o con datos de ejemplo) al siguiente nodo." },
+      { badge:"DATA", bc:"ob-green", name:"Datos de ejemplo", desc:"Podés configurar datos JSON de ejemplo que se inyectan al ejecutar manualmente, simulando inputs reales sin necesitar una fuente externa." },
+    ],
+    tips: ["🧪 Ideal para probar el flujo completo antes de activar el trigger real.", "💡 Combinalo con datos de ejemplo para simular distintos escenarios."]
+  },
+  {
+    name: "Email Trigger (IMAP)", cat: "trigger", icon: "📧", iconBg: "rgba(247,201,72,.15)",
+    desc: "Monitorea una bandeja de correo vía IMAP y dispara el workflow cuando llegan nuevos emails. Soporta filtros por carpeta, remitente y asunto.",
+    tags: ["Email","IMAP","Inbox"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"POLL", bc:"ob-yellow", name:"Polling de bandeja", desc:"Revisa la bandeja de entrada cada N segundos/minutos (configurable). Detecta emails nuevos comparando con los ya procesados." },
+      { badge:"FOLDER", bc:"ob-blue", name:"Selección de carpeta", desc:"Monitorea cualquier carpeta IMAP: INBOX, Sent, carpetas personalizadas, etc. Útil para procesar solo emails ya clasificados." },
+      { badge:"FILTER", bc:"ob-green", name:"Filtros de email", desc:"Filtra por remitente, asunto o estado (leído/no leído). Solo dispara el workflow con emails que coincidan con los criterios definidos." },
+      { badge:"ATTACH", bc:"ob-orange", name:"Descargar adjuntos", desc:"Opción para descargar automáticamente los archivos adjuntos del email como datos binarios, listos para procesar o almacenar." },
+      { badge:"MARK", bc:"ob-gray", name:"Marcar como leído", desc:"Opcionalmente marca los emails procesados como leídos para no dispararlos en el próximo ciclo de polling." },
+    ],
+    tips: ["📧 Configurá una cuenta dedicada solo para automatizaciones para no mezclar con tu email personal.", "🔐 Muchos proveedores requieren activar 'acceso IMAP' o generar una contraseña de aplicación."]
+  },
+  {
+    name: "n8n Form Trigger", cat: "trigger", icon: "📋", iconBg: "rgba(247,201,72,.15)",
+    desc: "Genera un formulario web personalizado hospedado en n8n. Cuando alguien lo envía, dispara el workflow con los datos ingresados.",
+    tags: ["Formulario","UI","Input","Sin código"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"TEXT", bc:"ob-gray", name:"Campo de texto", desc:"Agrega inputs de texto corto o largo (textarea). Configurable como requerido u opcional, con placeholder y validación básica." },
+      { badge:"SELECT", bc:"ob-blue", name:"Dropdown / Selección", desc:"Crea listas desplegables con opciones predefinidas. Útil para categorías, tipos o rangos fijos." },
+      { badge:"NUMBER", bc:"ob-green", name:"Campo numérico", desc:"Acepta solo valores numéricos. Permite definir mínimo y máximo. Ideal para cantidades, edades o precios." },
+      { badge:"FILE", bc:"ob-orange", name:"Carga de archivos", desc:"Permite al usuario subir archivos (imágenes, PDFs, etc.) directamente desde el formulario. Los datos binarios quedan disponibles en el workflow." },
+      { badge:"DATE", bc:"ob-purple", name:"Fecha / Hora", desc:"Input de tipo fecha u hora con selector visual. Los datos llegan en formato ISO 8601 listo para procesar." },
+      { badge:"URL", bc:"ob-yellow", name:"URL personalizada del formulario", desc:"Podés definir una URL amigable para el formulario (ej: /contacto). Funciona con el dominio de tu instancia n8n." },
+    ],
+    tips: ["🌐 Podés embeber el formulario en un iframe en tu web.", "💡 Combinalo con email o Slack para notificaciones instantáneas al recibir respuestas."]
+  },
+  {
+    name: "RSS Feed Trigger", cat: "trigger", icon: "📡", iconBg: "rgba(247,201,72,.15)",
+    desc: "Monitorea feeds RSS/Atom y dispara el workflow cuando aparecen nuevos artículos. Ideal para seguimiento de noticias y blogs sin APIs propietarias.",
+    tags: ["RSS","Feed","Noticias"],
+    barColor: "var(--accent4)",
+    ops: [
+      { badge:"POLL", bc:"ob-yellow", name:"Polling del feed", desc:"Consulta el feed RSS a intervalos regulares y detecta nuevos items comparando con los ya procesados. No requiere webhooks del sitio." },
+      { badge:"PARSE", bc:"ob-green", name:"Parsear artículos", desc:"Extrae automáticamente título, URL, fecha de publicación, autor, descripción y contenido de cada item del feed." },
+      { badge:"FILTER", bc:"ob-blue", name:"Sólo artículos nuevos", desc:"Mantiene registro de los artículos ya vistos. Solo dispara el workflow con items publicados después de la última ejecución." },
+    ],
+    tips: ["📰 Combinalo con AI para resumir artículos y enviarlos a Slack o email.", "⚡ Podés monitorear múltiples feeds usando el nodo en paralelo con diferentes URLs."]
+  },
+
+  // ═══════════ FLOW ═══════════
+  {
+    name: "IF", cat: "flow", icon: "🔀", iconBg: "rgba(162,89,255,.15)",
+    desc: "Bifurca el flujo en dos ramas (TRUE / FALSE) basado en condiciones definidas sobre los datos. El nodo condicional fundamental de n8n.",
+    tags: ["Condicional","Bifurcación","Lógica"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"STRING", bc:"ob-purple", name:"Comparar strings", desc:"Condiciones como: igual a, no igual, contiene, empieza con, termina con, está vacío, regex. Para validar textos, IDs o categorías." },
+      { badge:"NUMBER", bc:"ob-blue", name:"Comparar números", desc:"Mayor que, menor que, igual a, entre rango. Útil para validar precios, edades, cantidades o puntuaciones." },
+      { badge:"BOOL", bc:"ob-green", name:"Comparar booleanos", desc:"Es verdadero / es falso. Evalúa flags, estados activo/inactivo o campos que pueden ser true/false/null." },
+      { badge:"DATE", bc:"ob-yellow", name:"Comparar fechas", desc:"Antes de, después de, igual a una fecha específica. Permite verificar si algo está vencido, en el futuro o en un rango." },
+      { badge:"EXIST", bc:"ob-orange", name:"Existe / No existe", desc:"Verifica si un campo tiene valor o si es null/undefined. Crítico para validar que los datos necesarios estén presentes antes de continuar." },
+      { badge:"AND/OR", bc:"ob-gray", name:"Múltiples condiciones", desc:"Combina condiciones con AND (todas deben cumplirse) u OR (basta con una). Permite lógica compleja en un solo nodo IF." },
+    ],
+    tips: ["💡 Para más de 2 rutas, usá el nodo Switch en su lugar.", "🔗 Podés combinar varios IF en cadena para árboles de decisión complejos."]
+  },
+  {
+    name: "Switch", cat: "flow", icon: "🔃", iconBg: "rgba(162,89,255,.15)",
+    desc: "Enruta items a múltiples salidas (N ramas) según reglas o valores. Similar al IF pero con salidas ilimitadas. Perfecto para enrutar por tipo, estado o categoría.",
+    tags: ["Router","Multi-ruta","Switch-case"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"RULES", bc:"ob-purple", name:"Modo Rules (reglas)", desc:"Define N condiciones, cada una con su salida. El item va por la primera regla que coincida. Si ninguna coincide, puede ir por una salida 'fallback'." },
+      { badge:"VALUE", bc:"ob-blue", name:"Modo Value (valor exacto)", desc:"Compara un campo contra valores específicos (como un switch-case). Ej: si status='activo' → salida 1, si status='pausado' → salida 2." },
+      { badge:"FALLBACK", bc:"ob-orange", name:"Salida por defecto", desc:"Configura una salida extra para items que no coinciden con ninguna regla. Evita que items se pierdan silenciosamente." },
+    ],
+    tips: ["🧭 Ideal para workflows de tipo 'dispatcher' que reciben eventos de distinto tipo.", "💡 Cada salida puede conectar a una rama completamente distinta del flujo."]
+  },
+  {
+    name: "Merge", cat: "flow", icon: "🔗", iconBg: "rgba(162,89,255,.15)",
+    desc: "Combina datos de múltiples ramas en una sola salida. Esencial para reunir flujos paralelos o enriquecer datos cruzando dos fuentes.",
+    tags: ["Combinar","Join","Paralelo","Wait"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"APPEND", bc:"ob-purple", name:"Append (concatenar)", desc:"Junta todos los items de ambas entradas en una sola lista. No cruza datos, solo concatena. Útil para unir resultados de dos búsquedas." },
+      { badge:"BY-KEY", bc:"ob-blue", name:"Merge by Key (JOIN)", desc:"Combina items de dos fuentes haciendo match por un campo clave (como un JOIN de SQL). Enriquece datos de la fuente A con datos de la fuente B." },
+      { badge:"BY-IDX", bc:"ob-green", name:"Merge by Index", desc:"Combina items por posición: el item 1 de la entrada A con el item 1 de la entrada B. Útil cuando ambas listas están sincronizadas." },
+      { badge:"MULTIPLEX", bc:"ob-orange", name:"Multiplex", desc:"Genera el producto cartesiano: cada item de A combinado con cada item de B. Si A tiene 3 y B tiene 4, genera 12 items." },
+      { badge:"WAIT", bc:"ob-yellow", name:"Wait (esperar ambas ramas)", desc:"Espera a que ambas ramas de entrada hayan terminado antes de continuar. Sincroniza flujos paralelos antes de un paso siguiente." },
+    ],
+    tips: ["🔀 El modo 'Wait' es crucial cuando tenés dos ramas paralelas que deben terminar antes de continuar.", "⚠️ 'Merge by Key' es el más poderoso pero requiere que ambas fuentes tengan el campo clave."]
+  },
+  {
+    name: "Loop Over Items", cat: "flow", icon: "🔁", iconBg: "rgba(162,89,255,.15)",
+    desc: "Itera sobre items en lotes de tamaño configurable. Procesa N items por ciclo y vuelve a sí mismo hasta agotar la lista. Respeta rate limits de APIs.",
+    tags: ["Loop","Batch","Iteración","Rate limit"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"BATCH", bc:"ob-purple", name:"Definir tamaño de batch", desc:"Configura cuántos items procesar por iteración (ej: 10 a la vez). El nodo vuelve a sí mismo automáticamente hasta procesar todos." },
+      { badge:"LOOP", bc:"ob-blue", name:"Salida Loop vs Done", desc:"Tiene dos salidas: 'Loop' (para el próximo batch, vuelve al cuerpo del loop) y 'Done' (cuando ya procesó todos los items, continúa el flujo principal)." },
+      { badge:"STATE", bc:"ob-green", name:"Acumulación de resultados", desc:"Podés acumular resultados de cada iteración usando el nodo Merge con modo Append dentro del loop para tener un resultado final consolidado." },
+    ],
+    tips: ["⏱ Agregá un nodo Wait dentro del loop para respetar rate limits de APIs.", "🔄 Combinalo con HTTP Request para llamadas en masa a APIs que limitan por minuto."]
+  },
+  {
+    name: "Wait", cat: "flow", icon: "⏸️", iconBg: "rgba(162,89,255,.15)",
+    desc: "Pausa la ejecución del workflow por tiempo definido, hasta una fecha/hora específica, o hasta recibir un webhook de reanudación. Permite flujos asincrónicos y aprobaciones humanas.",
+    tags: ["Pausa","Delay","Aprobación","Async"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"TIME", bc:"ob-purple", name:"Esperar tiempo fijo", desc:"Pausa por N segundos, minutos, horas o días. Perfecto para respetar rate limits, enviar recordatorios diferidos o espaciar llamadas a APIs." },
+      { badge:"DATETIME", bc:"ob-blue", name:"Esperar hasta fecha/hora", desc:"Suspende hasta un timestamp específico. Útil para programar acciones a una hora exacta (ej: enviar email a las 9am del lunes)." },
+      { badge:"WEBHOOK", bc:"ob-green", name:"Esperar webhook de reanudación", desc:"El workflow se suspende y espera una llamada HTTP a una URL única. Permite flujos de aprobación humana: el manager aprueba → el webhook reanuda el proceso." },
+    ],
+    tips: ["✅ El modo Webhook es ideal para workflows de aprobación: enviás un email con un link que reanuda el proceso al hacer clic.", "💡 n8n persiste el estado del workflow mientras espera, incluso si el servidor se reinicia."]
+  },
+  {
+    name: "Error Trigger", cat: "flow", icon: "🚨", iconBg: "rgba(162,89,255,.15)",
+    desc: "Se activa cuando otro workflow falla. Recibe los datos del error para crear sistemas de manejo de errores centralizados con notificaciones o reintentos.",
+    tags: ["Error","Try/Catch","Alertas"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"CATCH", bc:"ob-red", name:"Capturar errores de workflow", desc:"En la configuración del workflow que puede fallar, se asigna este 'error workflow'. Si falla cualquier nodo, se dispara automáticamente con los datos del error." },
+      { badge:"DATA", bc:"ob-orange", name:"Datos del error disponibles", desc:"Recibe: mensaje del error, nombre del nodo donde ocurrió, timestamp, stack trace, y los datos de entrada que causaron el fallo." },
+      { badge:"NOTIFY", bc:"ob-blue", name:"Notificar y alertar", desc:"Conectalo a Slack, email o Telegram para recibir alertas inmediatas cuando algo falla en producción." },
+      { badge:"RETRY", bc:"ob-green", name:"Lógica de reintento", desc:"Podés implementar lógica de retry: guardar el error, esperar X minutos, y re-ejecutar el workflow fallido con los datos originales." },
+    ],
+    tips: ["🏗 Crea un workflow de manejo de errores centralizado y asignalo a todos tus workflows de producción.", "📊 Loguea todos los errores en una Google Sheet o base de datos para análisis posterior."]
+  },
+  {
+    name: "Stop and Error", cat: "flow", icon: "🛑", iconBg: "rgba(162,89,255,.15)",
+    desc: "Detiene la ejecución y lanza un error personalizado. Ideal para validaciones: si una condición crítica no se cumple, termina el flujo con un mensaje claro.",
+    tags: ["Error","Validación","Stop"],
+    barColor: "var(--accent2)",
+    ops: [
+      { badge:"MSG", bc:"ob-red", name:"Mensaje de error personalizado", desc:"Define el texto exacto del error que se mostrará en los logs y que recibirá el Error Trigger si está configurado." },
+      { badge:"VAL", bc:"ob-orange", name:"Validación de datos", desc:"Úsalo después de un IF: si los datos requeridos no están presentes o son inválidos, detenés el flujo con un error descriptivo." },
+    ],
+    tips: ["💡 Siempre incluí el ID del item o dato relevante en el mensaje de error para facilitar el debugging."]
+  },
+
+  // ═══════════ CORE ═══════════
+  {
+    name: "HTTP Request", cat: "core", icon: "🌐", iconBg: "rgba(255,109,59,.15)",
+    desc: "Realiza peticiones HTTP a cualquier API o URL. El nodo más potente y universal de n8n: si un servicio tiene API, este nodo puede comunicarse con él.",
+    tags: ["API","REST","HTTP","Universal"],
+    barColor: "var(--accent)",
+    ops: [
+      { badge:"GET", bc:"ob-green", name:"GET — Leer datos", desc:"Obtiene recursos de una API. Soporta query parameters dinámicos desde expresiones. Ideal para consultar estados, listas o un recurso por ID." },
+      { badge:"POST", bc:"ob-orange", name:"POST — Crear/Enviar", desc:"Envía datos al servidor (JSON, form-data, texto). Usado para crear recursos, enviar eventos, llamar webhooks o autenticar." },
+      { badge:"PUT/PATCH", bc:"ob-blue", name:"PUT/PATCH — Actualizar", desc:"Actualiza recursos existentes. PUT reemplaza completo, PATCH actualiza parcialmente. Enviás el body con los campos a modificar." },
+      { badge:"DELETE", bc:"ob-red", name:"DELETE — Eliminar", desc:"Elimina un recurso en la API. Generalmente incluye el ID en la URL (ej: /users/123) y a veces requiere confirmación en el body." },
+      { badge:"AUTH", bc:"ob-purple", name:"Autenticación integrada", desc:"Soporta: Header Auth (Bearer token, API Key), Basic Auth (usuario/contraseña), OAuth 2.0, Digest Auth, AWS Signature V4 y certificados SSL." },
+      { badge:"PAGINATION", bc:"ob-yellow", name:"Paginación automática", desc:"Puede seguir automáticamente paginaciones (por offset, cursor o link header) hasta traer todos los resultados de una API paginada." },
+      { badge:"BINARY", bc:"ob-gray", name:"Respuestas binarias", desc:"Descarga archivos (PDFs, imágenes, Excel) y los convierte en datos binarios disponibles para el siguiente nodo. También puede subir archivos." },
+    ],
+    tips: ["🔑 Guardá credenciales en n8n Credentials, nunca como texto fijo en el nodo.", "📄 Usá el modo 'JSON/RAW parameters' para peticiones complejas con estructuras anidadas.", "🔄 La paginación automática es un game-changer para APIs que devuelven miles de registros."]
+  },
+  {
+    name: "Code", cat: "core", icon: "💻", iconBg: "rgba(255,109,59,.15)",
+    desc: "Ejecuta código JavaScript o Python directamente. Accede y transforma items con lógica personalizada. El nodo más flexible para transformaciones complejas.",
+    tags: ["JavaScript","Python","Custom","Lógica"],
+    barColor: "var(--accent)",
+    ops: [
+      { badge:"JS", bc:"ob-yellow", name:"JavaScript (Node.js)", desc:"Escribe JS moderno con acceso a todos los items ($input.all()), item actual ($input.item), variables de entorno y helpers de n8n. Podés usar librerías built-in de Node." },
+      { badge:"PY", bc:"ob-blue", name:"Python", desc:"Ejecuta código Python con acceso a los mismos datos. Útil si el equipo prefiere Python o necesitás librerías específicas del ecosistema Python." },
+      { badge:"ALL", bc:"ob-green", name:"Modo: Run Once for All Items", desc:"El código recibe TODOS los items a la vez como array. Ideal para transformaciones que necesitan comparar o cruzar datos entre items." },
+      { badge:"EACH", bc:"ob-orange", name:"Modo: Run Once for Each Item", desc:"El código corre una vez por cada item individual. Más intuitivo para transformaciones independientes item por item." },
+      { badge:"RETURN", bc:"ob-purple", name:"Retornar items", desc:"El código debe retornar un array de objetos con la forma [{json: {...}}]. También podés retornar datos binarios con la clave 'binary'." },
+    ],
+    tips: ["💡 Usá $('NombreNodo').item.json para acceder a datos de nodos anteriores.", "🐛 Añadí console.log() para debuggear — el output aparece en los logs de ejecución.", "⚡ Para transformaciones simples preferí Set/Edit Fields; guardá Code para lógica realmente compleja."]
+  },
+  {
+    name: "Set / Edit Fields", cat: "core", icon: "✏️", iconBg: "rgba(255,109,59,.15)",
+    desc: "Agrega, modifica o elimina campos en los items. Mapeo visual con expresiones dinámicas. El nodo de transformación de datos más usado en cualquier workflow.",
+    tags: ["Variables","Mapping","Transformar"],
+    barColor: "var(--accent)",
+    ops: [
+      { badge:"ADD", bc:"ob-green", name:"Agregar campo nuevo", desc:"Crea un campo que no existía con un valor fijo o calculado con expresiones (ej: timestamp actual, concatenación de strings, resultado de cálculo)." },
+      { badge:"EDIT", bc:"ob-orange", name:"Modificar campo existente", desc:"Sobreescribe el valor de un campo que ya viene en el item. Podés usarlo para limpiar, formatear o transformar datos existentes." },
+      { badge:"DELETE", bc:"ob-red", name:"Eliminar campos", desc:"Borra campos específicos del item para limpiar datos sensibles, reducir payload o eliminar campos temporales usados en pasos anteriores." },
+      { badge:"RENAME", bc:"ob-blue", name:"Renombrar campo", desc:"Cambia el nombre de una clave (ej: 'email_address' → 'email'). Útil para normalizar datos entre sistemas con nomenclaturas distintas." },
+      { badge:"KEEP", bc:"ob-purple", name:"Keep Only Set", desc:"Opción para descartar TODOS los campos del item y quedarte solo con los que definiste en este nodo. Útil para limpiar payloads grandes." },
+      { badge:"EXPR", bc:"ob-yellow", name:"Expresiones dinámicas", desc:"Usá {{ $json.campo }}, funciones de fecha, matemáticas, string manipulation y más. El motor de expresiones de n8n es muy completo." },
+    ],
+    tips: ["🗂 En el modo tabla podés ver todos los campos del item anterior y mapearlos visualmente.", "💡 $now para timestamp actual, $json para datos del item, $env para variables de entorno."]
+  },
+  {
+    name: "Execute Workflow", cat: "core", icon: "⚙️", iconBg: "rgba(255,109,59,.15)",
+    desc: "Llama a otro workflow de n8n y opcionalmente espera su respuesta. Permite modularizar lógica en sub-workflows reutilizables.",
+    tags: ["Sub-workflow","Modular","Reutilizable"],
+    barColor: "var(--accent)",
+    ops: [
+      { badge:"CALL", bc:"ob-orange", name:"Ejecutar sub-workflow", desc:"Seleccionás otro workflow activo de tu instancia n8n y lo llamas. Podés pasar datos del item actual como input del workflow hijo." },
+      { badge:"WAIT", bc:"ob-green", name:"Esperar respuesta", desc:"Modo síncrono: espera a que el sub-workflow termine y devuelve sus resultados. Ideal para sub-procesos que deben completarse antes de continuar." },
+      { badge:"ASYNC", bc:"ob-blue", name:"Lanzar sin esperar", desc:"Modo asíncrono: dispara el sub-workflow y continúa sin esperar resultado. Útil para procesos secundarios o notificaciones que no bloquean el flujo principal." },
+      { badge:"INPUT", bc:"ob-purple", name:"Pasar datos de entrada", desc:"Los datos del item actual se pasan automáticamente al sub-workflow, disponibles desde su trigger 'When called by another workflow'." },
+    ],
+    tips: ["🧩 Creá workflows 'librería' con lógica reutilizable (ej: 'normalizar contacto', 'enviar email con retry').", "📐 Mantené los sub-workflows con una sola responsabilidad (Single Responsibility Principle)."]
+  },
+  {
+    name: "Respond to Webhook", cat: "core", icon: "↩️", iconBg: "rgba(255,109,59,.15)",
+    desc: "Envía una respuesta HTTP personalizada al cliente que disparó el Webhook Trigger. Esencial para workflows que funcionan como APIs o que devuelven datos al caller.",
+    tags: ["Response","HTTP","API"],
+    barColor: "var(--accent)",
+    ops: [
+      { badge:"JSON", bc:"ob-green", name:"Responder con JSON", desc:"Devuelve un objeto JSON al caller. Configurable con status code (200, 201, 400, etc.) y headers personalizados." },
+      { badge:"TEXT", bc:"ob-blue", name:"Responder con texto", desc:"Devuelve texto plano, HTML o cualquier string como respuesta. Útil para respuestas simples o endpoints que devuelven HTML." },
+      { badge:"BINARY", bc:"ob-orange", name:"Responder con archivo", desc:"Devuelve datos binarios (PDF, imagen, Excel) como respuesta HTTP. El caller lo recibirá como descarga de archivo." },
+      { badge:"STATUS", bc:"ob-purple", name:"Código de estado HTTP", desc:"Configura el status code de la respuesta: 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 500 Error, etc." },
+    ],
+    tips: ["⚡ El Webhook Trigger puede configurarse para esperar hasta que este nodo responda (modo 'Last Node').", "🔒 Validá los datos de entrada antes de responder con 200 para evitar aceptar datos inválidos."]
+  },
+
+  // ═══════════ DATA ═══════════
+  {
+    name: "Filter", cat: "data", icon: "🔍", iconBg: "rgba(0,212,170,.15)",
+    desc: "Filtra items que cumplen condiciones definidas. Los que pasan continúan; los que no, se descartan. Soporta múltiples condiciones con AND/OR.",
+    tags: ["Filtrar","Condición","WHERE"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"COND", bc:"ob-green", name:"Condición simple", desc:"Define una condición sobre un campo (ej: precio > 100, status == 'activo'). Solo pasan los items que la cumplan." },
+      { badge:"AND", bc:"ob-blue", name:"Múltiples condiciones AND", desc:"Todos los filtros deben cumplirse. El item pasa solo si coincide con TODAS las condiciones definidas." },
+      { badge:"OR", bc:"ob-orange", name:"Múltiples condiciones OR", desc:"Basta con que una condición se cumpla. El item pasa si coincide con AL MENOS UNA condición." },
+      { badge:"TYPES", bc:"ob-purple", name:"Tipos de comparación", desc:"Soporta: igual, no igual, mayor/menor, contiene, empieza/termina con, regex, es nulo, está vacío, existe en array." },
+    ],
+    tips: ["💡 El Filter es como un WHERE de SQL: mantiene items que cumplen la condición.", "🔀 Para separar en dos ramas (los que pasan y los que no), usá el nodo IF en su lugar."]
+  },
+  {
+    name: "Aggregate", cat: "data", icon: "📦", iconBg: "rgba(0,212,170,.15)",
+    desc: "Convierte múltiples items en uno solo. Agrupa valores en arrays, combina items o aplica funciones de agregación. Inverso del Split Out.",
+    tags: ["Agrupar","Reducir","Array","GROUP BY"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"ARRAY", bc:"ob-green", name:"Agregar campo en array", desc:"Toma el valor de un campo de todos los items y los junta en un array: ['valor1','valor2','valor3']. El resultado es un único item con ese array." },
+      { badge:"ALL", bc:"ob-blue", name:"Combinar todos los items", desc:"Junta todos los items en un único item con una clave que contiene el array completo de objetos originales." },
+      { badge:"SUM", bc:"ob-orange", name:"Suma / Conteo", desc:"Calcula la suma de un campo numérico a través de todos los items y produce un item con el resultado." },
+    ],
+    tips: ["📊 Ideal antes de enviar una lista completa por email o a una API que espera un array.", "↔️ Combine con Split Out para hacer round-trips: expandir → procesar → reagrupar."]
+  },
+  {
+    name: "Split Out", cat: "data", icon: "📤", iconBg: "rgba(0,212,170,.15)",
+    desc: "Expande un campo array: convierte cada elemento en un item individual. El inverso del Aggregate. Para procesar listas elemento por elemento.",
+    tags: ["Expandir","Unnest","Array"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"FIELD", bc:"ob-green", name:"Expandir campo array", desc:"Seleccionás el campo que contiene un array y cada elemento se convierte en un item separado que el workflow procesa individualmente." },
+      { badge:"KEEP", bc:"ob-blue", name:"Conservar otros campos", desc:"Opción para mantener el resto de los campos del item original en cada nuevo item generado. Evita perder el contexto." },
+    ],
+    tips: ["⚡ Combinalo con Loop Over Items para procesar arrays grandes sin sobrecargar APIs.", "🔄 Patrón común: HTTP Request devuelve array → Split Out → procesar cada elemento → Aggregate."]
+  },
+  {
+    name: "Sort", cat: "data", icon: "🔢", iconBg: "rgba(0,212,170,.15)",
+    desc: "Ordena los items por uno o más campos de forma ascendente, descendente o aleatoria.",
+    tags: ["Ordenar","ASC","DESC","ORDER BY"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"ASC", bc:"ob-green", name:"Ascendente", desc:"Ordena de menor a mayor (A-Z para strings, 0-9 para números, pasado al futuro para fechas)." },
+      { badge:"DESC", bc:"ob-blue", name:"Descendente", desc:"Ordena de mayor a menor (Z-A, 9-0, futuro al pasado). Útil para mostrar los más recientes primero." },
+      { badge:"MULTI", bc:"ob-orange", name:"Múltiples campos", desc:"Ordena por un campo primario y si empatan, por un campo secundario. Similar al ORDER BY col1, col2 de SQL." },
+      { badge:"RANDOM", bc:"ob-purple", name:"Orden aleatorio (shuffle)", desc:"Desordena los items aleatoriamente. Útil para seleccionar un elemento al azar o randomizar listas de contenido." },
+    ],
+    tips: ["💡 Para ordenar fechas en formato ISO 8601 (YYYY-MM-DD), el ordenamiento de strings funciona correctamente."]
+  },
+  {
+    name: "Remove Duplicates", cat: "data", icon: "🧹", iconBg: "rgba(0,212,170,.15)",
+    desc: "Elimina items duplicados por campos clave. También puede comparar con ejecuciones anteriores para procesar solo items nuevos.",
+    tags: ["Dedup","Unique","DISTINCT"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"KEY", bc:"ob-green", name:"Deduplicar por campo(s)", desc:"Define uno o más campos como clave única. Si dos items tienen el mismo valor en esos campos, solo uno pasa (el primero o el último, configurable)." },
+      { badge:"CROSS-RUN", bc:"ob-blue", name:"Deduplicar entre ejecuciones", desc:"Modo avanzado: n8n recuerda los items procesados entre ejecuciones. Solo pasan items con IDs que no fueron vistos antes. Ideal para RSS o polls de APIs." },
+      { badge:"CLEAN", bc:"ob-orange", name:"Limpiar historial", desc:"Podés limpiar el historial de items vistos si necesitás reprocesar todo desde cero." },
+    ],
+    tips: ["🔄 El modo 'entre ejecuciones' es perfecto para triggers de polling que no querés reprocesar.", "⚠️ El historial persiste en la base de datos de n8n, no en el item."]
+  },
+  {
+    name: "Summarize", cat: "data", icon: "📊", iconBg: "rgba(0,212,170,.15)",
+    desc: "Agrupa items y calcula estadísticas por grupo. Similar a un GROUP BY con funciones de agregación en SQL.",
+    tags: ["GROUP BY","Estadísticas","Suma","Media"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"SUM", bc:"ob-green", name:"Suma (Sum)", desc:"Suma los valores de un campo numérico dentro de cada grupo. Ej: total de ventas por región." },
+      { badge:"AVG", bc:"ob-blue", name:"Promedio (Average)", desc:"Calcula el promedio de un campo numérico por grupo. Ej: ticket promedio por cliente." },
+      { badge:"COUNT", bc:"ob-orange", name:"Conteo (Count)", desc:"Cuenta cuántos items hay en cada grupo, opcionalmente contando solo valores únicos." },
+      { badge:"MIN/MAX", bc:"ob-purple", name:"Mínimo / Máximo", desc:"Encuentra el valor más pequeño o más grande de un campo dentro de cada grupo." },
+      { badge:"UNIQUE", bc:"ob-yellow", name:"Valores únicos", desc:"Lista todos los valores únicos de un campo por grupo o en general. Similar a un DISTINCT." },
+    ],
+    tips: ["📈 Perfecto para generar reportes con métricas antes de enviarlos por email o guardarlos en Sheets."]
+  },
+  {
+    name: "Limit", cat: "data", icon: "✂️", iconBg: "rgba(0,212,170,.15)",
+    desc: "Limita cuántos items pasan al siguiente nodo. Mantiene los primeros N o los últimos N.",
+    tags: ["Límite","Paginación","LIMIT"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"FIRST", bc:"ob-green", name:"Primeros N items", desc:"Deja pasar solo los primeros N items y descarta el resto. Equivalente a LIMIT en SQL." },
+      { badge:"LAST", bc:"ob-blue", name:"Últimos N items", desc:"Mantiene solo los últimos N items de la lista. Útil para procesar solo los registros más recientes." },
+    ],
+    tips: ["🧪 Muy útil durante desarrollo para testear con pocos items sin procesar la lista completa."]
+  },
+  {
+    name: "Crypto", cat: "data", icon: "🔐", iconBg: "rgba(0,212,170,.15)",
+    desc: "Aplica funciones criptográficas: hashing, HMAC y firmas. Útil para verificar webhooks, generar tokens o firmar solicitudes.",
+    tags: ["Hash","SHA256","HMAC","Firma"],
+    barColor: "var(--accent3)",
+    ops: [
+      { badge:"MD5", bc:"ob-gray", name:"Hash MD5", desc:"Genera el hash MD5 de un string. No recomendado para seguridad pero aún usado para verificar integridad de archivos o como ID único." },
+      { badge:"SHA", bc:"ob-green", name:"Hash SHA (1/256/512)", desc:"Genera hashes SHA-1, SHA-256 o SHA-512. SHA-256 es el estándar moderno para verificar firmas de webhooks (ej: GitHub, Stripe)." },
+      { badge:"HMAC", bc:"ob-orange", name:"HMAC", desc:"Hash-based Message Authentication Code. Combina una clave secreta con el mensaje para verificar autenticidad. El método más común para webhooks seguros." },
+      { badge:"BASE64", bc:"ob-blue", name:"Base64 encode/decode", desc:"Codifica o decodifica strings en Base64. Necesario para Basic Auth headers, transferencia de datos binarios en JSON, o interfaces que requieren este formato." },
+    ],
+    tips: ["🔒 Para verificar webhooks de Stripe/GitHub: calcula HMAC-SHA256 con tu secret y compará con el header de firma.", "💡 También podés usar el nodo Code para crypto con más control usando la librería 'crypto' de Node."]
+  },
+
+  // ═══════════ AI ═══════════
+  {
+    name: "AI Agent", cat: "ai", icon: "🤖", iconBg: "rgba(162,89,255,.15)",
+    desc: "Crea un agente AI autónomo con acceso a herramientas (tools). El agente decide qué usar, las ejecuta en ciclos y produce una respuesta final.",
+    tags: ["LLM","Agente","Tools","ReAct","Autónomo"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"REACT", bc:"ob-purple", name:"Agente ReAct (Reasoning+Acting)", desc:"El modelo razona, decide qué tool usar, la ejecuta, observa el resultado y repite hasta tener la respuesta. El tipo de agente más flexible y potente." },
+      { badge:"OPENAI", bc:"ob-green", name:"OpenAI Functions Agent", desc:"Usa la funcionalidad de function calling nativa de OpenAI. Más predecible que ReAct para tareas estructuradas. Compatible con GPT-4o y GPT-4." },
+      { badge:"TOOLS", bc:"ob-orange", name:"Herramientas conectadas", desc:"El agente puede usar: HTTP Request, Code, nodos de bases de datos, Google Sheets, búsqueda web, calculadora, Wikipedia, y cualquier nodo de n8n como tool." },
+      { badge:"MEMORY", bc:"ob-blue", name:"Memoria de conversación", desc:"Conectá un nodo Memory para que el agente recuerde mensajes anteriores en conversaciones multi-turno. Soporta Buffer, Window y Summary Memory." },
+      { badge:"SYSTEM", bc:"ob-yellow", name:"System Prompt", desc:"Define el rol, personalidad, limitaciones y contexto del agente con un prompt de sistema. Determina cómo razona y qué puede/no puede hacer." },
+      { badge:"PARSE", bc:"ob-gray", name:"Output Parser", desc:"Fuerza al agente a devolver una estructura JSON específica en lugar de texto libre. Útil cuando el output debe alimentar otro nodo de forma predecible." },
+    ],
+    tips: ["🛡 Siempre limitá las tools disponibles al mínimo necesario (principio de menor privilegio).", "📝 Un buen system prompt es la clave: define el rol, contexto, limitaciones y formato de respuesta esperado.", "🔄 Para agentes con muchos pasos, el modo ReAct puede generar muchas iteraciones — limitá max_iterations."]
+  },
+  {
+    name: "Basic LLM Chain", cat: "ai", icon: "💬", iconBg: "rgba(162,89,255,.15)",
+    desc: "La cadena más simple: prompt → modelo → respuesta. Para casos sin herramientas ni agentes, cuando solo necesitás generar texto o procesar un input.",
+    tags: ["LLM","Prompt","Chat","Completions"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"PROMPT", bc:"ob-purple", name:"Prompt dinámico", desc:"El prompt puede incluir expresiones de n8n para insertar datos del workflow: 'Resume este texto: {{ $json.article }}'. Se construye dinámicamente por item." },
+      { badge:"SYSTEM", bc:"ob-blue", name:"System prompt", desc:"Configura el comportamiento base del modelo: su rol, tono, restricciones y contexto. Se mantiene constante entre items." },
+      { badge:"MODEL", bc:"ob-green", name:"Selección de modelo", desc:"Elegís qué LLM usar: GPT-4o, GPT-3.5, Claude 3, Gemini, Llama (via Ollama), Mistral, y muchos más según las credenciales configuradas." },
+      { badge:"TEMP", bc:"ob-orange", name:"Temperatura y parámetros", desc:"Controlá creatividad (temperatura), longitud máxima (max_tokens), y otros parámetros del modelo para ajustar el comportamiento de generación." },
+      { badge:"PARSER", bc:"ob-yellow", name:"Output Parser", desc:"Podés conectar un parser para extraer JSON estructurado, listas o valores específicos de la respuesta del LLM." },
+    ],
+    tips: ["⚡ Más simple y rápido que el AI Agent cuando no necesitás tools ni razonamiento multi-paso.", "💸 Más barato en tokens que un agente, ya que solo hace una llamada al LLM."]
+  },
+  {
+    name: "OpenAI", cat: "ai", icon: "🧠", iconBg: "rgba(162,89,255,.15)",
+    desc: "Integración nativa con la API de OpenAI. Un solo nodo para chat, imágenes, audio, embeddings y moderación.",
+    tags: ["GPT-4","DALL-E","Embeddings","Whisper"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"CHAT", bc:"ob-purple", name:"Chat Completions (GPT)", desc:"Genera texto con GPT-4o, GPT-4-turbo, GPT-3.5-turbo. Soporta mensajes multi-turno, system prompt y function calling. El más usado." },
+      { badge:"IMAGE", bc:"ob-orange", name:"Generación de imágenes (DALL-E 3)", desc:"Genera imágenes desde prompts de texto con DALL-E 3. Configurable en tamaño (1024x1024, etc.), calidad y estilo (natural/vivid)." },
+      { badge:"EMBED", bc:"ob-green", name:"Embeddings (text-embedding-3)", desc:"Convierte texto en vectores numéricos de alta dimensión. Esencial para sistemas RAG, búsqueda semántica y clasificación de textos." },
+      { badge:"AUDIO", bc:"ob-blue", name:"Transcripción (Whisper)", desc:"Transcribe archivos de audio a texto (speech-to-text). Soporta múltiples idiomas y formatos (mp3, wav, m4a, etc.)." },
+      { badge:"TTS", bc:"ob-yellow", name:"Texto a voz (TTS)", desc:"Convierte texto a audio MP3 con voces naturales (alloy, echo, nova, shimmer, etc.). Útil para generar podcasts, respuestas de voz o contenido de audio." },
+      { badge:"MOD", bc:"ob-red", name:"Moderación de contenido", desc:"Analiza texto para detectar contenido dañino, odio, violencia o sexual. Devuelve scores por categoría para filtrar contenido generado por usuarios." },
+    ],
+    tips: ["💰 Monitorea el uso de tokens en el dashboard de OpenAI para controlar costos.", "🎯 Para producción, especificá siempre el modelo exacto (ej: gpt-4o-2024-11-20) para evitar cambios de comportamiento por actualizaciones de modelos."]
+  },
+  {
+    name: "Vector Store", cat: "ai", icon: "🗄️", iconBg: "rgba(162,89,255,.15)",
+    desc: "Inserta o consulta documentos en bases de datos vectoriales. Fundamental para RAG (Retrieval Augmented Generation) y búsqueda semántica.",
+    tags: ["RAG","Embeddings","Semántica","Pinecone"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"INSERT", bc:"ob-green", name:"Insertar documentos", desc:"Toma texto (chunks), genera embeddings automáticamente y los almacena en la BD vectorial con metadata. Primera fase del pipeline RAG." },
+      { badge:"QUERY", bc:"ob-blue", name:"Buscar por similitud", desc:"Recibe una query en lenguaje natural, la convierte a embedding y busca los documentos más similares en la base de datos. Devuelve los top-K más relevantes." },
+      { badge:"DELETE", bc:"ob-red", name:"Eliminar vectores", desc:"Borra documentos del store por ID o por metadata. Útil para mantener la base de conocimiento actualizada." },
+      { badge:"STORES", bc:"ob-purple", name:"Backends soportados", desc:"Pinecone, Qdrant, Supabase (pgvector), PGVector, Weaviate, Chroma, Redis, In-Memory (dev). Cada uno con su nodo específico." },
+    ],
+    tips: ["📚 El pipeline RAG típico: cargar doc → chunk → embed → store. Luego: query → retrieve → inject en prompt → LLM.", "🎯 El tamaño del chunk y el overlap son críticos para la calidad del retrieval — experimentá con diferentes valores."]
+  },
+  {
+    name: "Memory", cat: "ai", icon: "🧩", iconBg: "rgba(162,89,255,.15)",
+    desc: "Almacena y recupera historial de conversación para agentes. Tipos: Buffer (completo), Window (últimos N), Summary (comprimido).",
+    tags: ["Memoria","Historia","Conversación","Context"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"BUFFER", bc:"ob-purple", name:"Buffer Memory", desc:"Guarda TODA la conversación en memoria. Simple pero puede volverse muy costoso en tokens en conversaciones largas." },
+      { badge:"WINDOW", bc:"ob-blue", name:"Window Buffer Memory", desc:"Guarda solo los últimos N mensajes. Balance entre contexto y costo. El más usado en producción." },
+      { badge:"SUMMARY", bc:"ob-green", name:"Summary Memory", desc:"Usa el LLM para comprimir conversaciones largas en un resumen que se incluye como contexto. Ideal para conversaciones muy extensas." },
+      { badge:"KEY", bc:"ob-orange", name:"Session Key (ID de sesión)", desc:"Cada conversación se identifica por una clave única (ej: ID de usuario). Permite memoria por usuario independiente." },
+    ],
+    tips: ["💡 Usá Window Memory con 10-20 mensajes para la mayoría de chatbots: buen balance costo/contexto.", "🔑 La session key es crítica: si todos los usuarios comparten la misma clave, sus conversaciones se mezclan."]
+  },
+  {
+    name: "Document Loader / Text Splitter", cat: "ai", icon: "📄", iconBg: "rgba(162,89,255,.15)",
+    desc: "Carga documentos y los divide en chunks para ingesta en vector stores. El primer paso de cualquier pipeline RAG.",
+    tags: ["PDF","Chunking","RAG","Ingesta"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"PDF", bc:"ob-red", name:"Cargar PDF", desc:"Extrae texto de archivos PDF (incluyendo PDFs con texto seleccionable). Convierte el documento en texto plano para su procesamiento." },
+      { badge:"TEXT", bc:"ob-gray", name:"Cargar texto / HTML / JSON", desc:"Procesa archivos de texto plano, HTML (extrayendo solo el contenido) o JSON como fuente de documentos para RAG." },
+      { badge:"CHAR", bc:"ob-green", name:"Character Text Splitter", desc:"Divide el texto en chunks por cantidad de caracteres con un overlap configurable. Simple y efectivo para la mayoría de casos." },
+      { badge:"TOKEN", bc:"ob-blue", name:"Token Text Splitter", desc:"Divide por cantidad de tokens (más preciso para controlar costos de embedding). Usa el tokenizador del modelo específico." },
+      { badge:"RECUR", bc:"ob-orange", name:"Recursive Character Splitter", desc:"Divide primero por párrafos, luego por oraciones, luego por palabras. Intenta mantener unidades semánticas completas. Recomendado para la mayoría de casos." },
+    ],
+    tips: ["📏 Chunk size típico: 500-1000 tokens. Overlap: 10-20%. Ajustá según la naturaleza del documento.", "🧪 Experimentá con distintos splitters: el Recursive suele dar los mejores resultados para texto narrativo."]
+  },
+  {
+    name: "Information Extractor", cat: "ai", icon: "💡", iconBg: "rgba(162,89,255,.15)",
+    desc: "Usa un LLM para extraer información estructurada de texto libre. Define un schema y el modelo completa los valores a partir del texto de entrada.",
+    tags: ["Extracción","Structured Output","Schema"],
+    barColor: "linear-gradient(90deg, var(--accent), var(--accent2))",
+    ops: [
+      { badge:"SCHEMA", bc:"ob-purple", name:"Definir schema de salida", desc:"Especificás qué campos extraer, su tipo (string, number, boolean, array) y descripción. El LLM los completa a partir del texto de entrada." },
+      { badge:"TEXT", bc:"ob-green", name:"Input de texto libre", desc:"El nodo recibe cualquier texto (email, reseña, artículo, mensaje) y extrae los campos definidos en el schema, aunque no estén expresamente en el texto." },
+      { badge:"VALID", bc:"ob-orange", name:"Validación automática", desc:"Si la extracción produce un tipo incorrecto, el nodo reintenta automáticamente con el LLM para obtener el formato correcto." },
+    ],
+    tips: ["📧 Caso de uso clásico: extraer nombre, empresa, teléfono y consulta de emails de leads.", "🌟 Más confiable que regex o parsers manuales para texto no estructurado o con formato variable."]
+  },
+
+  // ═══════════ INTEGRATIONS ═══════════
+  {
+    name: "Google Drive", cat: "integration", icon: "📁", iconBg: "rgba(74,158,255,.15)",
+    desc: "Gestiona archivos y carpetas en Google Drive. Sube, descarga, organiza y comparte con permisos granulares. Trigger para cambios en carpetas.",
+    tags: ["Archivos","Cloud","Google"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"COPY", bc:"ob-blue", name:"Copy File — Copiar archivo", desc:"Crea una copia de un archivo existente en Drive, en la misma carpeta u otra destino. Útil para clonar plantillas antes de personalizarlas." },
+      { badge:"CREATE", bc:"ob-green", name:"Create File — Subir archivo", desc:"Sube un nuevo archivo a Drive desde datos binarios del workflow. Soporta cualquier tipo de archivo: PDF, imagen, Excel, etc. Podés especificar la carpeta destino." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete File — Eliminar", desc:"Mueve un archivo a la papelera de Drive. El archivo no se elimina permanentemente de inmediato; puede restaurarse desde la papelera." },
+      { badge:"DOWNLOAD", bc:"ob-orange", name:"Download File — Descargar", desc:"Descarga el contenido de un archivo de Drive como datos binarios. Para Google Docs/Sheets exporta en el formato que elijas (PDF, xlsx, docx, etc.)." },
+      { badge:"METADATA", bc:"ob-purple", name:"Get File Metadata — Info", desc:"Obtiene información del archivo: nombre, tamaño, tipo MIME, fecha de creación/modificación, propietario, ID y URL de acceso." },
+      { badge:"PERMS", bc:"ob-yellow", name:"Get/Update Permissions — Compartir", desc:"Lee o modifica los permisos de un archivo: compartir con email específico, hacer público, asignar rol (viewer/editor/owner), restringir acceso." },
+      { badge:"LIST", bc:"ob-gray", name:"List Files — Listar", desc:"Lista archivos en una carpeta con filtros opcionales: por nombre, tipo MIME, fecha o propiedades personalizadas. Soporta paginación para carpetas grandes." },
+      { badge:"SEARCH", bc:"ob-blue", name:"Search Files — Buscar", desc:"Busca archivos en Drive usando la sintaxis de query de la API (ej: name contains 'informe' and mimeType='application/pdf'). Muy potente." },
+      { badge:"READ", bc:"ob-green", name:"Read File Content — Leer contenido", desc:"Lee el contenido de un archivo de texto, Google Doc o CSV directamente como string. Sin necesidad de descargarlo como binario primero." },
+      { badge:"TRIGGER", bc:"ob-orange", name:"Trigger — Monitorear cambios", desc:"Dispara el workflow cuando se crean, modifican o eliminan archivos en una carpeta específica de Drive. Ideal para pipelines de procesamiento automático." },
+    ],
+    tips: ["🗂 Usá IDs de archivo/carpeta en lugar de nombres para evitar problemas con archivos que tienen el mismo nombre.", "📄 Para Google Docs, usá el modo export al descargar para elegir el formato de salida (PDF, docx, etc.).", "🔔 El trigger de Drive tiene un polling interno — no es instantáneo, puede tardar unos minutos."]
+  },
+  {
+    name: "Gmail", cat: "integration", icon: "📩", iconBg: "rgba(74,158,255,.15)",
+    desc: "Lee, envía, mueve y gestiona emails en Gmail. Soporta etiquetas, búsquedas avanzadas y adjuntos.",
+    tags: ["Email","Google","Adjuntos"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"SEND", bc:"ob-green", name:"Send Email — Enviar", desc:"Envía emails con asunto, body HTML o texto plano, To/CC/BCC múltiples, adjuntos de datos binarios del workflow y headers personalizados." },
+      { badge:"GET", bc:"ob-blue", name:"Get Message — Leer email", desc:"Obtiene el contenido completo de un email por ID: asunto, remitente, body HTML/texto, adjuntos y metadata." },
+      { badge:"GETMANY", bc:"ob-purple", name:"Get Many Messages — Listar", desc:"Lista emails con filtros: no leídos, de un remitente, con etiqueta específica, en rango de fechas. Soporta query de Gmail (ej: 'from:cliente@gmail.com is:unread')." },
+      { badge:"REPLY", bc:"ob-orange", name:"Reply — Responder", desc:"Responde a un email existente manteniendo el hilo de conversación. El reply se encadena al mensaje original en Gmail." },
+      { badge:"LABEL", bc:"ob-yellow", name:"Add/Remove Labels — Etiquetar", desc:"Agrega o quita etiquetas de Gmail a uno o más mensajes. Permite clasificar emails automáticamente según el contenido procesado en el workflow." },
+      { badge:"MOVE", bc:"ob-gray", name:"Move to Mailbox — Mover", desc:"Mueve emails entre carpetas/mailboxes: Inbox, Spam, Trash, Sent, o carpetas personalizadas." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete Message — Eliminar", desc:"Elimina permanentemente un email (sin papelera) o lo mueve a la papelera dependiendo de la configuración." },
+      { badge:"ATTACH", bc:"ob-blue", name:"Get Attachment — Descargar adjunto", desc:"Descarga los archivos adjuntos de un email como datos binarios para procesarlos (guardar en Drive, extraer datos, etc.)." },
+      { badge:"TRIGGER", bc:"ob-orange", name:"Trigger — Email entrante", desc:"Monitorea la bandeja y dispara el workflow cuando llega un nuevo email que cumple los filtros configurados. Más simple que el IMAP Trigger." },
+    ],
+    tips: ["🔍 La sintaxis de búsqueda de Gmail es muy potente: 'from:noticias has:attachment newer_than:1d'.", "📎 Para procesar adjuntos de múltiples emails, combinalo con Loop Over Items.", "🏷 Crear un sistema de etiquetado automático (factura → label 'Contabilidad') es un caso de uso clásico."]
+  },
+  {
+    name: "Google Sheets", cat: "integration", icon: "📗", iconBg: "rgba(74,158,255,.15)",
+    desc: "Lee, escribe y gestiona datos en Google Sheets. El 'mini-database' más popular en flujos n8n. CRUD completo con soporte para múltiples hojas.",
+    tags: ["Spreadsheet","Google","Database","CRUD"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"READ", bc:"ob-green", name:"Read Rows — Leer filas", desc:"Lee filas de una hoja. Puede leer todas o filtrar por valor en una columna clave. Los headers de la primera fila se usan como nombres de campo." },
+      { badge:"APPEND", bc:"ob-blue", name:"Append Row — Agregar fila", desc:"Agrega una nueva fila al final de la hoja. El mapping de columnas es automático por nombre de campo. La operación más común para registrar datos." },
+      { badge:"UPDATE", bc:"ob-orange", name:"Update Row — Actualizar fila", desc:"Actualiza filas existentes haciendo match por un campo clave (ej: email o ID). Si el match existe, actualiza; si no, puede insertarlo (upsert)." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete Row — Eliminar fila", desc:"Elimina filas que coincidan con un criterio de búsqueda, o por número de fila específico." },
+      { badge:"CLEAR", bc:"ob-gray", name:"Clear — Limpiar hoja", desc:"Borra todo el contenido de un rango o de la hoja completa. Útil antes de reescribir datos desde cero en reportes periódicos." },
+      { badge:"CREATE", bc:"ob-purple", name:"Create Sheet — Crear hoja", desc:"Crea una nueva pestaña (hoja) dentro de un spreadsheet existente, con nombre configurable." },
+      { badge:"LOOKUP", bc:"ob-yellow", name:"Lookup — Buscar por valor", desc:"Busca una fila específica por el valor de una columna y devuelve toda la fila. Similar a un VLOOKUP pero como item de n8n." },
+    ],
+    tips: ["📊 Usá Google Sheets como base de datos simple para flujos que no justifican una DB real.", "🔄 Patrón común: leer lista de emails de Sheets → enviar campañas → actualizar estado en la misma hoja.", "⚠️ La API de Sheets tiene límites de rate — usá batches con el Loop Over Items para grandes volúmenes."]
+  },
+  {
+    name: "Slack", cat: "integration", icon: "💬", iconBg: "rgba(74,158,255,.15)",
+    desc: "Envía mensajes, gestiona canales, usuarios y archivos en Slack. Soporta Block Kit para mensajes enriquecidos con botones e imágenes.",
+    tags: ["Mensajes","Notificación","Block Kit"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"SEND", bc:"ob-green", name:"Send Message — Enviar mensaje", desc:"Envía un mensaje a un canal o usuario por DM. Soporta texto plano, Markdown de Slack y Block Kit para layouts visuales complejos." },
+      { badge:"BLOCKS", bc:"ob-blue", name:"Block Kit — Mensajes enriquecidos", desc:"Crea mensajes con secciones, imágenes, botones interactivos, dividers y campos de dos columnas. El formato visual premium de Slack." },
+      { badge:"UPDATE", bc:"ob-orange", name:"Update Message — Editar mensaje", desc:"Modifica el texto de un mensaje ya enviado usando su timestamp (ts). Útil para actualizar estados en tiempo real ('🔄 Procesando... → ✅ Completado')." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete Message — Borrar", desc:"Elimina un mensaje enviado. Requiere el timestamp del mensaje y el canal donde fue enviado." },
+      { badge:"REACT", bc:"ob-yellow", name:"Add Reaction — Emoji", desc:"Agrega un emoji de reacción a un mensaje. Puede usarse para señalizar que un bot procesó ese mensaje (✅ = procesado, ❌ = error)." },
+      { badge:"FILE", bc:"ob-purple", name:"Upload File — Subir archivo", desc:"Sube un archivo (imagen, PDF, CSV) directamente a un canal de Slack con mensaje opcional de descripción." },
+      { badge:"CHANNEL", bc:"ob-gray", name:"Create/Get Channel — Canales", desc:"Crea canales nuevos, obtiene info de canales existentes o lista todos los canales del workspace." },
+      { badge:"USER", bc:"ob-blue", name:"Get User — Usuarios", desc:"Obtiene información de un usuario por email o ID: nombre, timezone, estado, ID de DM. Útil para enviar mensajes directos por email." },
+      { badge:"TRIGGER", bc:"ob-orange", name:"Trigger — Eventos de Slack", desc:"Dispara el workflow ante eventos: mensaje nuevo en canal, mención al bot, click en botón de Block Kit, slash command. Requiere configurar Event Subscriptions." },
+    ],
+    tips: ["🎨 El Block Builder de Slack (app.slack.com/block-kit-builder) es ideal para diseñar los bloques visualmente.", "🤖 Para chatbots en Slack, el Trigger de 'message' + AI Agent + respuesta al mismo canal es el patrón estándar.", "⚡ Usá Update Message para crear efectos de 'cargando...' mientras el workflow procesa algo complejo."]
+  },
+  {
+    name: "Postgres / MySQL", cat: "integration", icon: "🗃️", iconBg: "rgba(74,158,255,.15)",
+    desc: "Ejecuta consultas SQL en bases de datos relacionales. CRUD completo con queries personalizadas. También SQLite, MS SQL, MariaDB.",
+    tags: ["SQL","Database","PostgreSQL","MySQL"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"SELECT", bc:"ob-green", name:"Execute Query — SELECT", desc:"Ejecuta cualquier SELECT con WHERE, JOIN, GROUP BY, ORDER BY. Los resultados se convierten en items de n8n con un item por fila." },
+      { badge:"INSERT", bc:"ob-blue", name:"Insert — Insertar filas", desc:"Inserta uno o múltiples registros. El mapping columna-valor es automático desde los campos del item. Soporta inserción en batch." },
+      { badge:"UPDATE", bc:"ob-orange", name:"Update — Actualizar filas", desc:"Actualiza registros que coincidan con una condición WHERE. Configurable qué columnas actualizar y cuál es la clave de matching." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete — Eliminar filas", desc:"Elimina registros que cumplan la condición especificada. Cuidado con condiciones muy amplias — siempre incluí un WHERE específico." },
+      { badge:"UPSERT", bc:"ob-purple", name:"Upsert — Insertar o actualizar", desc:"Si el registro existe (por clave única), lo actualiza. Si no existe, lo inserta. Ideal para sincronizaciones donde no sabés si el registro ya existe." },
+      { badge:"QUERY", bc:"ob-yellow", name:"Execute Query — Custom SQL", desc:"Modo de mayor control: escribís el SQL completo con parámetros dinámicos (ej: SELECT * FROM users WHERE id = $1). Los parámetros evitan SQL injection." },
+    ],
+    tips: ["🔐 Nunca interpolés variables directamente en SQL — usá parámetros ($1, ?) para evitar SQL injection.", "📊 Para reportes complejos, es mejor escribir el SQL completo que usar las operaciones simples del nodo.", "🔄 Combiná con Loop Over Items para insertar o actualizar miles de registros en batches."]
+  },
+  {
+    name: "Airtable", cat: "integration", icon: "🗂️", iconBg: "rgba(74,158,255,.15)",
+    desc: "Lee, crea, actualiza y elimina registros en Airtable. Soporte para fórmulas de búsqueda, archivos y trigger de cambios.",
+    tags: ["NoCode DB","CRM","CRUD"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"LIST", bc:"ob-green", name:"List Records — Listar registros", desc:"Trae todos los registros de una tabla con filtros por fórmula, orden, campos específicos y límite. Soporta paginación automática." },
+      { badge:"GET", bc:"ob-blue", name:"Get Record — Obtener uno", desc:"Obtiene un registro específico por su ID. Devuelve todos sus campos y adjuntos." },
+      { badge:"CREATE", bc:"ob-orange", name:"Create Record — Crear", desc:"Crea uno o múltiples registros. Los campos del item de n8n se mapean automáticamente a las columnas de la tabla." },
+      { badge:"UPDATE", bc:"ob-purple", name:"Update Record — Actualizar", desc:"Actualiza campos de un registro existente por ID. Solo actualiza los campos que especificás, el resto queda intacto." },
+      { badge:"UPSERT", bc:"ob-yellow", name:"Upsert — Crear o actualizar", desc:"Busca un registro por un campo clave; si existe lo actualiza, si no lo crea. Perfecto para sincronizaciones." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete Record — Eliminar", desc:"Elimina un registro por ID. Los registros eliminados en Airtable no van a una papelera — se borran permanentemente." },
+      { badge:"TRIGGER", bc:"ob-gray", name:"Trigger — Cambios en base", desc:"Dispara el workflow cuando se crea o modifica un registro en una vista específica de Airtable. Hace polling cada N minutos." },
+    ],
+    tips: ["🔑 Para buscar por campo (no por ID), usá List con filtro de fórmula: filterByFormula={email}='test@mail.com'.", "📎 Los campos de adjunto devuelven URLs temporales de descarga — descargalos de inmediato si necesitás el archivo."]
+  },
+  {
+    name: "Notion", cat: "integration", icon: "📒", iconBg: "rgba(74,158,255,.15)",
+    desc: "Crea, lee, actualiza y busca páginas y entradas en bases de datos de Notion. Soporta todos los tipos de bloques y propiedades.",
+    tags: ["Pages","Database","PKM"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"CREATEPAGE", bc:"ob-green", name:"Create Page — Crear página", desc:"Crea una nueva página en Notion, como hijo de otra página o como entrada en una base de datos. Podés incluir el contenido completo con bloques." },
+      { badge:"GETPAGE", bc:"ob-blue", name:"Get Page — Leer página", desc:"Obtiene las propiedades de una página o entrada de base de datos por ID. No incluye el contenido de bloques (requiere otro llamado)." },
+      { badge:"UPDATE", bc:"ob-orange", name:"Update Page — Actualizar", desc:"Modifica las propiedades de una página existente (título, fecha, select, checkbox, etc.). No modifica los bloques de contenido." },
+      { badge:"ARCHIVE", bc:"ob-gray", name:"Archive Page — Archivar", desc:"Marca una página como archivada (equivalente a eliminar en Notion). La página deja de ser visible pero se puede recuperar." },
+      { badge:"DBQUERY", bc:"ob-purple", name:"Query Database — Buscar en BD", desc:"Busca entradas en una base de datos de Notion con filtros (por propiedad) y ordenamiento. Soporta paginación para bases grandes." },
+      { badge:"BLOCKS", bc:"ob-yellow", name:"Get Blocks — Leer contenido", desc:"Obtiene todos los bloques de contenido de una página (párrafos, headings, listas, tablas, etc.) para extraer o transformar el texto." },
+      { badge:"ADDBLOCK", bc:"ob-orange", name:"Append Block — Agregar contenido", desc:"Agrega nuevos bloques al final de una página existente: texto, headings, bullets, to-dos, imágenes, código, etc." },
+    ],
+    tips: ["🔑 Necesitás integrar tu integration de Notion con cada página/base de datos desde la UI de Notion.", "📋 Para crear entradas en una base de datos, la página padre es la base de datos (no una página regular).", "⚙️ La API de Notion tiene rate limits bajos (~3 req/seg) — usá delays si procesás muchas páginas."]
+  },
+  {
+    name: "Telegram", cat: "integration", icon: "✈️", iconBg: "rgba(74,158,255,.15)",
+    desc: "Envía mensajes, fotos y documentos vía Telegram Bot. Trigger para mensajes entrantes. Ideal para bots y notificaciones.",
+    tags: ["Bot","Mensajes","Notificación"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"MSG", bc:"ob-blue", name:"Send Message — Texto", desc:"Envía texto a un chat_id (usuario, grupo o canal). Soporta formato Markdown y HTML (negritas, cursivas, links). Podés silenciarlo con disable_notification." },
+      { badge:"PHOTO", bc:"ob-green", name:"Send Photo — Imagen", desc:"Envía una imagen desde URL o datos binarios. Podés incluir un caption de hasta 1024 caracteres con formato Markdown." },
+      { badge:"DOC", bc:"ob-orange", name:"Send Document — Archivo", desc:"Envía cualquier archivo (PDF, Excel, ZIP, etc.) desde datos binarios o URL. Aparece en el chat como archivo descargable." },
+      { badge:"KEYBOARD", bc:"ob-purple", name:"Reply Keyboard / Inline Keyboard", desc:"Envía botones bajo el mensaje (reply keyboard) o botones inline con callbacks. Permite crear flujos interactivos en el bot." },
+      { badge:"EDIT", bc:"ob-yellow", name:"Edit Message — Editar", desc:"Modifica el texto de un mensaje ya enviado. Útil para actualizar el estado de un proceso en tiempo real." },
+      { badge:"DELETE", bc:"ob-red", name:"Delete Message — Eliminar", desc:"Borra un mensaje del chat. El bot debe ser administrador en grupos para poder borrar mensajes de otros usuarios." },
+      { badge:"TRIGGER", bc:"ob-gray", name:"Trigger — Mensajes entrantes", desc:"Recibe mensajes, comandos (/start, /help), fotos, documentos y callbacks de botones inline. El webhook se configura automáticamente con el bot token." },
+    ],
+    tips: ["🤖 Creá tu bot con @BotFather en Telegram para obtener el token de API.", "💬 Para bots conversacionales, el chat_id es el identificador único de cada usuario — guardalo en tu DB.", "📣 Para notificaciones broadcast a muchos usuarios, necesitás tener guardado el chat_id de cada uno."]
+  },
+  {
+    name: "GitHub", cat: "integration", icon: "🐙", iconBg: "rgba(74,158,255,.15)",
+    desc: "Interactúa con repos de GitHub: issues, pull requests, commits, releases y archivos. Trigger para eventos de repo.",
+    tags: ["Issues","PR","DevOps","CI/CD"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"ISSUE", bc:"ob-green", name:"Create/Update Issue", desc:"Crea nuevos issues con título, body, etiquetas, asignados y milestone. O actualiza issues existentes cambiando estado, asignados o etiquetas." },
+      { badge:"PR", bc:"ob-blue", name:"Create/Get Pull Request", desc:"Crea pull requests entre ramas, obtiene el estado (open/merged/closed), lista PRs con filtros y agrega reviewers automáticamente." },
+      { badge:"COMMENT", bc:"ob-orange", name:"Create Comment — Comentar", desc:"Agrega comentarios a issues o pull requests. Útil para que bots reporten resultados de CI, añadan contexto automático o notifiquen stakeholders." },
+      { badge:"FILE", bc:"ob-purple", name:"Create/Edit File — Archivos", desc:"Crea o actualiza archivos directamente en el repo via API. Cada cambio genera un commit con mensaje configurable. Permite automatizar actualizaciones de documentación." },
+      { badge:"RELEASE", bc:"ob-yellow", name:"Create Release — Releases", desc:"Crea releases de GitHub con tag, título, descripción y assets adjuntos. Ideal para automatizar el proceso de release con changelogs generados por AI." },
+      { badge:"TRIGGER", bc:"ob-gray", name:"Trigger — Eventos del repo", desc:"Dispara el workflow ante: push, pull_request (opened/merged), issues (opened/closed), releases, comments y más. Configurado vía webhook en el repo." },
+    ],
+    tips: ["🔄 Patrón popular: Issue creado → AI genera descripción completa → actualiza el issue → asigna label.", "📝 Automatizá el changelog: en cada merge a main, listá los PRs mergeados y generá notas de release con AI."]
+  },
+  {
+    name: "Stripe", cat: "integration", icon: "💳", iconBg: "rgba(74,158,255,.15)",
+    desc: "Gestiona clientes, pagos, suscripciones y facturas en Stripe. Trigger vía webhooks para automatizar post-compra.",
+    tags: ["Pagos","Suscripciones","E-commerce"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"CUSTOMER", bc:"ob-blue", name:"Create/Get Customer — Clientes", desc:"Crea clientes en Stripe con email, nombre y metadata. O busca clientes existentes por email para evitar duplicados." },
+      { badge:"CHARGE", bc:"ob-green", name:"Create Charge — Cobrar", desc:"Genera un cargo único a una tarjeta tokenizada. Especificás monto, moneda y descripción. Para one-time payments." },
+      { badge:"INTENT", bc:"ob-orange", name:"Create Payment Intent", desc:"Crea un PaymentIntent para el flujo moderno de pagos de Stripe (SCA-compatible). Más robusto que los cargos directos para pagos en web." },
+      { badge:"SUB", bc:"ob-purple", name:"Create/Cancel Subscription", desc:"Crea suscripciones a planes existentes, cancela suscripciones activas (inmediatamente o al final del período), o actualiza el plan." },
+      { badge:"INVOICE", bc:"ob-yellow", name:"Create/Get Invoice — Facturas", desc:"Genera facturas manualmente, las finaliza y las envía al cliente por email. O recupera facturas existentes con todos sus items." },
+      { badge:"REFUND", bc:"ob-red", name:"Create Refund — Reembolsar", desc:"Procesa reembolsos totales o parciales de un cargo. Podés especificar el monto a reembolsar y el motivo." },
+      { badge:"TRIGGER", bc:"ob-gray", name:"Trigger — Eventos de Stripe", desc:"Escucha eventos vía webhook: payment_intent.succeeded, customer.subscription.deleted, invoice.paid, etc. La base de flujos de post-pago." },
+    ],
+    tips: ["🔒 Siempre verificá la firma del webhook de Stripe con el nodo Crypto (HMAC-SHA256) para autenticar los eventos.", "💰 Patrón clásico: payment_intent.succeeded → activar cuenta → enviar email de bienvenida → actualizar DB."]
+  },
+  {
+    name: "HubSpot", cat: "integration", icon: "🏢", iconBg: "rgba(74,158,255,.15)",
+    desc: "CRM completo: contactos, empresas, deals y tickets. Sincronizá leads entre sistemas de marketing y ventas.",
+    tags: ["CRM","Leads","Marketing","Sales"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"CONTACT", bc:"ob-green", name:"Create/Update Contact — Contactos", desc:"Crea contactos con propiedades estándar (email, nombre, teléfono) y personalizadas. Actualiza por email existente (upsert automático)." },
+      { badge:"COMPANY", bc:"ob-blue", name:"Create/Update Company — Empresas", desc:"Gestiona empresas en HubSpot con propiedades como dominio, industria, tamaño. Puede asociarse automáticamente con contactos del mismo dominio." },
+      { badge:"DEAL", bc:"ob-orange", name:"Create/Update Deal — Oportunidades", desc:"Crea deals en el pipeline de ventas con etapa, monto, fecha de cierre esperada y propietario asignado. Actualiza la etapa según progrese." },
+      { badge:"TICKET", bc:"ob-purple", name:"Create/Update Ticket — Soporte", desc:"Gestiona tickets de soporte con prioridad, pipeline, estado y contacto asociado. Ideal para automatizar la creación desde formularios o emails." },
+      { badge:"ASSOC", bc:"ob-yellow", name:"Create Association — Asociaciones", desc:"Vincula objetos entre sí: contacto ↔ empresa, contacto ↔ deal, deal ↔ empresa. Las asociaciones son fundamentales en el modelo de datos de HubSpot." },
+      { badge:"SEARCH", bc:"ob-gray", name:"Search — Buscar objetos", desc:"Busca contactos, companies o deals con filtros complejos (AND/OR) por cualquier propiedad. Devuelve los campos que especifiques." },
+    ],
+    tips: ["🔗 Siempre creá la asociación entre contacto y empresa/deal después de crearlos, o usa el campo de asociación al crear.", "📧 Usá el email como clave de upsert para contactos — HubSpot lo trata como identificador único."]
+  },
+  {
+    name: "WhatsApp Business", cat: "integration", icon: "📱", iconBg: "rgba(74,158,255,.15)",
+    desc: "Envía mensajes vía la API oficial de WhatsApp Business. Texto, plantillas, imágenes y mensajes interactivos.",
+    tags: ["WhatsApp","Mensajes","Plantillas"],
+    barColor: "var(--accent5)",
+    ops: [
+      { badge:"TEXT", bc:"ob-green", name:"Send Text — Texto libre", desc:"Envía un mensaje de texto libre a un número de WhatsApp. Solo puedes enviar mensajes libres dentro de la ventana de 24h desde el último mensaje del usuario." },
+      { badge:"TEMPLATE", bc:"ob-blue", name:"Send Template — Plantilla", desc:"Envía mensajes con plantillas pre-aprobadas por Meta. La única forma de contactar usuarios fuera de la ventana de 24h. Soporta parámetros variables." },
+      { badge:"MEDIA", bc:"ob-orange", name:"Send Image/Document/Video", desc:"Envía archivos multimedia. La imagen o documento puede venir de una URL pública o de datos binarios del workflow. Incluye caption opcional." },
+      { badge:"INTERACT", bc:"ob-purple", name:"Send Interactive — Botones", desc:"Envía mensajes con botones de respuesta rápida (hasta 3) o listas desplegables (hasta 10 opciones). Crea experiencias conversacionales estructuradas." },
+      { badge:"TRIGGER", bc:"ob-gray", name:"Trigger — Mensajes entrantes", desc:"Recibe mensajes de texto, imágenes, audios, videos y respuestas a botones. Permite construir chatbots completos en WhatsApp." },
+    ],
+    tips: ["⚠️ La API oficial de WhatsApp requiere cuenta Meta Business verificada y aprobación de plantillas (puede tomar días).", "🤖 Para chatbots en WhatsApp: trigger → verificar si tiene sesión activa → AI Agent → responder."]
+  },
+
+  // ═══════════ UTILITIES ═══════════
+  {
+    name: "Date & Time", cat: "util", icon: "📅", iconBg: "rgba(112,112,160,.15)",
+    desc: "Formatea, convierte y calcula fechas y horas. Zonas horarias, intervalos, diferencias y componentes de fecha.",
+    tags: ["Fechas","Timezone","Formateo"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"FORMAT", bc:"ob-gray", name:"Format Date — Formatear", desc:"Convierte una fecha a cualquier formato de string: 'DD/MM/YYYY', 'MMMM D, YYYY', 'HH:mm', timestamps Unix, ISO 8601, etc. Usa tokens de Luxon." },
+      { badge:"CALC", bc:"ob-blue", name:"Add/Subtract — Calcular", desc:"Suma o resta intervalos a una fecha: X días, horas, minutos, semanas o meses. Devuelve la nueva fecha. Ideal para calcular vencimientos o recordatorios." },
+      { badge:"DIFF", bc:"ob-green", name:"Get Time Between — Diferencia", desc:"Calcula la diferencia entre dos fechas en la unidad que elijas: días, horas, minutos o segundos. Útil para calcular duración de procesos o antigüedad." },
+      { badge:"TZ", bc:"ob-orange", name:"Convert Timezone — Zona horaria", desc:"Convierte una fecha de una timezone a otra (ej: UTC → America/Buenos_Aires). Crítico cuando los datos vienen en UTC y necesitás mostrarlos en hora local." },
+      { badge:"EXTRACT", bc:"ob-purple", name:"Extract Part — Componente", desc:"Extrae un componente específico: año, mes (1-12), día del mes, día de la semana, hora, minuto, semana del año, etc." },
+      { badge:"ROUND", bc:"ob-yellow", name:"Round to Start/End — Redondear", desc:"Redondea una fecha al inicio o fin de un período: inicio del día, fin de la semana, inicio del mes. Útil para agrupar datos por período." },
+    ],
+    tips: ["💡 n8n usa Luxon internamente — buscá 'Luxon tokens' para ver todos los formatos disponibles.", "🌍 Para Argentina: timezone 'America/Argentina/Buenos_Aires' (UTC-3)."]
+  },
+  {
+    name: "Send Email (SMTP)", cat: "util", icon: "📮", iconBg: "rgba(112,112,160,.15)",
+    desc: "Envía emails vía cualquier servidor SMTP. HTML, texto, adjuntos y múltiples destinatarios. Alternativa genérica a Gmail.",
+    tags: ["SMTP","Email","HTML","Adjuntos"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"SEND", bc:"ob-gray", name:"Send Email — Enviar email", desc:"Envía email configurando: servidor SMTP, puerto, TLS/SSL, usuario y contraseña. Compatible con cualquier proveedor (Outlook, Yahoo, SendGrid, Mailgun, etc.)." },
+      { badge:"HTML", bc:"ob-blue", name:"Body HTML — Contenido enriquecido", desc:"El cuerpo del email puede ser HTML con estilos inline. Podés inyectar datos del workflow en el template HTML para personalizar cada email." },
+      { badge:"ATTACH", bc:"ob-orange", name:"Attachments — Adjuntos", desc:"Adjuntá archivos binarios del workflow al email: PDFs generados, reportes en Excel, imágenes procesadas, etc." },
+      { badge:"MULTI", bc:"ob-green", name:"To / CC / BCC múltiples", desc:"Enviá a múltiples destinatarios separados por coma en To, CC (con copia) y BCC (copia oculta). Todos reciben el mismo email." },
+      { badge:"HEADERS", bc:"ob-purple", name:"Custom Headers — Headers personalizados", desc:"Añadí headers HTTP personalizados: Reply-To, X-Mailer, List-Unsubscribe, etc. Útil para emails transaccionales o cumplimiento de CAN-SPAM." },
+    ],
+    tips: ["📧 Para alta entregabilidad, usá servicios SMTP dedicados como SendGrid, Mailgun o Amazon SES.", "🎨 Guardá los templates HTML en Notion o Google Docs y cargalos dinámicamente para facilitar el mantenimiento."]
+  },
+  {
+    name: "HTML Extract", cat: "util", icon: "🕸️", iconBg: "rgba(112,112,160,.15)",
+    desc: "Extrae datos de HTML usando selectores CSS. Para web scraping básico sobre HTML ya descargado con HTTP Request.",
+    tags: ["Scraping","CSS","Parse HTML"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"TEXT", bc:"ob-gray", name:"Extraer texto", desc:"Obtiene el texto interno de los elementos que coincidan con el selector CSS. Puede extraer uno (el primero) o todos los elementos coincidentes." },
+      { badge:"ATTR", bc:"ob-blue", name:"Extraer atributo", desc:"Extrae el valor de un atributo HTML: href (URLs de links), src (fuente de imágenes), data-*, class, id, etc." },
+      { badge:"HTML", bc:"ob-green", name:"Extraer HTML interno", desc:"Devuelve el HTML completo dentro de un elemento. Útil si necesitás preservar la estructura HTML anidada para procesarla después." },
+      { badge:"MULTI", bc:"ob-orange", name:"Extraer múltiples elementos", desc:"Configura varios extractores en un solo nodo: cada uno con su selector, atributo a extraer y nombre de campo de salida. Procesa múltiples datos en una sola pasada." },
+    ],
+    tips: ["🔗 Patrón típico: HTTP Request (GET página) → HTML Extract (extraer datos) → procesar datos.", "⚠️ El scraping puede violar los ToS de algunos sitios — siempre verificá antes de hacerlo en producción."]
+  },
+  {
+    name: "Compression", cat: "util", icon: "🗜️", iconBg: "rgba(112,112,160,.15)",
+    desc: "Comprime en ZIP/GZIP o descomprime archivos ZIP. Para empaquetar múltiples archivos o procesar ZIPs recibidos.",
+    tags: ["ZIP","GZIP","Comprimir"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"ZIP", bc:"ob-gray", name:"Compress to ZIP", desc:"Empaqueta uno o múltiples archivos binarios del workflow en un único archivo ZIP con nombre configurable por archivo." },
+      { badge:"GZIP", bc:"ob-blue", name:"Compress to GZIP", desc:"Comprime un único archivo con GZIP. Genera un .gz. Útil para comprimir logs, JSONs grandes u otros archivos antes de transferirlos." },
+      { badge:"UNZIP", bc:"ob-green", name:"Decompress ZIP", desc:"Extrae el contenido de un archivo ZIP. Cada archivo extraído se convierte en un item binario separado para procesarlo individualmente." },
+    ],
+    tips: ["💡 Usá ZIP para enviar múltiples reportes como un único adjunto de email.", "📦 Patrón útil: generar N PDFs → comprimir en ZIP → enviar por email o subir a Drive."]
+  },
+  {
+    name: "Markdown", cat: "util", icon: "📝", iconBg: "rgba(112,112,160,.15)",
+    desc: "Convierte entre Markdown y HTML. Prepara contenido generado por LLMs para emails HTML o almacenamiento como texto.",
+    tags: ["Markdown","HTML","Conversión"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"MD→HTML", bc:"ob-gray", name:"Markdown a HTML", desc:"Convierte texto en Markdown (el formato que usan la mayoría de LLMs) a HTML formateado listo para enviar por email o mostrar en web." },
+      { badge:"HTML→MD", bc:"ob-blue", name:"HTML a Markdown", desc:"Convierte HTML a Markdown limpio. Útil al extraer contenido de páginas web para procesarlo con un LLM que trabaja mejor con texto plano." },
+    ],
+    tips: ["🤖 Casi todos los LLMs devuelven Markdown. Usá este nodo antes de enviar la respuesta por email HTML.", "✉️ El HTML generado puede necesitar estilos inline adicionales para verse bien en todos los clientes de email."]
+  },
+  {
+    name: "Read/Write Files", cat: "util", icon: "💾", iconBg: "rgba(112,112,160,.15)",
+    desc: "Lee y escribe archivos en el sistema de archivos local del servidor n8n. Para instancias self-hosted.",
+    tags: ["Archivos","Binario","Local","Self-hosted"],
+    barColor: "var(--muted)",
+    ops: [
+      { badge:"READ", bc:"ob-gray", name:"Read File — Leer archivo", desc:"Lee un archivo del filesystem del servidor n8n (por ruta absoluta o relativa) y lo convierte en datos binarios o texto para usarlo en el workflow." },
+      { badge:"WRITE", bc:"ob-blue", name:"Write File — Escribir archivo", desc:"Guarda datos binarios o texto en un archivo en el filesystem. Especificás la ruta y nombre. Útil para generar archivos temporales o guardar outputs." },
+      { badge:"LIST", bc:"ob-green", name:"List Files — Listar directorio", desc:"Lista todos los archivos en un directorio, devolviendo nombre, ruta, tamaño y fecha de modificación de cada uno." },
+      { badge:"DELETE", bc:"ob-orange", name:"Delete File — Eliminar", desc:"Elimina un archivo del filesystem. Permanente — no va a papelera. Útil para limpiar archivos temporales después de procesarlos." },
+    ],
+    tips: ["⚠️ Solo funciona en n8n self-hosted. En n8n Cloud no tenés acceso al filesystem del servidor.", "🔐 Asegurate de que el proceso de n8n tenga permisos de lectura/escritura en las carpetas que usés."]
+  },
+
+];
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+const catColors = {
+  trigger: 'var(--accent4)', flow: 'var(--accent2)', core: 'var(--accent)',
+  data: 'var(--accent3)', ai: 'var(--accent)', integration: 'var(--accent5)', util: 'var(--muted)'
+};
+
+function renderCards() {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = '';
+  nodes.forEach((node, i) => {
+    const div = document.createElement('div');
+    div.className = `card cat-${node.cat}`;
+    div.dataset.cat = node.cat;
+    div.dataset.name = node.name;
+    div.dataset.idx = i;
+    div.onclick = () => openModal(i);
+    div.innerHTML = `
+      <div class="card-head">
+        <div class="node-icon" style="background:${node.iconBg}">${node.icon}</div>
+        <div class="card-title-wrap">
+          <div class="node-name">${node.name}</div>
+          <div class="node-cat">${catLabel(node.cat)}</div>
+        </div>
+      </div>
+      <p class="node-desc">${node.desc}</p>
+      <div class="node-tags">${node.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="click-hint">Click para ver operaciones →</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function catLabel(c) {
+  return {trigger:'Trigger',flow:'Flow & Lógica',core:'Core',data:'Data',ai:'AI',integration:'Integración',util:'Utilidades'}[c]||c;
+}
+
+// ─── MODAL ────────────────────────────────────────────────────────────────────
+function openModal(idx) {
+  const n = nodes[idx];
+  document.getElementById('modalTopBar').style.background = n.barColor;
+  document.getElementById('modalIcon').style.background = n.iconBg;
+  document.getElementById('modalIcon').textContent = n.icon;
+  document.getElementById('modalName').textContent = n.name;
+  document.getElementById('modalCat').textContent = catLabel(n.cat);
+  document.getElementById('modalDesc').textContent = n.desc;
+
+  const catColor = catColors[n.cat] || 'var(--muted)';
+
+  document.getElementById('modalOps').innerHTML = n.ops.map(op => `
+    <div class="op-item">
+      <span class="op-badge ${op.bc}">${op.badge}</span>
+      <div class="op-content">
+        <div class="op-name">${op.name}</div>
+        <div class="op-desc">${op.desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  const tipsEl = document.getElementById('modalTips');
+  if (n.tips && n.tips.length) {
+    tipsEl.innerHTML = `<div class="ops-title" style="margin-bottom:12px">🧠 Tips y buenas prácticas</div>` +
+      n.tips.map(t=>`<div class="tip-item"><span class="tip-text">${t}</span></div>`).join('');
+    tipsEl.style.display = 'block';
+  } else {
+    tipsEl.style.display = 'none';
   }
 
-  function filterCategory(cat, el) {
-    activeCategory = cat;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-    applyFilters();
-  }
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-  function applyFilters() {
-    document.querySelectorAll('.card').forEach(card => {
-      const catMatch = activeCategory === 'all' || card.dataset.cat === activeCategory;
-      const name = (card.dataset.name || '').toLowerCase();
-      const desc = card.querySelector('.node-desc')?.textContent.toLowerCase() || '';
-      const tags = card.querySelector('.node-tags')?.textContent.toLowerCase() || '';
-      const searchMatch = !searchQuery || name.includes(searchQuery) || desc.includes(searchQuery) || tags.includes(searchQuery);
-      card.classList.toggle('hidden', !(catMatch && searchMatch));
-    });
-  }
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+// ─── FILTERS ──────────────────────────────────────────────────────────────────
+let activeCategory = 'all';
+let searchQuery = '';
+
+function filterCards() {
+  searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  applyFilters();
+}
+
+function filterCategory(cat, el) {
+  activeCategory = cat;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  document.querySelectorAll('.card').forEach(card => {
+    const catMatch = activeCategory === 'all' || card.dataset.cat === activeCategory;
+    const name = (card.dataset.name || '').toLowerCase();
+    const desc = card.querySelector('.node-desc')?.textContent.toLowerCase() || '';
+    const tags = card.querySelector('.node-tags')?.textContent.toLowerCase() || '';
+    const searchMatch = !searchQuery || name.includes(searchQuery) || desc.includes(searchQuery) || tags.includes(searchQuery);
+    card.classList.toggle('hidden', !(catMatch && searchMatch));
+  });
+}
+
+renderCards();
 </script>
-
 </body>
 </html>
