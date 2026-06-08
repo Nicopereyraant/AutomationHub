@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n8n — Cheatsheet de Nodos</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #18181f;
+    --border: #2a2a38;
+    --accent: #ff6d3b;
+    --accent2: #a259ff;
+    --accent3: #00d4aa;
+    --accent4: #f7c948;
+    --accent5: #4a9eff;
+    --text: #e8e8f0;
+    --muted: #7070a0;
+    --dim: #404060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  /* HEADER */
+  .header {
+    max-width: 1400px;
+    margin: 0 auto 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .header-left h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-left .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .badge-orange { background: rgba(255,109,59,.15); color: var(--accent); border: 1px solid rgba(255,109,59,.3); }
+  .badge-purple { background: rgba(162,89,255,.15); color: var(--accent2); border: 1px solid rgba(162,89,255,.3); }
+  .badge-green  { background: rgba(0,212,170,.15);  color: var(--accent3); border: 1px solid rgba(0,212,170,.3); }
+
+  /* SEARCH */
+  .search-bar {
+    max-width: 1400px;
+    margin: 0 auto 36px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar input::placeholder { color: var(--muted); }
+
+  /* CATEGORY TABS */
+  .tabs {
+    max-width: 1400px;
+    margin: 0 auto 32px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    transition: all .2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    user-select: none;
+  }
+
+  .tab.active, .tab:hover { background: var(--surface2); color: var(--text); border-color: var(--dim); }
+  .tab.active { color: var(--accent); border-color: var(--accent); }
+
+  /* GRID */
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color .2s, transform .2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card:hover { border-color: var(--dim); transform: translateY(-2px); }
+
+  .card.cat-core::before       { background: var(--accent); }
+  .card.cat-flow::before       { background: var(--accent2); }
+  .card.cat-data::before       { background: var(--accent3); }
+  .card.cat-trigger::before    { background: var(--accent4); }
+  .card.cat-integration::before { background: var(--accent5); }
+  .card.cat-ai::before          { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .card.cat-util::before        { background: var(--muted); }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .node-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .card-title-wrap { flex: 1; }
+
+  .node-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .node-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .node-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .node-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* tag colors per category */
+  .cat-core .tag       { background: rgba(255,109,59,.12); color: var(--accent); }
+  .cat-flow .tag       { background: rgba(162,89,255,.12); color: var(--accent2); }
+  .cat-data .tag       { background: rgba(0,212,170,.12);  color: var(--accent3); }
+  .cat-trigger .tag    { background: rgba(247,201,72,.12); color: var(--accent4); }
+  .cat-integration .tag { background: rgba(74,158,255,.12); color: var(--accent5); }
+  .cat-ai .tag          { background: rgba(255,109,59,.12); color: var(--accent); }
+  .cat-util .tag        { background: rgba(112,112,160,.12); color: var(--muted); }
+
+  /* SECTION HEADER */
+  .section-title {
+    max-width: 1400px;
+    margin: 40px auto 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title span {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* FOOTER */
+  .footer {
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer span { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--dim); }
+
+  /* HIDE */
+  .card.hidden { display: none; }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <h1>n8n Nodes</h1>
+    <p class="sub">Cheatsheet de referencia · Nodos esenciales &amp; funcionalidad</p>
+  </div>
+  <div class="header-right">
+    <span class="badge badge-orange">Triggers</span>
+    <span class="badge badge-purple">Flow</span>
+    <span class="badge badge-green">AI / Data</span>
+  </div>
+</header>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍  Buscar nodo por nombre o funcionalidad..." oninput="filterCards()">
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="filterCategory('all', this)">Todos</div>
+  <div class="tab" onclick="filterCategory('trigger', this)">⚡ Triggers</div>
+  <div class="tab" onclick="filterCategory('flow', this)">🔀 Flow & Lógica</div>
+  <div class="tab" onclick="filterCategory('core', this)">🔧 Core</div>
+  <div class="tab" onclick="filterCategory('data', this)">📊 Data</div>
+  <div class="tab" onclick="filterCategory('ai', this)">🤖 AI</div>
+  <div class="tab" onclick="filterCategory('integration', this)">🔌 Integraciones</div>
+  <div class="tab" onclick="filterCategory('util', this)">🛠 Utilidades</div>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="cardsGrid">
+
+  <!-- ═══════════════════════════════ TRIGGERS ═══════════════════════════════ -->
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="Webhook Trigger">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">⚡</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Webhook</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Expone una URL HTTP única. Dispara el workflow al recibir una solicitud GET, POST, PUT o DELETE. Es el trigger más universal para integraciones externas, formularios y webhooks de terceros.</p>
+    <div class="node-tags">
+      <span class="tag">HTTP</span><span class="tag">POST/GET</span><span class="tag">Entrada</span><span class="tag">Externo</span>
+    </div>
+  </div>
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="Schedule Trigger Cron">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">🕐</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Schedule Trigger</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Ejecuta el workflow en intervalos definidos: cada X minutos, horas, días o con expresiones CRON personalizadas. Ideal para tareas programadas, reportes automáticos y sincronizaciones periódicas.</p>
+    <div class="node-tags">
+      <span class="tag">CRON</span><span class="tag">Periódico</span><span class="tag">Timer</span><span class="tag">Automatización</span>
+    </div>
+  </div>
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="Manual Trigger">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">▶️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Manual Trigger</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Permite iniciar el workflow manualmente con un clic desde la UI de n8n. No requiere evento externo. Perfecto para pruebas, flujos on-demand y workflows ejecutados por humanos.</p>
+    <div class="node-tags">
+      <span class="tag">Manual</span><span class="tag">Pruebas</span><span class="tag">On-demand</span>
+    </div>
+  </div>
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="Email Trigger IMAP">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">📧</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Email Trigger (IMAP)</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Monitorea una bandeja de correo vía IMAP y dispara el workflow cuando llegan nuevos emails. Soporta filtros por carpeta, remitente y asunto. Útil para automatizar respuestas o procesamiento de correos.</p>
+    <div class="node-tags">
+      <span class="tag">Email</span><span class="tag">IMAP</span><span class="tag">Inbox</span>
+    </div>
+  </div>
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="RSS Feed Trigger">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">📡</div>
+      <div class="card-title-wrap">
+        <div class="node-name">RSS Feed Trigger</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Monitorea feeds RSS/Atom y dispara el workflow cuando aparecen nuevos artículos. Permite hacer seguimiento de noticias, blogs y publicaciones automáticamente sin APIs propietarias.</p>
+    <div class="node-tags">
+      <span class="tag">RSS</span><span class="tag">Feed</span><span class="tag">Noticias</span>
+    </div>
+  </div>
+
+  <div class="card cat-trigger" data-cat="trigger" data-name="Form Trigger">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(247,201,72,.15)">📋</div>
+      <div class="card-title-wrap">
+        <div class="node-name">n8n Form Trigger</div>
+        <div class="node-cat">Trigger</div>
+      </div>
+    </div>
+    <p class="node-desc">Genera un formulario web con campos personalizados hospedado directamente en n8n. Cuando alguien lo envía, dispara el workflow con los datos del formulario. Sin necesidad de servicios externos.</p>
+    <div class="node-tags">
+      <span class="tag">Formulario</span><span class="tag">UI</span><span class="tag">Input</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ FLOW ═══════════════════════════════ -->
+
+  <div class="card cat-flow" data-cat="flow" data-name="IF Condicional">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔀</div>
+      <div class="card-title-wrap">
+        <div class="node-name">IF</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Bifurca el flujo en dos ramas (TRUE / FALSE) basado en condiciones definidas sobre los datos de entrada. Compara strings, números, booleanos, fechas y más. El nodo condicional fundamental de n8n.</p>
+    <div class="node-tags">
+      <span class="tag">Condicional</span><span class="tag">Bifurcación</span><span class="tag">Lógica</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Switch Router">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔃</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Switch</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Enruta items a múltiples salidas (ramas) según reglas o valores. Similar al IF pero con N salidas posibles. Perfecto para enrutar por tipo de evento, estado o categoría de dato.</p>
+    <div class="node-tags">
+      <span class="tag">Router</span><span class="tag">Multi-ruta</span><span class="tag">Switch-case</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Merge Combinar">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔗</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Merge</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Combina datos de múltiples ramas en una sola salida. Modos: Append (concatenar), Merge by Index, Merge by Key, Multiplex, o esperar ambas ramas (Wait). Esencial para reunir flujos paralelos.</p>
+    <div class="node-tags">
+      <span class="tag">Combinar</span><span class="tag">Join</span><span class="tag">Paralelo</span><span class="tag">Wait</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Loop Over Items SplitInBatches">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🔁</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Loop Over Items</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Itera sobre items en lotes (batches) de tamaño configurable. Procesa N items por ciclo y vuelve a sí mismo hasta agotar la lista. Útil para respetar rate limits de APIs o procesar grandes volúmenes.</p>
+    <div class="node-tags">
+      <span class="tag">Loop</span><span class="tag">Batch</span><span class="tag">Iteración</span><span class="tag">Rate limit</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Wait Pause Esperar">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">⏸️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Wait</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Pausa la ejecución del workflow por un tiempo definido, hasta una fecha/hora específica, o hasta recibir un webhook de reanudación. Permite flujos asincrónicos con aprobaciones humanas o delays.</p>
+    <div class="node-tags">
+      <span class="tag">Pausa</span><span class="tag">Delay</span><span class="tag">Aprobación</span><span class="tag">Async</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Error Trigger Catch">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🚨</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Error Trigger</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Se activa cuando otro workflow falla. Recibe los datos del error (mensaje, nodo origen, stack trace). Permite crear workflows de manejo de errores centralizados con notificaciones o reintentos.</p>
+    <div class="node-tags">
+      <span class="tag">Error</span><span class="tag">Try/Catch</span><span class="tag">Alertas</span>
+    </div>
+  </div>
+
+  <div class="card cat-flow" data-cat="flow" data-name="Stop End Workflow">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🛑</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Stop and Error</div>
+        <div class="node-cat">Flow &amp; Lógica</div>
+      </div>
+    </div>
+    <p class="node-desc">Detiene la ejecución del workflow y lanza un error personalizado con mensaje configurable. Ideal para validaciones: si una condición crítica no se cumple, termina el flujo con un mensaje claro.</p>
+    <div class="node-tags">
+      <span class="tag">Error</span><span class="tag">Validación</span><span class="tag">Stop</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ CORE ═══════════════════════════════ -->
+
+  <div class="card cat-core" data-cat="core" data-name="HTTP Request API REST">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">🌐</div>
+      <div class="card-title-wrap">
+        <div class="node-name">HTTP Request</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Realiza peticiones HTTP a cualquier API o URL. Soporta todos los métodos (GET, POST, PUT, PATCH, DELETE), headers personalizados, autenticación (Basic, Bearer, OAuth, API Key), body JSON/form y paginación.</p>
+    <div class="node-tags">
+      <span class="tag">API</span><span class="tag">REST</span><span class="tag">HTTP</span><span class="tag">Universal</span>
+    </div>
+  </div>
+
+  <div class="card cat-core" data-cat="core" data-name="Code JavaScript Python">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">💻</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Code</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Ejecuta código JavaScript o Python directamente en el workflow. Accede y transforma los items de entrada con lógica personalizada. El nodo más flexible para transformaciones complejas o lógica de negocio.</p>
+    <div class="node-tags">
+      <span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Custom</span><span class="tag">Lógica</span>
+    </div>
+  </div>
+
+  <div class="card cat-core" data-cat="core" data-name="Execute Workflow Sub-workflow">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">⚙️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Execute Workflow</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Llama a otro workflow de n8n y opcionalmente espera su respuesta. Permite modularizar lógica en sub-workflows reutilizables. Soporta pasar datos de entrada y recibir datos de salida del workflow hijo.</p>
+    <div class="node-tags">
+      <span class="tag">Sub-workflow</span><span class="tag">Modular</span><span class="tag">Reutilizable</span>
+    </div>
+  </div>
+
+  <div class="card cat-core" data-cat="core" data-name="Set Variables Datos">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">✏️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Set</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Agrega, modifica o elimina campos en los items. Permite crear nuevas propiedades con valores fijos, expresiones dinámicas o datos de otros campos. También puede limpiar todos los campos existentes.</p>
+    <div class="node-tags">
+      <span class="tag">Variables</span><span class="tag">Mapping</span><span class="tag">Transformar</span>
+    </div>
+  </div>
+
+  <div class="card cat-core" data-cat="core" data-name="Edit Fields Mapping">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">🗂️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Edit Fields (Set v2)</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Versión mejorada del nodo Set. Permite mapear campos de forma visual con drag &amp; drop, renombrar claves, asignar valores con expresiones y controlar qué campos se incluyen en la salida.</p>
+    <div class="node-tags">
+      <span class="tag">Mapeo</span><span class="tag">Renombrar</span><span class="tag">Transformar</span>
+    </div>
+  </div>
+
+  <div class="card cat-core" data-cat="core" data-name="Respond Webhook Response">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(255,109,59,.15)">↩️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Respond to Webhook</div>
+        <div class="node-cat">Core</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía una respuesta HTTP personalizada al cliente que disparó el Webhook Trigger. Configura código de estado, headers y body de respuesta. Esencial para workflows que funcionan como APIs.</p>
+    <div class="node-tags">
+      <span class="tag">Response</span><span class="tag">HTTP</span><span class="tag">API</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ DATA ═══════════════════════════════ -->
+
+  <div class="card cat-data" data-cat="data" data-name="Filter Filtrar Items">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔍</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Filter</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Filtra items que cumplen condiciones definidas. Los que pasan la condición continúan; los que no, se descartan. Soporta múltiples condiciones con AND/OR, comparaciones de strings, números y fechas.</p>
+    <div class="node-tags">
+      <span class="tag">Filtrar</span><span class="tag">Condición</span><span class="tag">WHERE</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Aggregate Sumarizar Agrupar">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">📦</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Aggregate</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Convierte múltiples items en uno solo. Puede agrupar todos los valores de un campo en un array, combinar items o aplicar funciones de agregación (suma, media, min, max, conteo). Inverso del Split Out.</p>
+    <div class="node-tags">
+      <span class="tag">Agrupar</span><span class="tag">Reducir</span><span class="tag">Array</span><span class="tag">GROUP BY</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Split Out Expandir Array">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">📤</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Split Out</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Expande un campo array: convierte cada elemento del array en un item individual separado. El inverso del Aggregate. Ideal para procesar listas elemento por elemento en el resto del workflow.</p>
+    <div class="node-tags">
+      <span class="tag">Expandir</span><span class="tag">Unnest</span><span class="tag">Array</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Sort Ordenar">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔢</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Sort</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Ordena los items por uno o más campos en dirección ascendente o descendente. Soporta ordenamiento por strings (alfabético), números y fechas. También permite orden aleatorio (shuffle).</p>
+    <div class="node-tags">
+      <span class="tag">Ordenar</span><span class="tag">ASC</span><span class="tag">DESC</span><span class="tag">ORDER BY</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Remove Duplicates Deduplicar">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">🧹</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Remove Duplicates</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Elimina items duplicados basándose en el valor de uno o más campos clave. Puede mantener el primer o el último duplicado. También puede comparar con ejecuciones anteriores para detectar items nuevos.</p>
+    <div class="node-tags">
+      <span class="tag">Dedup</span><span class="tag">Unique</span><span class="tag">DISTINCT</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Limit Limitar Items">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">✂️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Limit</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Limita el número de items que pasan al siguiente nodo. Se puede mantener los primeros N o los últimos N items. Útil para pruebas, paginación manual o limitar procesamiento costoso.</p>
+    <div class="node-tags">
+      <span class="tag">Límite</span><span class="tag">Paginación</span><span class="tag">LIMIT</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Summarize Sumarizar Estadísticas">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">📊</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Summarize</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Agrupa items por un campo y calcula estadísticas para cada grupo: suma, promedio, mínimo, máximo, conteo, valores únicos. Similar a un GROUP BY con funciones de agregación en SQL.</p>
+    <div class="node-tags">
+      <span class="tag">GROUP BY</span><span class="tag">Estadísticas</span><span class="tag">Suma</span><span class="tag">Media</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="XML JSON CSV Convert">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔄</div>
+      <div class="card-title-wrap">
+        <div class="node-name">XML / JSON / CSV Convert</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Convierte datos entre formatos: XML↔JSON, CSV↔JSON. Permite parsear strings XML a objetos JavaScript, serializar JSON a XML o procesar archivos CSV línea a línea. Fundamental para integraciones con sistemas legacy.</p>
+    <div class="node-tags">
+      <span class="tag">XML</span><span class="tag">JSON</span><span class="tag">CSV</span><span class="tag">Parse</span>
+    </div>
+  </div>
+
+  <div class="card cat-data" data-cat="data" data-name="Crypto Encriptar Hash">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(0,212,170,.15)">🔐</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Crypto</div>
+        <div class="node-cat">Data</div>
+      </div>
+    </div>
+    <p class="node-desc">Aplica funciones criptográficas a datos: hashing (MD5, SHA1, SHA256, SHA512), HMAC, y generación de firmas. Útil para verificar integridad de webhooks, generar tokens o firmar solicitudes.</p>
+    <div class="node-tags">
+      <span class="tag">Hash</span><span class="tag">SHA256</span><span class="tag">HMAC</span><span class="tag">Firma</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ AI ═══════════════════════════════ -->
+
+  <div class="card cat-ai" data-cat="ai" data-name="AI Agent Agente Inteligente">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🤖</div>
+      <div class="card-title-wrap">
+        <div class="node-name">AI Agent</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Crea un agente AI autónomo con acceso a herramientas (tools). El agente decide qué herramientas usar, las ejecuta en ciclos iterativos y produce una respuesta final. Soporta ReAct, OpenAI Functions y más.</p>
+    <div class="node-tags">
+      <span class="tag">LLM</span><span class="tag">Agente</span><span class="tag">Tools</span><span class="tag">ReAct</span><span class="tag">Autónomo</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="Basic LLM Chain Chat">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">💬</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Basic LLM Chain</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía un prompt a un LLM (OpenAI, Anthropic, Google, etc.) y devuelve la respuesta. La cadena más simple: prompt → modelo → texto. Configurable con system prompt, temperatura y modelo.</p>
+    <div class="node-tags">
+      <span class="tag">LLM</span><span class="tag">Prompt</span><span class="tag">Chat</span><span class="tag">Completions</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="OpenAI GPT Chat Message">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🧠</div>
+      <div class="card-title-wrap">
+        <div class="node-name">OpenAI</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Integración nativa con la API de OpenAI. Soporta chat completions (GPT-4, GPT-4o), generación de imágenes (DALL-E), embeddings, moderación, análisis de audio (Whisper) y TTS desde un solo nodo.</p>
+    <div class="node-tags">
+      <span class="tag">GPT-4</span><span class="tag">DALL-E</span><span class="tag">Embeddings</span><span class="tag">Whisper</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="Vector Store Embeddings Retrieval">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🗄️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Vector Store</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Inserta o consulta documentos en una base de datos vectorial (Pinecone, Qdrant, Supabase, PGVector, Weaviate, etc.). Fundamental para sistemas RAG (Retrieval Augmented Generation) y búsqueda semántica.</p>
+    <div class="node-tags">
+      <span class="tag">RAG</span><span class="tag">Embeddings</span><span class="tag">Semántica</span><span class="tag">Pinecone</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="Memory Chat History Buffer">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">🧩</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Memory (Buffer / Window)</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Almacena y recupera el historial de conversación para agentes o chains. Tipos: Buffer Memory (historial completo), Window Memory (últimos N mensajes), Summary Memory (resumen comprimido).</p>
+    <div class="node-tags">
+      <span class="tag">Memoria</span><span class="tag">Historia</span><span class="tag">Conversación</span><span class="tag">Context</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="Document Loader Chunking RAG">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">📄</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Document Loader / Text Splitter</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Carga documentos (PDF, HTML, JSON, CSV, texto plano) y los divide en chunks para ingesta en vector stores. El Text Splitter controla tamaño y overlap de fragmentos. Primer paso de pipelines RAG.</p>
+    <div class="node-tags">
+      <span class="tag">PDF</span><span class="tag">Chunking</span><span class="tag">RAG</span><span class="tag">Ingesta</span>
+    </div>
+  </div>
+
+  <div class="card cat-ai" data-cat="ai" data-name="Sentiment Analysis Text Classificiation">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(162,89,255,.15)">💡</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Information Extractor</div>
+        <div class="node-cat">AI</div>
+      </div>
+    </div>
+    <p class="node-desc">Usa un LLM para extraer información estructurada de texto libre. Define un schema de salida (campos y tipos) y el modelo completa los valores a partir del texto de entrada. Ideal para parsear emails, reviews o documentos.</p>
+    <div class="node-tags">
+      <span class="tag">Extracción</span><span class="tag">Structured Output</span><span class="tag">Schema</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ INTEGRATIONS ═══════════════════════════════ -->
+
+  <div class="card cat-integration" data-cat="integration" data-name="Gmail Email Google Correo">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">📩</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Gmail</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Lee, envía, mueve y elimina emails de Gmail. Busca mensajes con filtros, obtiene adjuntos, marca como leído, añade etiquetas. También tiene trigger para nuevos emails sin necesidad de IMAP.</p>
+    <div class="node-tags">
+      <span class="tag">Email</span><span class="tag">Google</span><span class="tag">SMTP</span><span class="tag">Adjuntos</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Google Sheets Spreadsheet Hojas">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">📗</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Google Sheets</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Lee, escribe, actualiza y elimina filas en Google Sheets. Soporta append (agregar al final), update por coincidencia de clave, lectura de rangos y creación de hojas. El "mini-database" más popular en n8n.</p>
+    <div class="node-tags">
+      <span class="tag">Spreadsheet</span><span class="tag">Google</span><span class="tag">Database</span><span class="tag">CRUD</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Slack Mensajes Chat">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">💬</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Slack</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía mensajes, crea canales, obtiene usuarios, reacciona a mensajes y gestiona archivos en Slack. Soporta Block Kit para mensajes enriquecidos. Trigger disponible para eventos de workspace.</p>
+    <div class="node-tags">
+      <span class="tag">Mensajes</span><span class="tag">Notificación</span><span class="tag">Block Kit</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Postgres MySQL SQL Database">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">🗃️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Postgres / MySQL / SQL</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Ejecuta consultas SQL en bases de datos relacionales. Soporta SELECT, INSERT, UPDATE, DELETE y queries personalizadas. Mapea automáticamente resultados a items de n8n. También disponible: SQLite, MS SQL, MariaDB.</p>
+    <div class="node-tags">
+      <span class="tag">SQL</span><span class="tag">Database</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Airtable Database NoCode">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">🗂️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Airtable</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Lee, crea, actualiza y elimina registros en bases de Airtable. Soporta búsquedas con fórmulas, campos de archivo y relaciones entre tablas. Trigger para cambios en registros. Popular como CRM ligero.</p>
+    <div class="node-tags">
+      <span class="tag">NoCode DB</span><span class="tag">CRM</span><span class="tag">CRUD</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Notion Pages Database Blocks">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">📒</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Notion</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Crea, lee, actualiza y busca páginas y entradas de bases de datos en Notion. Soporta todos los tipos de bloques (texto, listas, tablas) y propiedades de bases de datos (fecha, select, relación, etc.).</p>
+    <div class="node-tags">
+      <span class="tag">Pages</span><span class="tag">Database</span><span class="tag">PKM</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Telegram Bot Mensajes">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">✈️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Telegram</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía mensajes, fotos, documentos y stickers vía Telegram Bot API. Trigger para recibir mensajes o comandos. Soporta inline keyboards, grupos y canales. Ideal para bots de notificación o chatbots.</p>
+    <div class="node-tags">
+      <span class="tag">Bot</span><span class="tag">Mensajes</span><span class="tag">Notificación</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="GitHub Issues PRs Repos">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">🐙</div>
+      <div class="card-title-wrap">
+        <div class="node-name">GitHub</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Interactúa con repositorios de GitHub: crea/actualiza issues, pull requests, comentarios, releases y archivos. Trigger para eventos de repo (push, PR abierto, issue creado). Ideal para pipelines de DevOps.</p>
+    <div class="node-tags">
+      <span class="tag">Issues</span><span class="tag">PR</span><span class="tag">DevOps</span><span class="tag">CI/CD</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Stripe Pagos Facturación">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">💳</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Stripe</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Gestiona clientes, cargos, suscripciones, facturas y reembolsos en Stripe. Trigger vía webhooks de Stripe para eventos de pago. Permite automatizar flujos post-compra, notificaciones y actualizaciones de estado.</p>
+    <div class="node-tags">
+      <span class="tag">Pagos</span><span class="tag">Suscripciones</span><span class="tag">E-commerce</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="HubSpot CRM Contactos">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">🏢</div>
+      <div class="card-title-wrap">
+        <div class="node-name">HubSpot</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Crea y actualiza contactos, empresas, deals y tickets en HubSpot CRM. Gestiona propiedades personalizadas, listas, flujos de trabajo y emails. Ideal para sincronizar leads entre sistemas de marketing y ventas.</p>
+    <div class="node-tags">
+      <span class="tag">CRM</span><span class="tag">Leads</span><span class="tag">Marketing</span><span class="tag">Sales</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="Google Drive Archivos Cloud">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">📁</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Google Drive</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Sube, descarga, mueve, copia y elimina archivos en Google Drive. Crea carpetas, lista archivos con filtros y comparte con permisos específicos. Trigger para cambios en carpetas o archivos.</p>
+    <div class="node-tags">
+      <span class="tag">Archivos</span><span class="tag">Cloud</span><span class="tag">Google</span>
+    </div>
+  </div>
+
+  <div class="card cat-integration" data-cat="integration" data-name="WhatsApp Business API Mensajes">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(74,158,255,.15)">📱</div>
+      <div class="card-title-wrap">
+        <div class="node-name">WhatsApp Business</div>
+        <div class="node-cat">Integración</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía mensajes de texto, plantillas aprobadas, imágenes, documentos y mensajes interactivos vía la API oficial de WhatsApp Business. Trigger para mensajes entrantes. Requiere cuenta WhatsApp Business API.</p>
+    <div class="node-tags">
+      <span class="tag">WhatsApp</span><span class="tag">Mensajes</span><span class="tag">Plantillas</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ UTILITIES ═══════════════════════════════ -->
+
+  <div class="card cat-util" data-cat="util" data-name="Date Time Fecha Hora">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">📅</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Date &amp; Time</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Formatea, convierte y calcula fechas y horas. Cambia zonas horarias, suma/resta intervalos (días, horas, minutos), calcula diferencias entre fechas y extrae componentes (mes, año, día de la semana).</p>
+    <div class="node-tags">
+      <span class="tag">Fechas</span><span class="tag">Timezone</span><span class="tag">Formateo</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="Send Email SMTP Correo">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">📮</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Send Email (SMTP)</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Envía emails vía cualquier servidor SMTP configurado. Soporta HTML o texto plano, múltiples destinatarios (To/CC/BCC), adjuntos y headers personalizados. Alternativa genérica a Gmail cuando no se usa Google.</p>
+    <div class="node-tags">
+      <span class="tag">SMTP</span><span class="tag">Email</span><span class="tag">HTML</span><span class="tag">Adjuntos</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="Read Write Binary File Archivo">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">💾</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Read/Write Files</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Lee y escribe archivos binarios o de texto en el sistema de archivos donde corre n8n. Útil en instancias self-hosted para leer CSVs locales, guardar PDFs procesados o manejar adjuntos temporales.</p>
+    <div class="node-tags">
+      <span class="tag">Archivos</span><span class="tag">Binario</span><span class="tag">Local</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="Compression ZIP Comprimir">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">🗜️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Compression</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Comprime archivos en formato ZIP o GZIP, y descomprime archivos ZIP recibidos. Permite empaquetar múltiples archivos en un solo ZIP para enviarlos por email o almacenarlos en la nube.</p>
+    <div class="node-tags">
+      <span class="tag">ZIP</span><span class="tag">GZIP</span><span class="tag">Comprimir</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="HTML Extract Scraping Web">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">🕸️</div>
+      <div class="card-title-wrap">
+        <div class="node-name">HTML Extract</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Extrae datos de HTML usando selectores CSS. Ideal para web scraping básico sobre HTML ya descargado (desde HTTP Request). Obtiene texto, atributos (href, src) o HTML interno de elementos.</p>
+    <div class="node-tags">
+      <span class="tag">Scraping</span><span class="tag">CSS</span><span class="tag">Parse HTML</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="Markdown HTML Convert">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">📝</div>
+      <div class="card-title-wrap">
+        <div class="node-name">Markdown</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">Convierte Markdown a HTML y viceversa. Útil para preparar contenido generado por LLMs (que suelen devolver Markdown) para enviarlo como email HTML o almacenarlo como texto limpio.</p>
+    <div class="node-tags">
+      <span class="tag">Markdown</span><span class="tag">HTML</span><span class="tag">Conversión</span>
+    </div>
+  </div>
+
+  <div class="card cat-util" data-cat="util" data-name="HTTP Response Webhook API Nodo">
+    <div class="card-head">
+      <div class="node-icon" style="background:rgba(112,112,160,.15)">🔔</div>
+      <div class="card-title-wrap">
+        <div class="node-name">No-Op (No Operation)</div>
+        <div class="node-cat">Utilidades</div>
+      </div>
+    </div>
+    <p class="node-desc">No hace nada. Pasa los datos tal cual al siguiente nodo. Útil como marcador de posición durante desarrollo, para documentar bifurcaciones vacías o como punto de conexión temporal en un flujo.</p>
+    <div class="node-tags">
+      <span class="tag">Placeholder</span><span class="tag">Debug</span><span class="tag">Dev</span>
+    </div>
+  </div>
+
+</div><!-- end grid -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>n8n Cheatsheet · Referencia de Nodos Esenciales</span>
+  <span>400+ nodos disponibles · docs.n8n.io</span>
+</footer>
+
+<script>
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  function filterCards() {
+    searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    applyFilters();
+  }
+
+  function filterCategory(cat, el) {
+    activeCategory = cat;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    applyFilters();
+  }
+
+  function applyFilters() {
+    document.querySelectorAll('.card').forEach(card => {
+      const catMatch = activeCategory === 'all' || card.dataset.cat === activeCategory;
+      const name = (card.dataset.name || '').toLowerCase();
+      const desc = card.querySelector('.node-desc')?.textContent.toLowerCase() || '';
+      const tags = card.querySelector('.node-tags')?.textContent.toLowerCase() || '';
+      const searchMatch = !searchQuery || name.includes(searchQuery) || desc.includes(searchQuery) || tags.includes(searchQuery);
+      card.classList.toggle('hidden', !(catMatch && searchMatch));
+    });
+  }
+</script>
+
+</body>
+</html>
