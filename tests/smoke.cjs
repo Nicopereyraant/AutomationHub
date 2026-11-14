@@ -53,9 +53,8 @@ const { chromium } = require("playwright");
     await page.locator("#modalMastered").click();
     await page.keyboard.press("Escape");
     assert.equal(await page.locator("#nodeDialog").isVisible(), false);
-    assert.equal(
-      await page.evaluate(() => document.activeElement.dataset.open),
-      "0",
+    await page.waitForFunction(
+      () => document.activeElement.dataset.open === "0",
     );
     await page.locator("#studyFilter").selectOption("favorites");
     assert.equal(await page.locator(".card").count(), 1);
@@ -167,10 +166,217 @@ const { chromium } = require("playwright");
     assert.equal(await page.locator('[data-task="0-0"]').isChecked(), true);
     assert.equal(await page.locator("#quizCount").textContent(), "10/10");
 
-    // All four views must fit narrow and wide screens without page overflow.
+    await page.getByRole("button", { name: /05 Ejemplos/ }).click();
+    assert.equal(await page.locator("[data-example]").count(), 7);
+    assert.equal(await page.locator("#examplePrev").isDisabled(), true);
+    assert.equal(await page.locator("[data-example-step]").count(), 4);
+    await page.locator("#exampleNext").click();
+    const preparedOrders = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.equal(preparedOrders.length, 1);
+    assert.equal(preparedOrders[0].json.pedidos.length, 3);
+    assert.deepEqual(
+      JSON.parse(await page.locator("#exampleSnippetText").textContent()),
+      preparedOrders[0].json,
+    );
+    await page.locator("#exampleNext").click();
+    const splitOrders = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.equal(splitOrders.length, 3);
+    await page.locator("#exampleNext").click();
+    const branches = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.deepEqual(
+      branches.true,
+      splitOrders.filter((item) => item.json.pedido.importe >= 10000),
+    );
+    assert.deepEqual(
+      branches.false,
+      splitOrders.filter((item) => item.json.pedido.importe < 10000),
+    );
+    assert.equal(await page.locator("#exampleNext").isDisabled(), true);
+    await page.locator("#exampleExercise summary").click();
+    assert.match(
+      await page.locator("#exampleAnswer").textContent(),
+      /incluye la igualdad/,
+    );
+    await page.locator("#exampleNode").click();
+    assert.equal(await page.locator("#modalName").textContent(), "IF");
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(
+      () => document.activeElement.id === "exampleNode",
+    );
+
+    // Search and area filters compose, including an empty state with no stale detail.
+    await page.locator('[data-example-area="administracion"]').click();
+    assert.equal(await page.locator("[data-example]").count(), 1);
+    await page.locator("#exampleSearch").fill("inexistente");
+    assert.equal(await page.locator("#exampleEmpty").isVisible(), true);
+    assert.equal(await page.locator("#exampleDetail").isVisible(), false);
+    await page.locator("#clearExampleFilters").click();
+    await page.locator("#exampleSearch").fill("facturacion");
+    assert.equal(
+      await page.locator("[data-example]").count(),
+      1,
+      "accent-insensitive business search",
+    );
+    await page.locator("#exampleSearch").fill("");
+
+    await page.locator('[data-example="stock"]').click();
+    await page.locator('[data-example-step="2"]').click();
+    const inventory = JSON.parse(
+      await page.locator("#exampleInput").textContent(),
+    );
+    const stockBranches = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.deepEqual(
+      stockBranches.true,
+      inventory.filter((item) => item.json.stock < item.json.minimo),
+    );
+    assert.deepEqual(
+      stockBranches.false,
+      inventory.filter((item) => item.json.stock >= item.json.minimo),
+    );
+    assert.match(
+      await page.locator("#exampleBranch").textContent(),
+      /Solo true/,
+    );
+
+    await page.locator('[data-example="ventas"]').click();
+    await page.locator('[data-example-step="3"]').click();
+    const paidSales = JSON.parse(
+      await page.locator("#exampleInput").textContent(),
+    );
+    const totalSales = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.ok(paidSales.every((item) => item.json.estado === "pagada"));
+    assert.equal(
+      totalSales[0].json.sum_importe,
+      paidSales.reduce((sum, item) => sum + item.json.importe, 0),
+    );
+
+    await page.locator('[data-example="facturas"]').click();
+    await page.locator('[data-example-step="2"]').click();
+    const invoiceInput = JSON.parse(
+      await page.locator("#exampleInput").textContent(),
+    );
+    const reminders = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.deepEqual(
+      reminders,
+      invoiceInput.filter(
+        (item) =>
+          item.json.estado === "pendiente" &&
+          item.json.vencimiento < "2026-01-15" &&
+          !item.json.recordatorio_enviado,
+      ),
+    );
+
+    await page.locator('[data-example="soporte"]').click();
+    await page.locator('[data-example-step="1"]').click();
+    const supportRoutes = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.equal(supportRoutes.soporte.length, 1);
+    assert.equal(supportRoutes.facturacion.length, 0);
+    assert.equal(supportRoutes.otros.length, 0);
+    assert.match(
+      await page.locator("#exampleSetup").textContent(),
+      /Extra Output/,
+    );
+
+    // Every node in every guide links to a real catalogue entry; downloads contain the whole recipe.
+    for (const id of [
+      "pedidos",
+      "leads",
+      "stock",
+      "ventas",
+      "facturas",
+      "soporte",
+      "errores",
+    ]) {
+      await page.locator(`[data-example="${id}"]`).click();
+      const stepCount = await page.locator("[data-example-step]").count();
+      for (let i = 0; i < stepCount; i++) {
+        await page.locator(`[data-example-step="${i}"]`).click();
+        assert.equal(
+          await page
+            .locator('[data-example-step][aria-current="step"]')
+            .count(),
+          1,
+        );
+        const node = (
+          await page.locator(`[data-example-step="${i}"]`).textContent()
+        )
+          .replace(/PASO \d+/, "")
+          .trim();
+        await page.locator("#exampleNode").click();
+        assert.equal(await page.locator("#modalName").textContent(), node);
+        await page.keyboard.press("Escape");
+        assert.ok(
+          (await page.locator("#exampleDocs").getAttribute("href")).startsWith(
+            "https://docs.n8n.io/integrations/builtin/",
+          ),
+        );
+        JSON.parse(await page.locator("#exampleInput").textContent());
+        JSON.parse(await page.locator("#exampleOutput").textContent());
+      }
+      const downloading = page.waitForEvent("download");
+      await page.locator("#downloadExample").click();
+      const download = await downloading;
+      assert.equal(download.suggestedFilename(), `n8n-ejemplo-${id}.md`);
+      const guide = fs.readFileSync(await download.path(), "utf8");
+      assert.match(guide, /No es un workflow JSON importable/);
+      assert.equal((guide.match(/^### \d+\./gm) || []).length, stepCount);
+      assert.ok(
+        guide.includes(await page.locator("#exampleName").textContent()),
+      );
+    }
+
+    await page.locator('[data-example="leads"]').click();
+    await page.locator("#exampleToLab").click();
+    assert.equal(await page.locator("#view-lab").isVisible(), true);
+    const loadedLead = JSON.parse(await page.locator("#labInput").inputValue());
+    assert.equal(loadedLead[0].json.email, "ana@cliente.example");
+    await page.locator("#runLab").click();
+    assert.equal(
+      JSON.parse(await page.locator("#labOutput").textContent()).true.length,
+      1,
+    );
+    assert.equal(
+      await page.locator("#quizCount").textContent(),
+      "10/10",
+      "examples preserve learning progress",
+    );
+
+    // Node detail can lead to matching business recipes, with focus transferred after closing.
+    await page
+      .getByRole("button", { name: "01 Biblioteca 51", exact: true })
+      .click();
+    await page.locator("#studyFilter").selectOption("all");
+    await page.locator('[data-open="0"]').click();
+    await page.locator("#modalExamples").click();
+    await page.waitForFunction(
+      () => document.getElementById("view-examples").hidden === false,
+    );
+    assert.equal(await page.locator("#nodeDialog").isVisible(), false);
+    assert.equal(await page.locator("#exampleSearch").inputValue(), "Webhook");
+    assert.equal(await page.locator("[data-example]").count(), 1);
+    await page.locator("#exampleSearch").fill("");
+    await page.reload();
+    assert.equal(await page.locator("#view-examples").isVisible(), true);
+    assert.equal(await page.locator("[data-example]").count(), 7);
+
+    // All five views must fit narrow and wide screens without page overflow.
     for (const width of [320, 375, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
-      for (const view of ["library", "lab", "quiz", "roadmap"]) {
+      for (const view of ["library", "lab", "quiz", "roadmap", "examples"]) {
         await page.locator(`.view-tab[data-view="${view}"]`).click();
         assert.equal(
           await page.evaluate(
@@ -181,6 +387,31 @@ const { chromium } = require("playwright");
         );
       }
     }
+    // Test each business case at narrow widths as well as the main view shell.
+    await page.locator('.view-tab[data-view="examples"]').click();
+    for (const width of [320, 375]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const id of [
+        "pedidos",
+        "leads",
+        "stock",
+        "ventas",
+        "facturas",
+        "soporte",
+        "errores",
+      ]) {
+        await page.locator(`[data-example="${id}"]`).click();
+        await page.locator("#exampleNext").click();
+        assert.equal(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+          true,
+          `${id} fits ${width}px`,
+        );
+      }
+    }
+    await page.locator('.view-tab[data-view="roadmap"]').click();
     // Reset can be cancelled, then confirmed, and survives a reload.
     page.once("dialog", (dialog) => dialog.dismiss());
     await page.locator("#resetProgress").click();
@@ -215,7 +446,7 @@ const { chromium } = require("playwright");
     assert.equal(await page.locator("#nodeCount").textContent(), "51");
     assert.deepEqual(errors, []);
     console.log(
-      "PASS: catalogue, keyboard dialog, saved progress, lab branches and validation, all quizzes, roadmap, reset, storage fallback, and responsive layouts.",
+      "PASS: catalogue, keyboard dialog, saved progress, lab branches and validation, all quizzes, roadmap, reset, storage fallback, business examples and guide downloads, and responsive layouts.",
     );
   } finally {
     if (browser) await browser.close();

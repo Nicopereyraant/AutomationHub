@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#101216" />
     <meta
       name="description"
-      content="Tu espacio para aprender n8n practicando: biblioteca de nodos, laboratorio de datos, desafíos y una ruta de estudio personal."
+      content="Tu espacio para aprender n8n practicando: biblioteca de nodos, ejemplos de negocio, laboratorio de datos, desafíos y una ruta de estudio personal."
     />
     <title>n8n Lab · AutomationHub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1139,6 +1139,240 @@
           scroll-behavior: auto !important;
         }
       }
+      .case-callout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border: 1px solid #61473b;
+        background: #261f1c;
+        border-radius: 10px;
+        padding: 15px 18px;
+        margin-bottom: 22px;
+        font-size: 12px;
+      }
+      .case-callout p {
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      .case-callout button {
+        flex-shrink: 0;
+      }
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .case-card {
+        text-align: left;
+        padding: 19px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+      .case-card[aria-pressed="true"] {
+        border-color: var(--accent);
+        background: #2a2220;
+      }
+      .case-card .case-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font: 9px var(--mono);
+        color: var(--accent);
+      }
+      .case-card strong {
+        font-size: 15px;
+      }
+      .case-card p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .case-card .case-pattern {
+        font: 10px/1.8 var(--mono);
+        color: var(--green);
+        margin-top: auto;
+      }
+      .case-detail {
+        border-top: 2px solid var(--accent);
+        scroll-margin-top: 22px;
+      }
+      .case-detail .section-head h3 {
+        font-size: 24px;
+        letter-spacing: -0.5px;
+      }
+      .case-context,
+      .case-data {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .case-context {
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border);
+      }
+      .case-context p,
+      .case-why,
+      .case-production p {
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      .case-context .panel-title {
+        margin-bottom: 7px;
+      }
+      .case-requirements,
+      .case-exercise,
+      .case-snippet {
+        margin: 19px 0;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        padding: 14px 16px;
+        font-size: 12px;
+      }
+      .case-detail summary {
+        cursor: pointer;
+        color: var(--text);
+      }
+      .case-detail summary:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+      .case-requirements ul,
+      .case-setup ol {
+        padding-left: 20px;
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+      .case-requirements li,
+      .case-setup li {
+        margin: 7px 0;
+        line-height: 1.9;
+      }
+      .case-journey {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 24px;
+      }
+      .case-journey button {
+        flex: 1;
+        min-width: 130px;
+        font-size: 12px;
+        padding: 13px;
+        text-align: left;
+      }
+      .case-journey button span {
+        display: block;
+        font: 9px var(--mono);
+        color: var(--muted);
+        margin-bottom: 7px;
+      }
+      .case-journey button[aria-current="step"] {
+        border-color: var(--accent);
+        background: #342824;
+        color: var(--accent);
+      }
+      .case-step-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .case-step-header .question-number {
+        margin-bottom: 8px;
+      }
+      .case-why {
+        margin: 12px 0 18px;
+      }
+      .case-setup {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 17px;
+        border-radius: 9px;
+        font-size: 12px;
+        margin-bottom: 20px;
+        overflow-wrap: anywhere;
+      }
+      .case-setup .panel-title {
+        margin-bottom: 8px;
+      }
+      .case-setup a {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 11px;
+      }
+      .case-data {
+        align-items: start;
+      }
+      .case-data > div {
+        min-width: 0;
+      }
+      .case-data .panel-title {
+        min-height: 32px;
+        margin-bottom: 10px;
+        font-size: 10px;
+        line-height: 1.6;
+      }
+      .case-data .code-box {
+        height: 270px;
+        min-height: 0;
+      }
+      .case-step-actions {
+        margin-top: 16px;
+      }
+      .case-exercise {
+        border-color: #455d4f;
+        background: #1b2922;
+      }
+      .case-exercise p {
+        color: var(--green);
+        line-height: 1.8;
+        margin-top: 14px;
+      }
+      .case-production {
+        border-top: 1px solid var(--border);
+        padding-top: 18px;
+        margin-top: 22px;
+      }
+      .case-production .panel-title {
+        margin-bottom: 8px;
+      }
+      .case-snippet .code-box {
+        margin-top: 15px;
+      }
+      @media (max-width: 900px) {
+        .case-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .case-grid,
+        .case-context,
+        .case-data {
+          grid-template-columns: 1fr;
+        }
+        .case-callout,
+        .case-step-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .case-detail .section-head {
+          flex-direction: column;
+        }
+        .case-journey button {
+          min-width: 110px;
+        }
+        .case-data .code-box {
+          height: 230px;
+        }
+        .case-data .panel-title {
+          min-height: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1221,6 +1455,9 @@
         ><button class="view-tab" data-view="quiz">
           03 Desafíos <span class="nav-count">10</span></button
         ><button class="view-tab" data-view="roadmap">04 Mi ruta</button>
+        <button class="view-tab" data-view="examples">
+          05 Ejemplos <span class="nav-count">7</span>
+        </button>
       </nav>
       <main id="main" tabindex="-1">
         <p id="storageNote" class="storage-note" role="status" hidden>
@@ -1237,6 +1474,18 @@
               </p>
             </div>
             <span class="shortcut">Atajo: / para buscar</span>
+          </div>
+          <div class="case-callout">
+            <div>
+              <strong>¿Cómo se conectan estos nodos en un negocio?</strong>
+              <p>
+                Empezá con un flujo de pedidos o explorá casos de ventas, stock
+                y soporte.
+              </p>
+            </div>
+            <button class="small" data-view="examples">
+              Ver ejemplos de negocio →
+            </button>
           </div>
           <div class="toolbar">
             <label class="search-wrap"
@@ -1426,6 +1675,145 @@
           </div>
           <div class="road-grid" id="roadGrid"></div>
         </section>
+        <section id="view-examples" aria-labelledby="examplesTitle" hidden>
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">DE UNA NECESIDAD A UN WORKFLOW</span>
+              <h2 id="examplesTitle" tabindex="-1">
+                Flujos que un negocio necesita.
+              </h2>
+              <p>
+                Elegí un caso, recorré sus nodos y entendé qué entra, qué se
+                decide y qué sale.
+              </p>
+            </div>
+            <span class="tag">7 GUÍAS PRÁCTICAS</span>
+          </div>
+          <div class="notice">
+            Empezá por “Separar pedidos por importe”: usa nodos nativos y no
+            requiere credenciales. Los casos muestran datos ficticios y salidas
+            ilustrativas; no ejecutan workflows ni envían mensajes. Las guías se
+            descargan en Markdown para seguirlas en tu n8n.
+          </div>
+          <div class="toolbar">
+            <label class="search-wrap"
+              ><span aria-hidden="true">⌕</span
+              ><span class="sr-only">Buscar ejemplos por necesidad o nodo</span
+              ><input
+                id="exampleSearch"
+                type="search"
+                placeholder="Buscar una necesidad o un nodo: stock, IF, Gmail…"
+                autocomplete="off"
+            /></label>
+          </div>
+          <div
+            class="categories"
+            id="exampleAreas"
+            role="group"
+            aria-label="Áreas de los ejemplos"
+          ></div>
+          <p
+            class="result-line"
+            id="exampleCount"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="case-grid" id="exampleCards"></div>
+          <div class="empty" id="exampleEmpty" hidden>
+            <p>No encontramos ejemplos con esos filtros.</p>
+            <button id="clearExampleFilters">
+              Limpiar filtros de ejemplos
+            </button>
+          </div>
+          <article
+            class="case-detail panel"
+            id="exampleDetail"
+            aria-labelledby="exampleName"
+          >
+            <div class="section-head">
+              <div>
+                <span class="section-kicker" id="exampleLevel"></span>
+                <h3 id="exampleName" tabindex="-1"></h3>
+              </div>
+              <button class="small" id="downloadExample">
+                Descargar guía .md ↓
+              </button>
+            </div>
+            <div class="case-context">
+              <div>
+                <span class="panel-title">NECESIDAD DEL NEGOCIO</span>
+                <p id="exampleNeed"></p>
+              </div>
+              <div>
+                <span class="panel-title">RESULTADO DEL EJEMPLO</span>
+                <p id="exampleResult"></p>
+              </div>
+            </div>
+            <details class="case-requirements">
+              <summary>Qué necesitás para armarlo en n8n</summary>
+              <ul id="exampleRequires"></ul>
+            </details>
+            <p class="panel-title">RECORRIDO DEL EJEMPLO · ELEGÍ UN NODO</p>
+            <div
+              class="case-journey"
+              id="exampleJourney"
+              role="group"
+              aria-label="Pasos del ejemplo de negocio"
+            ></div>
+            <div class="case-step-header">
+              <div>
+                <p
+                  class="question-number"
+                  id="exampleStepStatus"
+                  role="status"
+                ></p>
+                <h3 id="exampleStepTitle"></h3>
+              </div>
+              <button class="small" id="exampleNode">
+                Ver nodo en biblioteca →
+              </button>
+            </div>
+            <p id="exampleWhy" class="case-why"></p>
+            <div class="case-setup">
+              <span class="panel-title">CÓMO CONFIGURAR ESTE PASO</span>
+              <ol id="exampleSetup"></ol>
+              <a id="exampleDocs" target="_blank" rel="noopener noreferrer"
+                >Documentación del nodo →</a
+              >
+            </div>
+            <p class="notice case-branch" id="exampleBranch" hidden></p>
+            <div class="case-data">
+              <div>
+                <span class="panel-title">ENTRADA DEL PASO</span>
+                <div class="code-box"><pre id="exampleInput"></pre></div>
+              </div>
+              <div>
+                <span class="panel-title" id="exampleOutputLabel"></span>
+                <div class="code-box"><pre id="exampleOutput"></pre></div>
+              </div>
+            </div>
+            <div class="actions case-step-actions">
+              <button id="examplePrev" class="small">← Paso anterior</button
+              ><button id="exampleNext" class="small primary">
+                Siguiente paso →</button
+              ><button id="exampleToLab" class="small" hidden>
+                Probar estos leads en el laboratorio →
+              </button>
+            </div>
+            <details class="case-snippet" id="exampleSnippet" hidden>
+              <summary id="exampleSnippetLabel"></summary>
+              <div class="code-box"><pre id="exampleSnippetText"></pre></div>
+            </details>
+            <details class="case-exercise" id="exampleExercise">
+              <summary>Practicá: <span id="exampleQuestion"></span></summary>
+              <p id="exampleAnswer"></p>
+            </details>
+            <div class="case-production">
+              <span class="panel-title">AL LLEVARLO A UN NEGOCIO</span>
+              <p id="exampleProduction"></p>
+            </div>
+          </article>
+        </section>
       </main>
       <footer class="footer">
         <span>AutomationHub / n8n Lab · Hecho para aprender haciendo.</span
@@ -1461,6 +1849,9 @@
         <div class="modal-actions">
           <button id="modalFavorite" aria-pressed="false"></button
           ><button id="modalMastered" aria-pressed="false"></button>
+          <button id="modalExamples" hidden>
+            Ver ejemplos con este nodo →
+          </button>
         </div>
       </div>
       <div class="modal-body">
@@ -4018,6 +4409,1099 @@
           doc: "https://docs.n8n.io/workflows/",
         },
       ];
+      const businessExamples = [
+        {
+          id: "pedidos",
+          area: "fundamentos",
+          level: "Primer flujo",
+          title: "Separar pedidos por importe",
+          need: "Un comercio quiere priorizar los pedidos de 10.000 o más sin perder los demás.",
+          result:
+            "Dos pedidos salen por true y uno por false. Todavía no se llama a ningún servicio.",
+          pattern: "Iniciar → preparar → separar items → decidir",
+          requires: [
+            "No necesitás credenciales. Creá un workflow nuevo para practicar.",
+          ],
+          steps: [
+            {
+              node: "Manual Trigger",
+              title: "Iniciar a mano",
+              why: "Arrancá la prueba cuando vos lo decidas.",
+              setup: [
+                "Agregá Manual Trigger y ejecutá el workflow desde el editor.",
+                "El trigger inicia el flujo; los pedidos se preparan en el siguiente paso.",
+              ],
+              input: [],
+              output: [
+                {
+                  json: {},
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Set / Edit Fields",
+              title: "Preparar los pedidos",
+              why: "Creamos un item con un array de pedidos, sin escribir código.",
+              setup: [
+                "Elegí el modo JSON Output y pegá el JSON del ejemplo de esta guía.",
+                "El resultado todavía es un solo item: pedidos es una lista dentro de ese item.",
+              ],
+              input: [
+                {
+                  json: {},
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    pedidos: [
+                      {
+                        id: "P-101",
+                        importe: 15000,
+                      },
+                      {
+                        id: "P-102",
+                        importe: 4000,
+                      },
+                      {
+                        id: "P-103",
+                        importe: 10000,
+                      },
+                    ],
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Split Out",
+              title: "Crear un item por pedido",
+              why: "IF necesita evaluar cada pedido como un item separado.",
+              setup: [
+                "Field to Split Out: pedidos. Include: No Other Fields.",
+                "En Options, configurá Destination Field Name como pedido. Cada item tendrá un objeto pedido con id e importe.",
+              ],
+              input: [
+                {
+                  json: {
+                    pedidos: [
+                      {
+                        id: "P-101",
+                        importe: 15000,
+                      },
+                      {
+                        id: "P-102",
+                        importe: 4000,
+                      },
+                      {
+                        id: "P-103",
+                        importe: 10000,
+                      },
+                    ],
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    pedido: {
+                      id: "P-101",
+                      importe: 15000,
+                    },
+                  },
+                },
+                {
+                  json: {
+                    pedido: {
+                      id: "P-102",
+                      importe: 4000,
+                    },
+                  },
+                },
+                {
+                  json: {
+                    pedido: {
+                      id: "P-103",
+                      importe: 10000,
+                    },
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "IF",
+              title: "Separar por importe",
+              why: "Cada pedido se compara individualmente contra el mismo mínimo.",
+              setup: [
+                "Valor izquierdo: {{ $json.pedido.importe }}. Tipo: Number.",
+                "Operación: is greater than or equal to. Valor derecho: 10000.",
+              ],
+              input: [
+                {
+                  json: {
+                    pedido: {
+                      id: "P-101",
+                      importe: 15000,
+                    },
+                  },
+                },
+                {
+                  json: {
+                    pedido: {
+                      id: "P-102",
+                      importe: 4000,
+                    },
+                  },
+                },
+                {
+                  json: {
+                    pedido: {
+                      id: "P-103",
+                      importe: 10000,
+                    },
+                  },
+                },
+              ],
+              output: {
+                true: [
+                  {
+                    json: {
+                      pedido: {
+                        id: "P-101",
+                        importe: 15000,
+                      },
+                    },
+                  },
+                  {
+                    json: {
+                      pedido: {
+                        id: "P-103",
+                        importe: 10000,
+                      },
+                    },
+                  },
+                ],
+                false: [
+                  {
+                    json: {
+                      pedido: {
+                        id: "P-102",
+                        importe: 4000,
+                      },
+                    },
+                  },
+                ],
+              },
+              outputLabel: "Salidas true y false (vista didáctica)",
+              branch:
+                "IF tiene dos salidas. Conectá true al procesamiento prioritario y false al procesamiento normal; esta guía termina en la decisión.",
+            },
+          ],
+          exercise:
+            "¿A qué rama va un pedido cuyo importe es exactamente 10.000?",
+          answer:
+            "A true, porque la comparación incluye la igualdad. Si cambiás a “is greater than”, ese mismo pedido irá a false.",
+          production:
+            "Antes de conectar una tienda, probá importe 0, datos ausentes y números que llegan como texto. Este ejemplo usa únicamente números.",
+          snippet:
+            '{\n  "pedidos": [\n    {\n      "id": "P-101",\n      "importe": 15000\n    },\n    {\n      "id": "P-102",\n      "importe": 4000\n    },\n    {\n      "id": "P-103",\n      "importe": 10000\n    }\n  ]\n}',
+          snippetLabel: "JSON para pegar en Edit Fields → JSON Output",
+        },
+        {
+          id: "leads",
+          area: "ventas",
+          level: "Básico",
+          title: "Captar y calificar un lead",
+          need: "Un equipo comercial recibe formularios y quiere guardar los contactos con puntaje alto.",
+          result:
+            "El contacto se normaliza y, si su score es 70 o más, se agrega a una planilla.",
+          pattern: "Recibir → normalizar → calificar → registrar",
+          requires: [
+            "Credencial de Google Sheets y una hoja con columnas name, email y score.",
+            "Una fuente de formularios que envíe JSON por POST al Webhook.",
+          ],
+          steps: [
+            {
+              node: "Webhook",
+              title: "Recibir el formulario",
+              why: "Un evento externo inicia el flujo sin consultar periódicamente el formulario.",
+              setup: [
+                "Elegí POST y enviá un body JSON con name, email y score.",
+                "Usá la URL de prueba mientras escuchás un evento de prueba. Para automatizar, publicá el workflow y usá la URL de producción.",
+              ],
+              input: {
+                name: "Ana",
+                email: " ANA@CLIENTE.EXAMPLE ",
+                score: 85,
+              },
+              output: [
+                {
+                  json: {
+                    body: {
+                      name: "Ana",
+                      email: " ANA@CLIENTE.EXAMPLE ",
+                      score: 85,
+                    },
+                  },
+                },
+              ],
+              outputLabel: "Campos relevantes de la salida del Webhook",
+            },
+            {
+              node: "Set / Edit Fields",
+              title: "Normalizar los campos",
+              why: "El body del Webhook pasa a un contacto con campos en la raíz del item.",
+              setup: [
+                "Modo Manual Mapping. Creá name = {{ $json.body.name }}.",
+                'Creá email = {{ ($json.body.email ?? "").trim().toLowerCase() }}.',
+                "Creá score = {{ $json.body.score }} como Number. Conservá solo estos campos. Este ejemplo recibe email de tipo texto y score numérico.",
+              ],
+              input: [
+                {
+                  json: {
+                    body: {
+                      name: "Ana",
+                      email: " ANA@CLIENTE.EXAMPLE ",
+                      score: 85,
+                    },
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    name: "Ana",
+                    email: "ana@cliente.example",
+                    score: 85,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "IF",
+              title: "Calificar el contacto",
+              why: "La condición elige qué contactos avanzan a la planilla comercial.",
+              setup: [
+                "Compará {{ $json.score }} como Number con is greater than or equal to 70.",
+              ],
+              input: [
+                {
+                  json: {
+                    name: "Ana",
+                    email: "ana@cliente.example",
+                    score: 85,
+                  },
+                },
+              ],
+              output: {
+                true: [
+                  {
+                    json: {
+                      name: "Ana",
+                      email: "ana@cliente.example",
+                      score: 85,
+                    },
+                  },
+                ],
+                false: [],
+              },
+              outputLabel: "Salidas true y false (vista didáctica)",
+              branch:
+                "Google Sheets se conecta solo a true. Para false, armá una revisión o seguimiento de menor prioridad; no lo conectes al mismo registro de leads calificados.",
+            },
+            {
+              node: "Google Sheets",
+              title: "Registrar el lead calificado",
+              why: "Los contactos que pasaron la regla se guardan para seguimiento.",
+              setup: [
+                "Elegí Sheet Within Document → Append Row y seleccioná tu documento y pestaña.",
+                "Mapeá name, email y score desde el item recibido por la salida true.",
+              ],
+              input: [
+                {
+                  json: {
+                    name: "Ana",
+                    email: "ana@cliente.example",
+                    score: 85,
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    name: "Ana",
+                    email: "ana@cliente.example",
+                    score: 85,
+                  },
+                },
+              ],
+              outputLabel: "Fila que se guardaría en la planilla",
+            },
+          ],
+          exercise: "¿Qué pasa si el score baja de 85 a 45?",
+          answer:
+            "El item sale por false y no llega a esta operación de Google Sheets. Podés comprobar esa regla con los mismos datos en el laboratorio.",
+          production:
+            "Validá el email y el puntaje antes de guardar. Definí un ID o clave de contacto para controlar duplicados: Append Row agrega una fila cada vez que se ejecuta.",
+          lab: [
+            {
+              json: {
+                name: "Ana",
+                email: "ana@cliente.example",
+                score: 85,
+              },
+            },
+          ],
+        },
+        {
+          id: "stock",
+          area: "operaciones",
+          level: "Básico",
+          title: "Avisar cuando falta stock",
+          need: "Una tienda necesita detectar productos por debajo del mínimo antes de quedarse sin mercadería.",
+          result:
+            "Solo SKU-01 genera una alerta. Tener stock exactamente igual al mínimo no dispara este aviso.",
+          pattern: "Programar → leer → comparar → avisar",
+          requires: [
+            "Planilla de inventario con columnas sku, stock y minimo; las cantidades deben ser numéricas.",
+            "Credenciales de Google Sheets y Slack, con acceso al canal de prueba.",
+          ],
+          steps: [
+            {
+              node: "Schedule Trigger",
+              title: "Revisar cada mañana",
+              why: "La revisión se ejecuta en un horario definido.",
+              setup: [
+                "Configurá una ejecución diaria a las 09:00.",
+                "Revisá la zona horaria del workflow, por ejemplo America/Argentina/Buenos_Aires, y publicalo para que el horario se ejecute.",
+              ],
+              input: [],
+              output: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              outputLabel: "Timestamp ilustrativo del trigger",
+            },
+            {
+              node: "Google Sheets",
+              title: "Leer el inventario",
+              why: "Cada fila se convierte en un item que IF puede evaluar.",
+              setup: [
+                "Elegí Get Row(s) en la pestaña de inventario.",
+                "Verificá que stock y minimo lleguen como números; si llegan como texto, convertí y validá antes de compararlos.",
+              ],
+              input: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    sku: "SKU-01",
+                    stock: 3,
+                    minimo: 5,
+                  },
+                },
+                {
+                  json: {
+                    sku: "SKU-02",
+                    stock: 12,
+                    minimo: 5,
+                  },
+                },
+                {
+                  json: {
+                    sku: "SKU-03",
+                    stock: 5,
+                    minimo: 5,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "IF",
+              title: "Buscar faltantes",
+              why: "El umbral puede ser distinto para cada producto.",
+              setup: [
+                "Compará {{ $json.stock }} como Number con is less than {{ $json.minimo }}.",
+              ],
+              input: [
+                {
+                  json: {
+                    sku: "SKU-01",
+                    stock: 3,
+                    minimo: 5,
+                  },
+                },
+                {
+                  json: {
+                    sku: "SKU-02",
+                    stock: 12,
+                    minimo: 5,
+                  },
+                },
+                {
+                  json: {
+                    sku: "SKU-03",
+                    stock: 5,
+                    minimo: 5,
+                  },
+                },
+              ],
+              output: {
+                true: [
+                  {
+                    json: {
+                      sku: "SKU-01",
+                      stock: 3,
+                      minimo: 5,
+                    },
+                  },
+                ],
+                false: [
+                  {
+                    json: {
+                      sku: "SKU-02",
+                      stock: 12,
+                      minimo: 5,
+                    },
+                  },
+                  {
+                    json: {
+                      sku: "SKU-03",
+                      stock: 5,
+                      minimo: 5,
+                    },
+                  },
+                ],
+              },
+              outputLabel: "Salidas true y false (vista didáctica)",
+              branch:
+                "Solo true se conecta a Slack. Los productos con stock suficiente terminan en false y no generan mensaje.",
+            },
+            {
+              node: "Slack",
+              title: "Preparar el aviso de reposición",
+              why: "Un mensaje útil identifica qué producto necesita atención.",
+              setup: [
+                "Conectá la salida true a la acción de enviar un mensaje al canal de inventario.",
+                "Texto sugerido: Reponer {{ $json.sku }}: stock {{ $json.stock }}, mínimo {{ $json.minimo }}.",
+              ],
+              input: [
+                {
+                  json: {
+                    sku: "SKU-01",
+                    stock: 3,
+                    minimo: 5,
+                  },
+                },
+              ],
+              output: {
+                canal: "#inventario-demo",
+                texto: "Reponer SKU-01: stock 3, mínimo 5.",
+              },
+              outputLabel:
+                "Mensaje que se enviaría; no se envía desde esta página",
+            },
+          ],
+          exercise:
+            "¿Por qué SKU-03, con stock 5 y mínimo 5, no genera alerta?",
+          answer:
+            "La regla es menor que, no menor o igual. Si el negocio quiere avisar también al llegar al mínimo, cambiá esa operación y probá ambos casos.",
+          production:
+            "La revisión diaria puede repetir avisos. Guardá el estado de alerta por SKU y definí cuándo se habilita una nueva notificación, por ejemplo después de reponer.",
+        },
+        {
+          id: "ventas",
+          area: "ventas",
+          level: "Básico",
+          title: "Enviar un resumen de ventas",
+          need: "La persona a cargo del negocio quiere recibir un total diario sin abrir la planilla.",
+          result:
+            "Dos ventas pagadas suman 20.000. La venta pendiente no se incluye en el resumen.",
+          pattern: "Programar → leer → filtrar → sumar → informar",
+          requires: [
+            "Planilla con venta, fecha, estado e importe; usá una sola moneda para este ejercicio.",
+            "Credenciales de Google Sheets y Gmail. La fecha fija de práctica es 2026-01-15.",
+          ],
+          steps: [
+            {
+              node: "Schedule Trigger",
+              title: "Elegir el corte del reporte",
+              why: "El horario del resumen debe coincidir con el cierre del negocio.",
+              setup: [
+                "Configurá el horario diario y la zona horaria del workflow.",
+                "La guía usa una fecha fija para que el resultado sea reproducible; al automatizar, calculá el período del reporte.",
+              ],
+              input: [],
+              output: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              outputLabel: "Timestamp ilustrativo del trigger",
+            },
+            {
+              node: "Google Sheets",
+              title: "Leer las ventas",
+              why: "Traemos filas con fecha, estado e importe para decidir cuáles pertenecen al reporte.",
+              setup: [
+                "Elegí Get Row(s) en la hoja de ventas.",
+                "Verificá que importe sea numérico y las fechas tengan el mismo formato.",
+              ],
+              input: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    venta: "V-01",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 12000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-02",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 8000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-03",
+                    fecha: "2026-01-15",
+                    estado: "pendiente",
+                    importe: 5000,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Filter",
+              title: "Conservar las ventas pagadas del día",
+              why: "Filter deja continuar únicamente las filas que cumplen las condiciones.",
+              setup: [
+                "Combiná con AND: estado es igual a pagada y fecha es igual a 2026-01-15.",
+                "En este ejercicio las fechas son texto ISO YYYY-MM-DD. Al pasar a producción, definí el rango y la zona horaria del corte.",
+              ],
+              input: [
+                {
+                  json: {
+                    venta: "V-01",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 12000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-02",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 8000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-03",
+                    fecha: "2026-01-15",
+                    estado: "pendiente",
+                    importe: 5000,
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    venta: "V-01",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 12000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-02",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 8000,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Summarize",
+              title: "Sumar el importe",
+              why: "Los dos items pagados se convierten en un resumen.",
+              setup: [
+                "Fields to Summarize: Aggregation = Sum; Field = importe.",
+                "Dejá Fields to Split By vacío para obtener un total general. Inspeccioná el nombre del campo resultante antes de mapear el email.",
+              ],
+              input: [
+                {
+                  json: {
+                    venta: "V-01",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 12000,
+                  },
+                },
+                {
+                  json: {
+                    venta: "V-02",
+                    fecha: "2026-01-15",
+                    estado: "pagada",
+                    importe: 8000,
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    sum_importe: 20000,
+                  },
+                },
+              ],
+              outputLabel: "Resumen ilustrativo: suma de importe",
+            },
+            {
+              node: "Gmail",
+              title: "Preparar el reporte",
+              why: "El email usa el total del resumen, no el importe de una sola venta.",
+              setup: [
+                "Usá la acción Send a message con un destinatario de prueba.",
+                "Mapeá en el cuerpo el campo que devuelve Summarize; en el ejemplo es sum_importe.",
+              ],
+              input: [
+                {
+                  json: {
+                    sum_importe: 20000,
+                  },
+                },
+              ],
+              output: {
+                para: "gerencia@empresa.example",
+                asunto: "Ventas del 2026-01-15",
+                cuerpo: "Total pagado del día: 20.000.",
+              },
+              outputLabel:
+                "Contenido propuesto del email; no se envía desde esta página",
+            },
+          ],
+          exercise:
+            "¿Qué sucede si primero sumás todas las ventas y después intentás filtrar las pendientes?",
+          answer:
+            "El total ya incluiría los 5.000 pendientes y la información por venta podría perderse. Primero filtrá las filas que corresponden y después resumí.",
+          production:
+            "Probá también un día sin ventas: decidí si el reporte debe decir 0 o no enviarse. No asumas que un flujo sin items llegará al nodo de email.",
+        },
+        {
+          id: "facturas",
+          area: "administracion",
+          level: "Siguiente paso",
+          title: "Recordar una factura vencida",
+          need: "Administración quiere recordar facturas pendientes, sin avisar por las pagadas o las que todavía no vencieron.",
+          result:
+            "Solo F-01 se selecciona para el recordatorio. F-02 está pagada y F-03 vence después del corte.",
+          pattern: "Programar → consultar → filtrar → recordar",
+          requires: [
+            "Planilla con factura, email, vencimiento, estado y recordatorio_enviado.",
+            "Credenciales de Google Sheets y Gmail. Fecha fija de práctica: 2026-01-15.",
+          ],
+          steps: [
+            {
+              node: "Schedule Trigger",
+              title: "Revisar vencimientos",
+              why: "La búsqueda se hace a una hora definida para administración.",
+              setup: [
+                "Configurá una ejecución diaria y la zona horaria del negocio.",
+                "Para practicar usá el corte fijo 2026-01-15; no depende de la fecha de tu computadora.",
+              ],
+              input: [],
+              output: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              outputLabel: "Timestamp ilustrativo del trigger",
+            },
+            {
+              node: "Google Sheets",
+              title: "Leer las facturas",
+              why: "Necesitamos el estado de pago además de la fecha de vencimiento.",
+              setup: [
+                "Elegí Get Row(s) en la hoja de facturas.",
+                "Prepará vencimiento en YYYY-MM-DD y recordatorio_enviado como booleano para estos datos de prueba.",
+              ],
+              input: [
+                {
+                  json: {
+                    timestamp: "2026-01-15T09:00:00-03:00",
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    factura: "F-01",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+                {
+                  json: {
+                    factura: "F-02",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pagada",
+                    recordatorio_enviado: false,
+                  },
+                },
+                {
+                  json: {
+                    factura: "F-03",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-20",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Filter",
+              title: "Elegir qué facturas recordar",
+              why: "Una factura debe cumplir las tres condiciones para continuar.",
+              setup: [
+                "Combiná con AND: estado = pendiente; vencimiento anterior a 2026-01-15; recordatorio_enviado = false.",
+                "Usá comparación Date & Time para el vencimiento y verificá cómo se interpreta la fecha.",
+              ],
+              input: [
+                {
+                  json: {
+                    factura: "F-01",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+                {
+                  json: {
+                    factura: "F-02",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pagada",
+                    recordatorio_enviado: false,
+                  },
+                },
+                {
+                  json: {
+                    factura: "F-03",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-20",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    factura: "F-01",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Gmail",
+              title: "Preparar un recordatorio",
+              why: "Cada factura seleccionada genera un mensaje dirigido a su contacto.",
+              setup: [
+                "Configurá Send a message con email como destinatario. Primero probá con tu propia casilla de pruebas.",
+                "Incluí el identificador de factura y la fecha de vencimiento; no hace falta compartir otros datos del cliente.",
+              ],
+              input: [
+                {
+                  json: {
+                    factura: "F-01",
+                    email: "compras@cliente.example",
+                    vencimiento: "2026-01-10",
+                    estado: "pendiente",
+                    recordatorio_enviado: false,
+                  },
+                },
+              ],
+              output: {
+                para: "compras@cliente.example",
+                asunto: "Recordatorio de factura F-01",
+                cuerpo:
+                  "La factura F-01 figura pendiente con vencimiento 2026-01-10.",
+              },
+              outputLabel:
+                "Contenido propuesto del email; no se envía desde esta página",
+            },
+          ],
+          exercise:
+            "¿Qué ocurre si este flujo vuelve a ejecutarse mañana sin registrar el recordatorio enviado?",
+          answer:
+            "Puede volver a seleccionar la misma factura. Agregá un registro persistente por factura y actualizá el estado después de un envío exitoso, contemplando los reintentos.",
+          production:
+            "El flujo básico termina en el envío. Antes de automatizar recordatorios, agregá el registro de envíos: un fallo entre enviar el email y actualizar la planilla puede causar duplicados. Reconciliá también los pagos recientes.",
+        },
+        {
+          id: "soporte",
+          area: "soporte",
+          level: "Básico",
+          title: "Derivar consultas al equipo correcto",
+          need: "Una empresa recibe consultas mezcladas y quiere dirigir soporte y facturación a equipos distintos.",
+          result:
+            "La consulta del ejemplo se enruta a soporte y prepara un aviso para ese equipo.",
+          pattern: "Recibir → elegir ruta → avisar",
+          requires: [
+            "Formulario de n8n con tipo, asunto y email.",
+            "Credencial de Slack y canales de prueba para cada equipo.",
+          ],
+          steps: [
+            {
+              node: "n8n Form Trigger",
+              title: "Recibir una consulta",
+              why: "Un formulario propio crea el evento con campos consistentes.",
+              setup: [
+                "Creá tipo como lista con soporte y facturacion.",
+                "Agregá asunto y email. Probá el formulario antes de publicarlo.",
+              ],
+              input: {
+                tipo: "soporte",
+                asunto: "No puedo ingresar",
+                email: "usuario@cliente.example",
+              },
+              output: [
+                {
+                  json: {
+                    tipo: "soporte",
+                    asunto: "No puedo ingresar",
+                    email: "usuario@cliente.example",
+                  },
+                },
+              ],
+              outputLabel: "Campos relevantes de la salida del formulario",
+            },
+            {
+              node: "Switch",
+              title: "Separar por tipo de consulta",
+              why: "Switch permite más de dos rutas sin encadenar varios IF.",
+              setup: [
+                "Modo Rules: compará {{ $json.tipo }} con soporte y con facturacion.",
+                "Nombrá las salidas soporte y facturacion. Configurá Fallback Output = Extra Output para los valores desconocidos.",
+              ],
+              input: [
+                {
+                  json: {
+                    tipo: "soporte",
+                    asunto: "No puedo ingresar",
+                    email: "usuario@cliente.example",
+                  },
+                },
+              ],
+              output: {
+                soporte: [
+                  {
+                    json: {
+                      tipo: "soporte",
+                      asunto: "No puedo ingresar",
+                      email: "usuario@cliente.example",
+                    },
+                  },
+                ],
+                facturacion: [],
+                otros: [],
+              },
+              outputLabel: "Rutas configuradas (vista didáctica)",
+              branch:
+                "El recorrido mostrado continúa por soporte. Conectá facturacion a su propio aviso y la salida extra a revisión; no mezcles todas las rutas en el mismo canal.",
+            },
+            {
+              node: "Slack",
+              title: "Preparar el aviso de soporte",
+              why: "El equipo recibe el asunto necesario para empezar a responder.",
+              setup: [
+                "Conectá la salida soporte a un mensaje en el canal de soporte.",
+                "Texto sugerido: Nueva consulta: {{ $json.asunto }}.",
+              ],
+              input: [
+                {
+                  json: {
+                    tipo: "soporte",
+                    asunto: "No puedo ingresar",
+                    email: "usuario@cliente.example",
+                  },
+                },
+              ],
+              output: {
+                canal: "#soporte-demo",
+                texto: "Nueva consulta: No puedo ingresar.",
+              },
+              outputLabel:
+                "Mensaje que se enviaría; no se envía desde esta página",
+            },
+          ],
+          exercise:
+            "¿A dónde iría un valor tipo = ventas si no agregás una regla para él?",
+          answer:
+            "A la salida extra de fallback configurada en esta guía. Sin ese fallback, el comportamiento predeterminado puede dejar ese item sin una salida que lo procese.",
+          production:
+            "Configurá también las otras rutas y probá cada una. Enviá al canal solo la información que el equipo necesita para atender la consulta.",
+        },
+        {
+          id: "errores",
+          area: "operaciones",
+          level: "Siguiente paso",
+          title: "Avisar cuando falla una automatización",
+          need: "Un negocio necesita enterarse cuando una sincronización automática deja de funcionar.",
+          result:
+            "El aviso identifica el workflow, el último nodo ejecutado y el mensaje de error.",
+          pattern: "Capturar error → resumir → alertar",
+          requires: [
+            "Un workflow automático de prueba y otro workflow para manejar errores.",
+            "Credencial de Slack. El caso representa un fallo de ejecución, no un fallo dentro del trigger.",
+          ],
+          steps: [
+            {
+              node: "Error Trigger",
+              title: "Recibir el fallo",
+              why: "Un workflow separado centraliza los errores de otros flujos.",
+              setup: [
+                "Creá y guardá el workflow de errores con Error Trigger al inicio.",
+                "En el workflow principal, abrí Settings → Error workflow y elegí este manejador. Publicá los workflows que deban funcionar automáticamente.",
+                "Probá provocando un fallo en una ejecución automática: una ejecución manual no dispara Error Trigger.",
+              ],
+              input: {
+                evento: "Fallo automático del workflow Reporte de ventas",
+              },
+              output: [
+                {
+                  json: {
+                    workflow: {
+                      id: "demo-ventas",
+                      name: "Reporte de ventas",
+                    },
+                    execution: {
+                      id: "demo-42",
+                      error: {
+                        message: "La API no respondió",
+                      },
+                      lastNodeExecuted: "HTTP Request",
+                      mode: "trigger",
+                    },
+                  },
+                },
+              ],
+              outputLabel: "Campos relevantes de un error de ejecución",
+            },
+            {
+              node: "Set / Edit Fields",
+              title: "Preparar un resumen útil",
+              why: "Extraemos lo necesario para diagnosticar sin enviar todo el evento.",
+              setup: [
+                "Conservá solo estos campos: flujo = {{ $json.workflow.name }}; nodo = {{ $json.execution.lastNodeExecuted }}; mensaje = {{ $json.execution.error.message }}.",
+                "Estos caminos corresponden al fallo de ejecución mostrado. Los errores del trigger pueden tener otra estructura: inspeccioná el evento recibido.",
+              ],
+              input: [
+                {
+                  json: {
+                    workflow: {
+                      id: "demo-ventas",
+                      name: "Reporte de ventas",
+                    },
+                    execution: {
+                      id: "demo-42",
+                      error: {
+                        message: "La API no respondió",
+                      },
+                      lastNodeExecuted: "HTTP Request",
+                      mode: "trigger",
+                    },
+                  },
+                },
+              ],
+              output: [
+                {
+                  json: {
+                    flujo: "Reporte de ventas",
+                    nodo: "HTTP Request",
+                    mensaje: "La API no respondió",
+                  },
+                },
+              ],
+              outputLabel: "Salida esperada del paso",
+            },
+            {
+              node: "Slack",
+              title: "Preparar la alerta",
+              why: "La persona responsable puede identificar dónde empezar a revisar.",
+              setup: [
+                "Enviá un mensaje al canal de operaciones.",
+                "Texto sugerido: Falló {{ $json.flujo }} en {{ $json.nodo }}: {{ $json.mensaje }}.",
+              ],
+              input: [
+                {
+                  json: {
+                    flujo: "Reporte de ventas",
+                    nodo: "HTTP Request",
+                    mensaje: "La API no respondió",
+                  },
+                },
+              ],
+              output: {
+                canal: "#operaciones-demo",
+                texto:
+                  "Falló Reporte de ventas en HTTP Request: La API no respondió.",
+              },
+              outputLabel:
+                "Mensaje que se enviaría; no se envía desde esta página",
+            },
+          ],
+          exercise:
+            "¿Por qué no aparece la alerta al probar manualmente el workflow principal?",
+          answer:
+            "Error Trigger se activa ante fallos de ejecuciones automáticas. Para comprobarlo, usá un evento real de prueba o una programación del workflow publicado.",
+          production:
+            "No reintentes de forma ilimitada. Revisá qué información de error compartís y prepará una alternativa si el propio servicio de alertas está caído.",
+        },
+      ];
+
       const stateKey = "automationhub.n8n.learning.v1";
       let state = { favorites: [], mastered: [], solved: [], tasks: [] };
       const validNames = new Set(nodes.map((n) => n.name));
@@ -4080,7 +5564,7 @@
       }
       let currentView = "library";
       function showView(view, focus = true) {
-        if (!["library", "lab", "quiz", "roadmap"].includes(view))
+        if (!["library", "lab", "quiz", "roadmap", "examples"].includes(view))
           view = "library";
         currentView = view;
         document.querySelectorAll("main > section").forEach((section) => {
@@ -4259,6 +5743,9 @@
               .map((t) => `<p class="tip-text">${escapeHTML(t)}</p>`)
               .join("")
           : "";
+        $("modalExamples").hidden = !businessExamples.some((example) =>
+          example.steps.some((step) => step.node === n.name),
+        );
         renderModalActions();
         $("nodeDialog").showModal();
         document.body.style.overflow = "hidden";
@@ -4588,7 +6075,299 @@
         renderRoadmap();
         toast("Progreso borrado");
       });
+      // Business recipes are illustrative snapshots, not an n8n execution engine.
+      const exampleAreas = {
+        all: "Todos",
+        fundamentos: "Flujos básicos",
+        ventas: "Ventas",
+        operaciones: "Operaciones",
+        administracion: "Administración",
+        soporte: "Soporte",
+      };
+      const exampleDocPaths = {
+        "Manual Trigger": "core-nodes/n8n-nodes-base.manualworkflowtrigger",
+        "Set / Edit Fields": "core-nodes/n8n-nodes-base.set",
+        "Split Out": "core-nodes/n8n-nodes-base.splitout",
+        IF: "core-nodes/n8n-nodes-base.if",
+        Webhook: "core-nodes/n8n-nodes-base.webhook",
+        "Schedule Trigger": "core-nodes/n8n-nodes-base.scheduletrigger",
+        Filter: "core-nodes/n8n-nodes-base.filter",
+        Summarize: "core-nodes/n8n-nodes-base.summarize",
+        "Google Sheets": "app-nodes/n8n-nodes-base.googlesheets",
+        Gmail: "app-nodes/n8n-nodes-base.gmail",
+        Slack: "app-nodes/n8n-nodes-base.slack",
+        "n8n Form Trigger": "core-nodes/n8n-nodes-base.formtrigger",
+        Switch: "core-nodes/n8n-nodes-base.switch",
+        "Error Trigger": "core-nodes/n8n-nodes-base.errortrigger",
+      };
+      const exampleDoc = (name) =>
+        `https://docs.n8n.io/integrations/builtin/${exampleDocPaths[name]}/`;
+      let exampleArea = "all",
+        selectedExample = businessExamples[0].id,
+        exampleStep = 0;
+      const currentExample = () =>
+        businessExamples.find((example) => example.id === selectedExample);
+      $("exampleAreas").innerHTML = Object.entries(exampleAreas)
+        .map(
+          ([id, label]) =>
+            `<button class="category" data-example-area="${id}" aria-pressed="${id === "all"}">${label}</button>`,
+        )
+        .join("");
+      function renderExamples() {
+        const query = normalize($("exampleSearch").value);
+        const visible = businessExamples.filter(
+          (example) =>
+            (exampleArea === "all" || example.area === exampleArea) &&
+            (!query ||
+              normalize(
+                [
+                  example.title,
+                  example.need,
+                  example.result,
+                  example.pattern,
+                  ...example.steps.map((step) => step.node),
+                ].join(" "),
+              ).includes(query)),
+        );
+        if (
+          visible.length &&
+          !visible.some((example) => example.id === selectedExample)
+        ) {
+          selectedExample = visible[0].id;
+          exampleStep = 0;
+        }
+        $("exampleCards").innerHTML = visible
+          .map(
+            (example) =>
+              `<button class="case-card" data-example="${example.id}" aria-pressed="${example.id === selectedExample}" aria-controls="exampleDetail"><span class="case-label"><span>${exampleAreas[example.area]}</span><span>${example.level}</span></span><strong>${escapeHTML(example.title)}</strong><p>${escapeHTML(example.need)}</p><span class="case-pattern">${escapeHTML(example.pattern)}</span><span class="muted" style="font-size:10px">${example.steps.length} pasos · Explorar flujo →</span></button>`,
+          )
+          .join("");
+        $("exampleCount").textContent =
+          `${visible.length} de ${businessExamples.length} ejemplos`;
+        $("exampleEmpty").hidden = visible.length > 0;
+        $("exampleDetail").hidden = visible.length === 0;
+        document
+          .querySelectorAll("[data-example-area]")
+          .forEach((button) =>
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.exampleArea === exampleArea),
+            ),
+          );
+        if (visible.length) renderExampleDetail();
+      }
+      function renderExampleDetail() {
+        const example = currentExample();
+        $("exampleLevel").textContent =
+          `${exampleAreas[example.area].toUpperCase()} / ${example.level.toUpperCase()}`;
+        $("exampleName").textContent = example.title;
+        $("exampleNeed").textContent = example.need;
+        $("exampleResult").textContent = example.result;
+        $("exampleRequires").innerHTML = example.requires
+          .map((text) => `<li>${escapeHTML(text)}</li>`)
+          .join("");
+        $("exampleJourney").innerHTML = example.steps
+          .map(
+            (step, i) =>
+              `<button data-example-step="${i}"><span>PASO ${String(i + 1).padStart(2, "0")}</span>${escapeHTML(step.node)}</button>`,
+          )
+          .join("");
+        $("exampleQuestion").textContent = example.exercise;
+        $("exampleAnswer").textContent = example.answer;
+        $("exampleProduction").textContent = example.production;
+        $("exampleExercise").open = false;
+        $("exampleSnippet").hidden = !example.snippet;
+        $("exampleSnippet").open = false;
+        $("exampleSnippetText").textContent = example.snippet || "";
+        $("exampleSnippetLabel").textContent = example.snippetLabel || "";
+        $("exampleToLab").hidden = !example.lab;
+        renderExampleStep();
+      }
+      function renderExampleStep() {
+        const example = currentExample(),
+          step = example.steps[exampleStep];
+        $("exampleStepStatus").textContent =
+          `PASO ${exampleStep + 1} DE ${example.steps.length} · ${step.node}`;
+        $("exampleStepTitle").textContent = step.title;
+        $("exampleWhy").textContent = step.why;
+        $("exampleSetup").innerHTML = step.setup
+          .map((text) => `<li>${escapeHTML(text)}</li>`)
+          .join("");
+        $("exampleInput").textContent = JSON.stringify(step.input, null, 2);
+        $("exampleOutput").textContent = JSON.stringify(step.output, null, 2);
+        $("exampleOutputLabel").textContent = step.outputLabel;
+        $("exampleBranch").textContent = step.branch || "";
+        $("exampleBranch").hidden = !step.branch;
+        $("exampleDocs").href = exampleDoc(step.node);
+        $("exampleNode").textContent = `Ver ${step.node} en biblioteca →`;
+        $("examplePrev").disabled = exampleStep === 0;
+        $("exampleNext").disabled = exampleStep === example.steps.length - 1;
+        document.querySelectorAll("[data-example-step]").forEach((button) => {
+          if (Number(button.dataset.exampleStep) === exampleStep)
+            button.setAttribute("aria-current", "step");
+          else button.removeAttribute("aria-current");
+        });
+      }
+      $("exampleSearch").addEventListener("input", renderExamples);
+      $("exampleAreas").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-example-area]");
+        if (button) {
+          exampleArea = button.dataset.exampleArea;
+          renderExamples();
+        }
+      });
+      $("clearExampleFilters").addEventListener("click", () => {
+        exampleArea = "all";
+        $("exampleSearch").value = "";
+        renderExamples();
+        $("exampleSearch").focus();
+      });
+      $("exampleCards").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-example]");
+        if (!button) return;
+        selectedExample = button.dataset.example;
+        exampleStep = 0;
+        renderExamples();
+        $("exampleDetail").scrollIntoView({
+          behavior: "instant",
+          block: "start",
+        });
+        $("exampleName").focus({ preventScroll: true });
+      });
+      $("exampleJourney").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-example-step]");
+        if (button) {
+          exampleStep = Number(button.dataset.exampleStep);
+          renderExampleStep();
+        }
+      });
+      $("examplePrev").addEventListener("click", () => {
+        if (exampleStep > 0) {
+          exampleStep--;
+          renderExampleStep();
+          if ($("examplePrev").disabled)
+            $("exampleNext").focus({ preventScroll: true });
+        }
+      });
+      $("exampleNext").addEventListener("click", () => {
+        if (exampleStep < currentExample().steps.length - 1) {
+          exampleStep++;
+          renderExampleStep();
+          if ($("exampleNext").disabled)
+            $("examplePrev").focus({ preventScroll: true });
+        }
+      });
+      $("exampleNode").addEventListener("click", () => {
+        const name = currentExample().steps[exampleStep].node;
+        const index = nodes.findIndex((node) => node.name === name);
+        if (index >= 0) openModal(index);
+      });
+      $("exampleToLab").addEventListener("click", () => {
+        const example = currentExample();
+        if (!example.lab) return;
+        $("labInput").value = JSON.stringify(example.lab, null, 2);
+        $("threshold").value = 70;
+        labStep = 0;
+        runLab();
+        showView("lab");
+        $("main").scrollIntoView({ behavior: "instant", block: "start" });
+        toast("Datos del ejemplo cargados en el laboratorio");
+      });
+      function exampleGuide(example) {
+        const lines = [
+          `# ${example.title}`,
+          "",
+          "Guía de práctica con datos ficticios. No es un workflow JSON importable. Los mensajes y filas son contenidos propuestos, no acciones ejecutadas.",
+          "",
+          `## Necesidad del negocio`,
+          example.need,
+          "",
+          `## Resultado esperado`,
+          example.result,
+          "",
+          `## Qué necesitás`,
+          ...example.requires.map((text) => `- ${text}`),
+          "",
+          `## Recorrido`,
+          example.pattern,
+        ];
+        for (const [index, step] of example.steps.entries()) {
+          lines.push(
+            "",
+            `### ${index + 1}. ${step.node} — ${step.title}`,
+            "",
+            step.why,
+            "",
+            ...step.setup.map((text) => `- ${text}`),
+            "",
+            "Entrada:",
+            "```json",
+            JSON.stringify(step.input, null, 2),
+            "```",
+            "",
+            `${step.outputLabel}:`,
+            "```json",
+            JSON.stringify(step.output, null, 2),
+            "```",
+          );
+          if (step.branch) lines.push("", step.branch);
+          lines.push("", `Documentación: ${exampleDoc(step.node)}`);
+        }
+        if (example.snippet)
+          lines.push(
+            "",
+            `## ${example.snippetLabel}`,
+            "```json",
+            example.snippet,
+            "```",
+          );
+        lines.push(
+          "",
+          "## Practicá",
+          example.exercise,
+          "",
+          example.answer,
+          "",
+          "## Al llevarlo a un negocio",
+          example.production,
+          "",
+        );
+        return lines.join("\n");
+      }
+      $("downloadExample").addEventListener("click", () => {
+        const example = currentExample();
+        const url = URL.createObjectURL(
+          new Blob([exampleGuide(example)], {
+            type: "text/markdown;charset=utf-8",
+          }),
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `n8n-ejemplo-${example.id}.md`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+      $("modalExamples").addEventListener("click", () => {
+        const name = nodes[modalIndex].name;
+        $("nodeDialog").addEventListener(
+          "close",
+          () => {
+            exampleArea = "all";
+            $("exampleSearch").value = name;
+            exampleStep = 0;
+            renderExamples();
+            showView("examples");
+            $("main").scrollIntoView({ behavior: "instant", block: "start" });
+          },
+          { once: true },
+        );
+        $("nodeDialog").close();
+      });
+
       updateStats();
+      renderExamples();
       renderCards();
       renderQuestion();
       renderRoadmap();
