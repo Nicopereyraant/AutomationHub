@@ -1,0 +1,10 @@
+{
+  "name": "automationhub-n8n-lab",
+  "private": true,
+  "scripts": {
+    "test": "node tests/smoke.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
