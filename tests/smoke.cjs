@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const http = require("node:http");
+const vm = require("node:vm");
 const { chromium } = require("playwright");
 
 (async () => {
@@ -31,7 +32,7 @@ const { chromium } = require("playwright");
       route.abort(),
     );
     await page.goto(url);
-    assert.equal(await page.locator(".card").count(), 51);
+    assert.equal(await page.locator(".card").count(), 53);
     await page.locator("#searchInput").fill("paginacion");
     assert.ok(
       (await page.locator(".card").count()) > 0,
@@ -65,7 +66,7 @@ const { chromium } = require("playwright");
     );
     assert.equal(await page.locator("#masteredCount").textContent(), "1");
     await page.locator("#studyFilter").selectOption("pending");
-    assert.equal(await page.locator(".card").count(), 50);
+    assert.equal(await page.locator(".card").count(), 52);
 
     await page
       .getByRole("button", { name: "02 Laboratorio", exact: true })
@@ -167,7 +168,7 @@ const { chromium } = require("playwright");
     assert.equal(await page.locator("#quizCount").textContent(), "10/10");
 
     await page.getByRole("button", { name: /05 Ejemplos/ }).click();
-    assert.equal(await page.locator("[data-example]").count(), 7);
+    assert.equal(await page.locator("[data-example]").count(), 9);
     assert.equal(await page.locator("#examplePrev").isDisabled(), true);
     assert.equal(await page.locator("[data-example-step]").count(), 4);
     await page.locator("#exampleNext").click();
@@ -212,7 +213,7 @@ const { chromium } = require("playwright");
 
     // Search and area filters compose, including an empty state with no stale detail.
     await page.locator('[data-example-area="administracion"]').click();
-    assert.equal(await page.locator("[data-example]").count(), 1);
+    assert.equal(await page.locator("[data-example]").count(), 2);
     await page.locator("#exampleSearch").fill("inexistente");
     assert.equal(await page.locator("#exampleEmpty").isVisible(), true);
     assert.equal(await page.locator("#exampleDetail").isVisible(), false);
@@ -300,6 +301,8 @@ const { chromium } = require("playwright");
       "facturas",
       "soporte",
       "errores",
+      "reporte-mensual",
+      "lotes-subworkflows",
     ]) {
       await page.locator(`[data-example="${id}"]`).click();
       const stepCount = await page.locator("[data-example-step]").count();
@@ -311,11 +314,14 @@ const { chromium } = require("playwright");
             .count(),
           1,
         );
-        const node = (
-          await page.locator(`[data-example-step="${i}"]`).textContent()
-        )
-          .replace(/PASO \d+/, "")
-          .trim();
+        const node = await page
+          .locator('[data-example-step="' + i + '"]')
+          .getAttribute("data-node");
+        assert.equal(
+          await page.locator('[data-example-step="' + i + '"] svg').count(),
+          1,
+          "actual embedded node icon",
+        );
         await page.locator("#exampleNode").click();
         assert.equal(await page.locator("#modalName").textContent(), node);
         await page.keyboard.press("Escape");
@@ -357,7 +363,7 @@ const { chromium } = require("playwright");
 
     // Node detail can lead to matching business recipes, with focus transferred after closing.
     await page
-      .getByRole("button", { name: "01 Biblioteca 51", exact: true })
+      .getByRole("button", { name: "01 Biblioteca 53", exact: true })
       .click();
     await page.locator("#studyFilter").selectOption("all");
     await page.locator('[data-open="0"]').click();
@@ -371,7 +377,255 @@ const { chromium } = require("playwright");
     await page.locator("#exampleSearch").fill("");
     await page.reload();
     assert.equal(await page.locator("#view-examples").isVisible(), true);
-    assert.equal(await page.locator("[data-example]").count(), 7);
+    assert.equal(await page.locator("[data-example]").count(), 9);
+
+    // The monthly resolver changes real paths in the illustration while preserving a canonical contract.
+    await page.locator('[data-example="reporte-mensual"]').click();
+    assert.equal(await page.locator("#monthlyControls").isVisible(), true);
+    assert.equal(
+      await page.locator('[data-step-key$="-create"]').count(),
+      2,
+      "only month and report are created in the default case",
+    );
+    await page.locator('[data-step-key="year-search"]').click();
+    assert.match(
+      await page.locator("#exampleSetup").textContent(),
+      /Always Output Data/,
+    );
+    assert.match(
+      await page.locator("#exampleSetup").textContent(),
+      /demo-proceso/,
+    );
+    await page.locator('[data-step-key="month-search"]').click();
+    assert.match(
+      await page.locator("#exampleSetup").textContent(),
+      /demo-year-existing/,
+    );
+    await page.locator('[data-step-key="report-create"]').click();
+    assert.match(
+      await page.locator("#exampleSetup").textContent(),
+      /Same Folder/,
+    );
+    await page.locator('[data-step-key="report-set"]').click();
+    let reportContext = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    )[0].json;
+    assert.equal(reportContext.yearFolderId, "demo-year-existing");
+    assert.equal(reportContext.monthFolderId, "demo-month-created");
+    assert.equal(reportContext.reportId, "demo-report-created");
+    assert.equal(reportContext.runId, "ventas-2026-10");
+
+    await page.locator('[data-monthly-preset="existing"]').click();
+    assert.equal(
+      await page.locator('[data-step-key$="-create"]').count(),
+      0,
+      "existing report never copies the template",
+    );
+    await page.locator('[data-step-key="report-set"]').click();
+    reportContext = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    )[0].json;
+    assert.equal(reportContext.reportId, "demo-report-existing");
+    assert.equal(reportContext.monthFolderId, "demo-month-existing");
+    await page.locator('[data-monthly-preset="new"]').click();
+    assert.equal(await page.locator('[data-step-key$="-create"]').count(), 3);
+    assert.equal(await page.locator("#monthlyMonth").isDisabled(), true);
+    assert.equal(await page.locator("#monthlyReport").isDisabled(), true);
+    await page.locator('[data-step-key="year-search"]').click();
+    assert.deepEqual(
+      JSON.parse(await page.locator("#exampleOutput").textContent()),
+      [{ json: {} }],
+    );
+    await page.locator('[data-step-key="year-normalize"]').click();
+    const normalizer = await page.locator("#exampleSnippetText").textContent();
+    const normalizeFiles = (files) =>
+      vm.runInNewContext("(function(){" + normalizer + "})()", {
+        $input: { all: () => files },
+        $: () => ({ first: () => ({ json: { runId: "fixture-run" } }) }),
+      });
+    assert.equal(normalizeFiles([{ json: {} }])[0].json.candidateId, null);
+    assert.equal(
+      normalizeFiles([{ json: { id: "one" } }])[0].json.candidateId,
+      "one",
+    );
+    assert.equal(
+      normalizeFiles([{ json: { id: "one" } }])[0].json.runId,
+      "fixture-run",
+    );
+    assert.throws(
+      () => normalizeFiles([{ json: { id: "one" } }, { json: { id: "two" } }]),
+      /Nombre duplicado/,
+    );
+    await page.locator('[data-step-key="year-if"]').click();
+    assert.equal(
+      JSON.parse(await page.locator("#exampleOutput").textContent()).true
+        .length,
+      0,
+    );
+
+    await page.locator('[data-monthly-preset="existing"]').click();
+    await page.locator('[data-step-key="query"]').click();
+    assert.equal(
+      await page.locator('[data-step-key="query"]').getAttribute("data-node"),
+      "Google BigQuery",
+    );
+    await page.locator("#monthlySource").selectOption("sql");
+    assert.equal(
+      await page
+        .locator('[data-step-key="query"][aria-current="step"]')
+        .count(),
+      1,
+      "selection follows the same logical step",
+    );
+    assert.equal(
+      await page.locator('[data-step-key="query"]').getAttribute("data-node"),
+      "Postgres / MySQL",
+    );
+    assert.match(
+      await page.locator("#exampleSnippetText").textContent(),
+      /\$1::date/,
+    );
+    await page.locator("#monthlySource").selectOption("bigquery");
+    await page.locator('[data-step-key="map"]').click();
+    const expectedReport = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    await page.locator('[data-step-key="verify"]').click();
+    const verifySnippet = await page
+      .locator("#exampleSnippetText")
+      .textContent();
+    const verifyReport = (rows) =>
+      vm.runInNewContext("(function(){" + verifySnippet + "})()", {
+        $input: { all: () => rows },
+        $: (name) => ({
+          all: () => expectedReport,
+          first: () => ({ json: { reportId: "fixture-report" } }),
+        }),
+      })[0].json;
+    assert.equal(verifyReport(expectedReport).verified, true);
+    assert.equal(verifyReport(expectedReport.slice(0, 2)).verified, false);
+    assert.equal(
+      verifyReport([...expectedReport, expectedReport[0]]).verified,
+      false,
+    );
+    assert.equal(verifyReport([{ json: {} }]).verified, false);
+    await page.locator("#monthlyVerified").uncheck();
+    assert.equal(
+      await page.locator('[data-step-key="email"]').count(),
+      0,
+      "incomplete reports have no success-email step",
+    );
+    await page.locator('[data-step-key="confirmed"]').click();
+    const unconfirmed = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.equal(unconfirmed.true.length, 0);
+    assert.equal(unconfirmed.false[0].json.rowsWritten, 2);
+    await page.locator('[data-step-key="stop"]').click();
+    assert.equal(
+      JSON.parse(await page.locator("#exampleOutput").textContent()).emailSent,
+      false,
+    );
+    await page.locator("#monthlyVerified").check();
+    assert.equal(await page.locator('[data-step-key="email"]').count(), 1);
+    // Changing an ancestor never leaves an impossible child-folder fixture.
+    await page.locator("#monthlyYear").uncheck();
+    assert.equal(await page.locator("#monthlyMonth").isChecked(), false);
+    assert.equal(await page.locator("#monthlyReport").isChecked(), false);
+    await page.locator('[data-monthly-preset="month"]').click();
+
+    await page.locator('[data-example="lotes-subworkflows"]').click();
+    await page.locator('[data-step-key="parent-call"]').click();
+    const childContract = JSON.parse(
+      await page.locator("#exampleInput").textContent(),
+    )[0].json;
+    assert.equal("rows" in childContract, false);
+    assert.ok(
+      JSON.stringify(childContract).length < 400,
+      "small context across workflow boundary",
+    );
+    await page.locator('[data-step-key="child-return"]').click();
+    const ack = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    )[0].json;
+    assert.equal("rows" in ack, false);
+    assert.equal(ack.rowsWritten, 2);
+    assert.equal(ack.done, false);
+    await page.locator('[data-step-key="parent-next"]').click();
+    const nextPage = JSON.parse(
+      await page.locator("#exampleOutput").textContent(),
+    );
+    assert.equal(nextPage.true[0].json.pageToken, ack.nextPageToken);
+    await page.locator('[data-step-key="parent-confirm"]').click();
+    const manifest = JSON.parse(
+      await page.locator("#exampleInput").textContent(),
+    );
+    assert.equal(manifest.confirmedRows, manifest.expectedRows);
+    assert.equal(manifest.pendingPages, 0);
+    assert.equal(manifest.ambiguousWrites, 0);
+
+    // Batch budget covers both bytes and the total lifetime of a waiting parent.
+    assert.equal(await page.locator("#performancePanel").isVisible(), true);
+    assert.equal(await page.locator("#budgetBatchCount").textContent(), "200");
+    assert.equal(await page.locator("#budgetDuration").textContent(), "599");
+    assert.match(
+      await page.locator("#budgetAdvice").textContent(),
+      /supera el presupuesto/,
+    );
+    await page.locator("#budgetRows").fill("100");
+    await page.locator("#budgetBatch").fill("500");
+    assert.equal(await page.locator("#budgetBatchCount").textContent(), "1");
+    assert.equal(
+      await page.locator("#budgetDuration").textContent(),
+      "2",
+      "no pause after the last/only batch",
+    );
+    await page.locator("#budgetPayload").fill("1");
+    assert.match(
+      await page.locator("#budgetAdvice").textContent(),
+      /payload estimado supera/,
+    );
+    await page.locator("#budgetBatch").fill("0");
+    assert.equal(await page.locator("#budgetError").isVisible(), true);
+    assert.equal(await page.locator("#budgetResults").isVisible(), false);
+    await page.locator("#budgetBatch").fill("10");
+    await page.locator("#budgetPause").fill("0");
+    assert.equal(await page.locator("#budgetDuration").textContent(), "20");
+    assert.equal(await page.locator("#budgetError").isVisible(), false);
+    await page.locator("#budgetBatch").fill("1.5");
+    assert.equal(await page.locator("#budgetError").isVisible(), true);
+    await page.locator("#budgetBatch").fill("500");
+    await page.locator("#budgetRows").fill("100000");
+    await page.locator("#budgetPause").fill("1");
+    await page.locator("#budgetPayload").fill("1024");
+
+    // Inline SVG definitions must never collide across integration logos or repeated nodes.
+    const duplicateSvgIds = await page.evaluate(() => {
+      const ids = [...document.querySelectorAll("svg [id]")].map((el) => el.id);
+      return ids.filter((id, index) => ids.indexOf(id) !== index);
+    });
+    assert.deepEqual(duplicateSvgIds, []);
+    const iconReferencesValid = await page.evaluate(() =>
+      [...document.querySelectorAll("svg")].every((svg) => {
+        const references = svg.outerHTML.matchAll(/url\(#([^)]+)\)/g);
+        return [...references].every((match) =>
+          [...svg.querySelectorAll("[id]")].some((el) => el.id === match[1]),
+        );
+      }),
+    );
+    assert.equal(iconReferencesValid, true);
+    assert.equal(
+      await page
+        .locator("svg")
+        .evaluateAll((icons) =>
+          icons.every(
+            (svg) =>
+              svg.viewBox.baseVal.width > 0 && svg.viewBox.baseVal.height > 0,
+          ),
+        ),
+      true,
+      "icons preserve their full artwork when scaled",
+    );
 
     // All five views must fit narrow and wide screens without page overflow.
     for (const width of [320, 375, 768, 1440]) {
@@ -399,6 +653,8 @@ const { chromium } = require("playwright");
         "facturas",
         "soporte",
         "errores",
+        "reporte-mensual",
+        "lotes-subworkflows",
       ]) {
         await page.locator(`[data-example="${id}"]`).click();
         await page.locator("#exampleNext").click();
@@ -434,7 +690,7 @@ const { chromium } = require("playwright");
     });
     const fallback = await blocked.newPage();
     await fallback.goto(url);
-    assert.equal(await fallback.locator(".card").count(), 51);
+    assert.equal(await fallback.locator(".card").count(), 53);
     assert.equal(await fallback.locator("#storageNote").isVisible(), true);
     await fallback.locator('[data-mastered="0"]').click();
     assert.equal(await fallback.locator("#masteredCount").textContent(), "1");
@@ -443,10 +699,10 @@ const { chromium } = require("playwright");
       localStorage.setItem("automationhub.n8n.learning.v1", "{broken"),
     );
     await page.reload();
-    assert.equal(await page.locator("#nodeCount").textContent(), "51");
+    assert.equal(await page.locator("#nodeCount").textContent(), "53");
     assert.deepEqual(errors, []);
     console.log(
-      "PASS: catalogue, keyboard dialog, saved progress, lab branches and validation, all quizzes, roadmap, reset, storage fallback, business examples and guide downloads, and responsive layouts.",
+      "PASS: catalogue, keyboard dialog, saved progress, lab branches and validation, all quizzes, roadmap, reset, storage fallback, business examples and guide downloads, monthly create/reuse and confirmation, small subworkflow contracts, SVG icons, budget estimation, and responsive layouts.",
     );
   } finally {
     if (browser) await browser.close();
