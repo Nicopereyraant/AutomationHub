@@ -1,6 +1,102 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Embedded SVG node icons are from n8n-io/n8n (master).
+Adaptations: aria-hidden/focusable attributes and presentation size/color, scalable viewBox and unique SVG IDs.
+The original SVG artwork is otherwise retained. Brand logos belong to their owners.
+Source URLs are preserved in nodeIcons. Applicable n8n license follows:
+# License
+
+Portions of this software are licensed as follows:
+
+- Content of branches other than the main branch (i.e. "master") are not licensed.
+- Source code files that contain ".ee." in their filename or ".ee" in their dirname are NOT licensed under
+  the Sustainable Use License.
+  To use source code files that contain ".ee." in their filename or ".ee" in their dirname you must hold a
+	valid n8n Enterprise License specifically allowing you access to such source code files and as defined
+	in "LICENSE_EE.md".
+- All third party components incorporated into the n8n Software are licensed under the original license
+  provided by the owner of the applicable component.
+- Content outside of the above mentioned files or restrictions is available under the "Sustainable Use
+  License" as defined below.
+
+## Sustainable Use License
+
+Version 1.0
+
+### Acceptance
+
+By using the software, you agree to all of the terms and conditions below.
+
+### Copyright License
+
+The licensor grants you a non-exclusive, royalty-free, worldwide, non-sublicensable, non-transferable license
+to use, copy, distribute, make available, and prepare derivative works of the software, in each case subject
+to the limitations below.
+
+### Limitations
+
+You may use or modify the software only for your own internal business purposes or for non-commercial or
+personal use. You may distribute the software or provide it to others only if you do so free of charge for
+non-commercial purposes. You may not alter, remove, or obscure any licensing, copyright, or other notices of
+the licensor in the software. Any use of the licensor’s trademarks is subject to applicable law.
+
+### Patents
+
+The licensor grants you a license, under any patent claims the licensor can license, or becomes able to
+license, to make, have made, use, sell, offer for sale, import and have imported the software, in each case
+subject to the limitations and conditions in this license. This license does not cover any patent claims that
+you cause to be infringed by modifications or additions to the software. If you or your company make any
+written claim that the software infringes or contributes to infringement of any patent, your patent license
+for the software granted under these terms ends immediately. If your company makes such a claim, your patent
+license ends immediately for work on behalf of your company.
+
+### Notices
+
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these
+terms. If you modify the software, you must include in any modified copies of the software a prominent notice
+stating that you have modified the software.
+
+### No Other Rights
+
+These terms do not imply any licenses other than those expressly granted in these terms.
+
+### Termination
+
+If you use the software in violation of these terms, such use is not licensed, and your license will
+automatically terminate. If the licensor provides you with a notice of your violation, and you cease all
+violation of this license no later than 30 days after you receive that notice, your license will be reinstated
+retroactively. However, if you violate these terms after such reinstatement, any additional violation of these
+terms will cause your license to terminate automatically and permanently.
+
+### No Liability
+
+As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will
+not be liable to you for any damages arising out of these terms or the use or nature of the software, under
+any kind of legal claim.
+
+### Definitions
+
+The “licensor” is the entity offering these terms.
+
+The “software” is the software the licensor makes available under these terms, including any portion of it.
+
+“You” refers to the individual or entity agreeing to these terms.
+
+“Your company” is any legal entity, sole proprietorship, or other kind of organization that you work for, plus
+all organizations that have control over, are under the control of, or are under common control with that
+organization. Control means ownership of substantially all the assets of an entity, or the power to direct its
+management and policies by vote, contract, or otherwise. Control can be direct or indirect.
+
+“Your license” is the license granted to you for the software under these terms.
+
+“Use” means anything you do with the software requiring your license.
+
+“Trademark” means trademarks, service marks, and similar rights.
+
+
+-->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101216" />
@@ -1373,6 +1469,318 @@
           min-height: 0;
         }
       }
+      .actual-node-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .actual-node-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .node-icon .actual-node-icon {
+        width: 25px;
+        height: 25px;
+      }
+      .case-journey {
+        display: block;
+      }
+      .flow-track {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        padding: 3px 24px 4px 0;
+      }
+      .case-journey .flow-node {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1 1 160px;
+        min-width: 145px;
+        max-width: 240px;
+        padding: 15px;
+        text-align: left;
+      }
+      .flow-node:after {
+        content: "→";
+        position: absolute;
+        right: -21px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .flow-node:last-child:after {
+        content: none;
+      }
+      .case-journey .flow-node span {
+        display: initial;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+      }
+      .case-journey .flow-node .flow-count {
+        display: block;
+        font: 9px var(--mono);
+        color: var(--muted);
+        margin-bottom: 5px;
+      }
+      .flow-node strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .flow-node .flow-operation {
+        display: block !important;
+        font-size: 10px !important;
+        line-height: 1.5;
+        margin-top: 5px !important;
+        color: var(--muted) !important;
+      }
+      .flow-node .actual-node-icon {
+        width: 32px;
+        height: 32px;
+      }
+      .case-journey.grouped-flow {
+        max-height: 630px;
+        overflow: auto;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 17px;
+        background:
+          radial-gradient(circle at 1px 1px, #30353e 1px, transparent 0) 0
+            0/18px 18px,
+          var(--bg);
+      }
+      .flow-stage + .flow-stage {
+        border-top: 1px dashed var(--border);
+        margin-top: 18px;
+        padding-top: 18px;
+      }
+      .flow-stage-title {
+        font: 10px var(--mono);
+        color: var(--green);
+        margin: 0 0 14px;
+        letter-spacing: 0.4px;
+      }
+      .flow-alternative {
+        font: 10px var(--mono);
+        color: var(--muted);
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .flow-alternative .actual-node-icon {
+        width: 17px;
+        height: 17px;
+        opacity: 0.65;
+      }
+      .flow-route {
+        font: 9px var(--mono);
+        padding: 4px 9px;
+        border: 1px solid #5b5140;
+        color: var(--yellow);
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 9px;
+      }
+      .monthly-controls {
+        background: #20282b;
+        border: 1px solid #40585c;
+        border-radius: 11px;
+        padding: 20px;
+        margin-bottom: 23px;
+      }
+      .scenario-presets {
+        margin-bottom: 18px;
+      }
+      .scenario-fields {
+        display: flex;
+        gap: 12px 22px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .scenario-fields label {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .scenario-fields input {
+        accent-color: var(--green);
+        width: 16px;
+        height: 16px;
+      }
+      .scenario-fields label:has(input:disabled) {
+        opacity: 0.5;
+      }
+      .scenario-fields select {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      #monthlyStatus {
+        font: 11px/1.8 var(--mono);
+        color: var(--green);
+        margin: 18px 0 8px;
+      }
+      .monthly-controls > .muted {
+        font-size: 11px;
+      }
+      .performance-panel {
+        margin-top: 24px;
+        border: 1px solid #48526b;
+        background: #1a1d29;
+        border-radius: 12px;
+        padding: 23px;
+      }
+      .performance-panel > .muted {
+        font-size: 12px;
+        margin: 12px 0 20px;
+      }
+      .budget-inputs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 15px;
+      }
+      .budget-inputs label {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .budget-inputs input {
+        display: block;
+        width: 100%;
+        padding: 9px 11px;
+        margin-top: 7px;
+      }
+      .budget-results {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-top: 22px;
+      }
+      .budget-results > div {
+        padding: 16px;
+        border-right: 1px solid var(--border);
+      }
+      .budget-results > div:last-child {
+        border: 0;
+      }
+      .budget-results strong {
+        display: block;
+        font: 22px var(--mono);
+        color: var(--green);
+      }
+      .budget-results span {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .performance-notes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .performance-notes h4 {
+        font-size: 13px;
+        margin: 0 0 10px;
+      }
+      .performance-notes p {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .performance-panel .road-links {
+        gap: 12px;
+        font-size: 11px;
+      }
+      .icon-credits {
+        font-size: 10px;
+        color: var(--muted);
+        padding-bottom: 20px;
+      }
+      .icon-credits summary {
+        cursor: pointer;
+      }
+      .icon-credits pre {
+        max-height: 250px;
+        overflow: auto;
+        padding: 12px;
+        font-size: 10px;
+      }
+      .icon-credits p {
+        margin: 10px 0;
+      }
+      @media (max-width: 900px) {
+        .budget-inputs {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .performance-notes {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .case-journey .flow-node {
+          min-width: 0;
+          max-width: none;
+          flex-basis: calc(50% - 12px);
+          padding: 12px;
+          gap: 9px;
+        }
+        .case-journey .flow-node .actual-node-icon {
+          width: 24px;
+          height: 24px;
+        }
+        .flow-node strong {
+          font-size: 11px;
+        }
+        .flow-track {
+          padding-right: 0;
+          gap: 12px;
+        }
+        .flow-node:after {
+          display: none;
+        }
+        .flow-stage-title {
+          font-size: 9px;
+          line-height: 1.8;
+        }
+        .case-journey.grouped-flow {
+          padding: 12px;
+          max-height: 550px;
+        }
+        .case-journey.grouped-flow .flow-node {
+          flex-basis: 100%;
+        }
+        .case-journey.grouped-flow .flow-node:not(:last-child):after {
+          content: "↓";
+          display: block;
+          right: 16px;
+          top: auto;
+          bottom: -15px;
+          transform: none;
+          font-size: 12px;
+        }
+        .monthly-controls,
+        .performance-panel {
+          padding: 16px;
+        }
+        .budget-results {
+          grid-template-columns: 1fr;
+        }
+        .budget-results > div {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .budget-results strong {
+          font-size: 20px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1456,7 +1864,7 @@
           03 Desafíos <span class="nav-count">10</span></button
         ><button class="view-tab" data-view="roadmap">04 Mi ruta</button>
         <button class="view-tab" data-view="examples">
-          05 Ejemplos <span class="nav-count">7</span>
+          05 Ejemplos <span class="nav-count" id="examplesNavCount">9</span>
         </button>
       </nav>
       <main id="main" tabindex="-1">
@@ -1687,7 +2095,7 @@
                 decide y qué sale.
               </p>
             </div>
-            <span class="tag">7 GUÍAS PRÁCTICAS</span>
+            <span class="tag" id="examplesGuideCount">9 GUÍAS PRÁCTICAS</span>
           </div>
           <div class="notice">
             Empezá por “Separar pedidos por importe”: usa nodos nativos y no
@@ -1753,6 +2161,50 @@
               <summary>Qué necesitás para armarlo en n8n</summary>
               <ul id="exampleRequires"></ul>
             </details>
+            <div class="monthly-controls" id="monthlyControls" hidden>
+              <span class="panel-title"
+                >CAMBIÁ EL ESTADO DEL DRIVE DE EJEMPLO</span
+              >
+              <div class="actions scenario-presets">
+                <button class="small" data-monthly-preset="new">
+                  Sin estructura</button
+                ><button class="small" data-monthly-preset="month">
+                  Mes nuevo</button
+                ><button class="small" data-monthly-preset="existing">
+                  Todo existente
+                </button>
+              </div>
+              <div class="scenario-fields">
+                <label
+                  ><input type="checkbox" id="monthlyYear" checked /> Existe la
+                  carpeta del año</label
+                >
+                <label
+                  ><input type="checkbox" id="monthlyMonth" /> Existe la carpeta
+                  del mes</label
+                >
+                <label
+                  ><input type="checkbox" id="monthlyReport" /> Existe el
+                  reporte mensual</label
+                >
+                <label
+                  ><input type="checkbox" id="monthlyVerified" checked /> Carga
+                  completa: 3 de 3 filas</label
+                >
+                <label for="monthlySource"
+                  >Fuente de datos
+                  <select id="monthlySource">
+                    <option value="bigquery">BigQuery</option>
+                    <option value="sql">PostgreSQL / SQL</option>
+                  </select></label
+                >
+              </div>
+              <p id="monthlyStatus" role="status"></p>
+              <p class="muted">
+                Los controles cambian datos ficticios y la ruta ilustrativa. No
+                consultan tu Drive ni ejecutan estos nodos.
+              </p>
+            </div>
             <p class="panel-title">RECORRIDO DEL EJEMPLO · ELEGÍ UN NODO</p>
             <div
               class="case-journey"
@@ -1812,6 +2264,171 @@
               <span class="panel-title">AL LLEVARLO A UN NEGOCIO</span>
               <p id="exampleProduction"></p>
             </div>
+            <section
+              class="performance-panel"
+              id="performancePanel"
+              aria-labelledby="performanceTitle"
+              hidden
+            >
+              <span class="section-kicker">VOLUMEN, PAYLOAD Y TIEMPO</span>
+              <h3 id="performanceTitle">
+                Dimensioná un lote antes de ejecutarlo.
+              </h3>
+              <p class="muted">
+                Estimación didáctica. Medí tus datos serializados y tu
+                instancia: estos valores no son límites de n8n ni garantías de
+                rendimiento.
+              </p>
+              <div class="budget-inputs">
+                <label
+                  >Filas totales<input
+                    id="budgetRows"
+                    type="number"
+                    min="1"
+                    max="1000000000"
+                    step="1"
+                    value="100000"
+                /></label>
+                <label
+                  >Filas por lote<input
+                    id="budgetBatch"
+                    type="number"
+                    min="1"
+                    max="1000000"
+                    step="1"
+                    value="500"
+                /></label>
+                <label
+                  >Bytes promedio por fila<input
+                    id="budgetBytes"
+                    type="number"
+                    min="1"
+                    max="10000000"
+                    step="1"
+                    value="800"
+                /></label>
+                <label
+                  >Segundos de trabajo por lote<input
+                    id="budgetSeconds"
+                    type="number"
+                    min="0.1"
+                    max="86400"
+                    step="0.1"
+                    value="2"
+                /></label>
+                <label
+                  >Pausa entre lotes (seg.)<input
+                    id="budgetPause"
+                    type="number"
+                    min="0"
+                    max="86400"
+                    step="0.1"
+                    value="1"
+                /></label>
+                <label
+                  >Presupuesto del padre (seg.)<input
+                    id="budgetTimeout"
+                    type="number"
+                    min="1"
+                    max="604800"
+                    step="1"
+                    value="300"
+                /></label>
+                <label
+                  >Objetivo de payload (KiB)<input
+                    id="budgetPayload"
+                    type="number"
+                    min="1"
+                    max="1048576"
+                    step="1"
+                    value="1024"
+                /></label>
+              </div>
+              <p id="budgetError" class="error" role="alert" hidden></p>
+              <div
+                class="budget-results"
+                id="budgetResults"
+                role="status"
+                aria-live="polite"
+              >
+                <div>
+                  <strong id="budgetBatchCount"></strong
+                  ><span>lotes estimados</span>
+                </div>
+                <div>
+                  <strong id="budgetBatchSize"></strong
+                  ><span>KiB de filas por lote</span>
+                </div>
+                <div>
+                  <strong id="budgetDuration"></strong
+                  ><span>segundos en serie</span>
+                </div>
+              </div>
+              <p class="notice" id="budgetAdvice"></p>
+              <div class="performance-notes">
+                <div>
+                  <h4>Paginar desde la fuente</h4>
+                  <p>
+                    BigQuery: jobId + pageToken. SQL: cursor estable y orden
+                    determinista. Descargar todo y después usar Loop Over Items
+                    conserva el problema inicial. maxResults del nodo BigQuery
+                    no limita necesariamente el total devuelto.
+                  </p>
+                </div>
+                <div>
+                  <h4>Retornar un recibo pequeño</h4>
+                  <p>
+                    Padre → hijo: IDs, período y cursor. Hijo → padre: filas
+                    confirmadas, estado y siguiente cursor. No devuelvas los
+                    rows ni acumules todos los lotes en el padre.
+                  </p>
+                </div>
+                <div>
+                  <h4>Preservar el presupuesto</h4>
+                  <p>
+                    Un padre que espera a sus hijos puede agotar su tiempo
+                    total. Concurrencia acotada, checkpoints, backoff con jitter
+                    y reintentos limitados. Si no alcanza, reanudá desde otra
+                    ejecución y esperá su cierre persistente antes de notificar.
+                  </p>
+                </div>
+              </div>
+              <p class="doc-note">
+                La estimación usa filas × bytes, sin envoltorio JSON, copias en
+                memoria, latencia adicional ni reintentos. Sheets recomienda
+                alrededor de 2 MB por petición; es una recomendación, no un
+                límite universal. Ajustá por la API, el proxy y el plan de tu
+                instancia.
+              </p>
+              <div class="road-links">
+                <a
+                  href="https://docs.n8n.io/hosting/scaling/memory-errors/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Memoria en n8n →</a
+                ><a
+                  href="https://docs.n8n.io/flow-logic/subworkflows/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Subworkflows →</a
+                ><a
+                  href="https://cloud.google.com/bigquery/docs/paging-results"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Páginas BigQuery →</a
+                ><a
+                  href="https://developers.google.com/workspace/sheets/api/limits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Cuotas de Sheets →</a
+                ><a
+                  href="https://docs.n8n.io/workflows/settings/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Timeout del workflow →</a
+                >
+              </div>
+            </section>
           </article>
         </section>
       </main>
@@ -1822,6 +2439,28 @@
           <button id="resetProgress">Borrar progreso</button></span
         >
       </footer>
+      <details class="icon-credits">
+        <summary>Iconos de nodos y atribución</summary>
+        <p>
+          Iconos del proyecto n8n y logos de sus integraciones. Se incorporan en
+          el HTML para que los recorridos funcionen sin descargar imágenes
+          externas. Se adaptaron accesibilidad, tamaño, color e IDs internos de
+          SVG.
+        </p>
+        <a
+          href="https://github.com/n8n-io/n8n"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Fuente n8n</a
+        >
+        ·
+        <a
+          href="https://github.com/n8n-io/n8n/blob/master/LICENSE.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Licencia original</a
+        >
+      </details>
     </div>
     <dialog
       id="nodeDialog"
@@ -5502,6 +6141,1035 @@
         },
       ];
 
+      nodes.push(
+        ...[
+          {
+            name: "Google BigQuery",
+            cat: "data",
+            icon: "▤",
+            iconBg: "rgba(74,158,255,.15)",
+            desc: "Consulta y agrega datos en BigQuery con GoogleSQL. Filtrá en la fuente y distinguí paginación de resultados de los límites de cada ejecución.",
+            tags: ["BigQuery", "SQL", "Paginación", "Analytics"],
+            ops: [
+              {
+                name: "Execute Query — Consultar",
+                desc: "Ejecuta GoogleSQL con proyecto, ubicación y credenciales. Usá parámetros nombrados y seleccioná solo las columnas y el período requeridos.",
+              },
+              {
+                name: "maxResults — Tamaño de página",
+                desc: "En el nodo nativo controla cada página; no necesariamente el total devuelto. Para una página por subworkflow, controlá el cursor de la API o verificá tu versión.",
+              },
+              {
+                name: "timeoutMs y costo",
+                desc: "La espera de una llamada no es el timeout global del workflow. Usá dry run y maximumBytesBilled cuando corresponda; paginar resultados no reduce por sí solo los bytes consultados.",
+              },
+            ],
+            tips: [
+              "Consultá los ejemplos de reporte mensual y lotes con subworkflows.",
+              "BigQuery puede devolver INT64 como texto. Validá conversiones y precisión antes de usar números de JavaScript.",
+            ],
+          },
+          {
+            name: "Execute Sub-workflow Trigger",
+            cat: "trigger",
+            icon: "↳",
+            iconBg: "rgba(255,109,59,.15)",
+            desc: "Recibe una llamada desde otro workflow. En el editor también aparece como When Executed by Another Workflow. Define el contrato de entrada del trabajador.",
+            tags: ["Subworkflow", "Contrato", "Lotes"],
+            ops: [
+              {
+                name: "Recibir el contrato",
+                desc: "Declarar IDs, cursores y parámetros de una página, o aceptar todos los datos. Permití solo los workflows llamadores adecuados.",
+              },
+              {
+                name: "Retornar un resumen",
+                desc: "Los datos del último nodo del hijo se devuelven al padre que espera su finalización. Para volumen, devolvé solo un recibo y el siguiente cursor.",
+              },
+            ],
+            tips: [
+              "Evitá pasar todo el dataset al hijo o devolverlo al padre.",
+              "Wait for Sub-Workflow Completion controla la espera del padre; una llamada asíncrona necesita coordinación persistente antes de confirmar éxito.",
+            ],
+          },
+        ],
+      );
+      const nodeIcons = {
+        "Manual Trigger": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M20.5204 14.248L21.0507 14.7783L21.9223 13.9067L20.7476 13.5332L20.5204 14.248ZM18.3466 16.4218L17.8162 15.8914L17.2859 16.4218L17.8162 16.9521L18.3466 16.4218ZM21.021 19.0962L21.5513 19.6265L22.0817 19.0962L21.5513 18.5659L21.021 19.0962ZM19.0965 21.0207L18.5662 21.551L19.0965 22.0814L19.6268 21.551L19.0965 21.0207ZM16.422 18.3463L16.9524 17.8159L16.422 17.2856L15.8917 17.8159L16.422 18.3463ZM14.2476 20.5208L13.5328 20.748L13.9063 21.9227L14.7779 21.0511L14.2476 20.5208ZM11.3231 11.3235L11.5504 10.6088L10.1692 10.1696L10.6084 11.5508L11.3231 11.3235ZM20.5204 14.248L19.99 13.7176L17.8162 15.8914L18.3466 16.4218L18.8769 16.9521L21.0507 14.7783L20.5204 14.248ZM18.3466 16.4218L17.8162 16.9521L20.4907 19.6265L21.021 19.0962L21.5513 18.5659L18.8769 15.8914L18.3466 16.4218ZM21.021 19.0962L20.4907 18.5659L18.5662 20.4904L19.0965 21.0207L19.6268 21.551L21.5513 19.6265L21.021 19.0962ZM19.0965 21.0207L19.6268 20.4904L16.9524 17.8159L16.422 18.3463L15.8917 18.8766L18.5662 21.551L19.0965 21.0207ZM16.422 18.3463L15.8917 17.8159L13.7172 19.9904L14.2476 20.5208L14.7779 21.0511L16.9524 18.8766L16.422 18.3463ZM14.2476 20.5208L14.9623 20.2935L12.0379 11.0963L11.3231 11.3235L10.6084 11.5508L13.5328 20.748L14.2476 20.5208ZM11.3231 11.3235L11.0959 12.0383L20.2931 14.9627L20.5204 14.248L20.7476 13.5332L11.5504 10.6088L11.3231 11.3235Z" fill="currentColor"/>\n<path d="M7.6249 19.5793C5.00958 18.0664 3.25 15.2387 3.25 12C3.25 7.16751 7.16751 3.25 12 3.25C15.2231 3.25 18.0391 4.99263 19.5574 7.5871" stroke="currentColor" stroke-width="1.5"/>\n<path d="M9.62446 16.1142C8.20498 15.2928 7.25 13.7579 7.25 12C7.25 9.37665 9.37665 7.25 12 7.25C13.7524 7.25 15.2832 8.19898 16.1064 9.61107" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e0e2e7",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/manual-trigger.svg",
+        },
+        "Set / Edit Fields": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M12.2676 4.34277L11.1113 5.5H5.75C5.33579 5.5 5 5.83579 5 6.25V18.25C5 18.6642 5.33579 19 5.75 19H17.75C18.1642 19 18.5 18.6642 18.5 18.25V12.8887L19.6562 11.7324H20V18.25C20 19.4926 18.9926 20.5 17.75 20.5H5.75C4.50736 20.5 3.5 19.4926 3.5 18.25V6.25C3.5 5.00736 4.50736 4 5.75 4H12.2676V4.34277Z" fill="currentColor"/>\n<path d="M17.1893 3.31066C17.7751 2.72487 18.7249 2.72487 19.3107 3.31066L20.6893 4.68934C21.2751 5.27513 21.2751 6.22487 20.6893 6.81066L12.6893 14.8107C12.408 15.092 12.0265 15.25 11.6287 15.25H8.75V12.3713C8.75 11.9735 8.90804 11.592 9.18934 11.3107L17.1893 3.31066Z" stroke="currentColor" stroke-width="1.5"/>\n<path d="M15.75 4.75L19.25 8.25" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#90baf2",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/edit-fields.svg",
+        },
+        IF: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M21.5 5.75H2" stroke="currentColor" stroke-width="1.5"/>\n<path d="M21.5 18.25H14.4399C13.1353 18.25 11.9802 17.4069 11.5826 16.1643L8.91742 7.83568C8.5198 6.59314 7.36475 5.75 6.06014 5.75H2" stroke="currentColor" stroke-width="1.5"/>\n<path d="M18.5 2.75L21.5 5.75L18.5 8.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M18.5 15.25L21.5 18.25L18.5 21.25" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#8ad9b0",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/if.svg",
+        },
+        "Split Out": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M20 4.75H13.5211C12.4285 4.75 11.4222 5.34407 10.8944 6.30077L8.6056 10.4492C8.07776 11.4059 7.07151 12 5.97886 12H3" stroke="currentColor" stroke-width="1.5"/>\n<path d="M20 19.25H13.5211C12.4285 19.25 11.4222 18.6559 10.8944 17.6992L8.6056 13.5508C8.07776 12.5941 7.07151 12 5.97886 12H3" stroke="currentColor" stroke-width="1.5"/>\n<path d="M13 9.75H20" stroke="currentColor" stroke-width="1.5"/>\n<path d="M13 14.25H20" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#b9a4f4",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/split-out.svg",
+        },
+        "Schedule Trigger": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<circle cx="12" cy="12" r="8.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M12 6V12L8.5 14" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e0e2e7",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/schedule-trigger.svg",
+        },
+        Webhook: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<circle cx="12" cy="7" r="1.5" fill="currentColor"/>\n<circle cx="6.5" cy="16.5" r="1.5" fill="currentColor"/>\n<circle cx="17.5" cy="16.5" r="1.5" fill="currentColor"/>\n<path d="M15.2476 8.875C15.5892 8.28336 15.7512 7.63732 15.7506 6.99998C15.7494 5.70521 15.077 4.44635 13.875 3.75241C12.0814 2.71687 9.78794 3.3314 8.75241 5.125C7.71687 6.9186 8.3314 9.21206 10.125 10.2476L6.5 16.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M6.5 12.75C4.42893 12.75 2.75 14.4289 2.75 16.5C2.75 18.5711 4.42893 20.25 6.5 20.25C8.57107 20.25 10.25 18.5711 10.25 16.5H17.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M14.2524 18.375C15.2879 20.1686 17.5814 20.7831 19.375 19.7476C21.1686 18.7121 21.7831 16.4186 20.7476 14.625C19.7121 12.8314 17.4186 12.2169 15.625 13.2524L12 7" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e9a4d6",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/webhook.svg",
+        },
+        Filter: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M2 6.75H22" stroke="currentColor" stroke-width="1.5"/>\n<path d="M5 12.75H19" stroke="currentColor" stroke-width="1.5"/>\n<path d="M8 18.75H16" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#90baf2",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/filter.svg",
+        },
+        Summarize: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M3.75 8.25H20.25" stroke="currentColor" stroke-width="1.5"/>\n<path d="M8.25 3.75V20.25" stroke="currentColor" stroke-width="1.5"/>\n<rect x="3.75" y="3.75" width="16.5" height="16.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e9cd85",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/summarize.svg",
+        },
+        Switch: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M21.5 5.25H2" stroke="currentColor" stroke-width="1.5"/>\n<path d="M21.5 18.75H14.49C13.1614 18.75 11.9911 17.8761 11.6136 16.6023L8.88637 7.39773C8.50893 6.12387 7.33857 5.25 6.00997 5.25H2" stroke="currentColor" stroke-width="1.5"/>\n<path d="M21.5 12H12.49C11.1614 12 9.99107 11.1261 9.61363 9.85227L8.88637 7.39773C8.50893 6.12387 7.33857 5.25 6.00997 5.25H2" stroke="currentColor" stroke-width="1.5"/>\n<path d="M19 9.5L21.5 12L19 14.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M19 2.75L21.5 5.25L19 7.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M19 16.25L21.5 18.75L19 21.25" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#90baf2",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/switch.svg",
+        },
+        "Error Trigger": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<circle cx="12" cy="12" r="8.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M8.5 8.5L15.5 15.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M15.5 8.5L8.5 15.5" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#90baf2",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/error-trigger.svg",
+        },
+        "n8n Form Trigger": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M7.75 4.75H6.25C5.42157 4.75 4.75 5.42157 4.75 6.25V18.75C4.75 19.5784 5.42157 20.25 6.25 20.25H17.75C18.5784 20.25 19.25 19.5784 19.25 18.75V6.25C19.25 5.42157 18.5784 4.75 17.75 4.75H16.25" stroke="currentColor" stroke-width="1.5"/>\n<path d="M14.25 3.75H13.5V4.5H14.25V3.75ZM16.25 5.25H17H16.25ZM16.25 7.25V8H17V7.25H16.25ZM7.75 7.25H7V8H7.75V7.25ZM9.25 3.75V3V3V3.75ZM9.75 3.75V4.5H10.5V3.75H9.75ZM12.75 1.75V2.5C13.1642 2.5 13.5 2.83579 13.5 3.25H14.25H15C15 2.00736 13.9926 1 12.75 1V1.75ZM14.25 3.25H13.5V3.75H14.25H15V3.25H14.25ZM14.25 3.75V4.5H14.75V3.75V3H14.25V3.75ZM14.75 3.75V4.5C15.1642 4.5 15.5 4.83579 15.5 5.25H16.25H17C17 4.00736 15.9926 3 14.75 3V3.75ZM16.25 5.25H15.5V7.25H16.25H17V5.25H16.25ZM16.25 7.25V6.5H7.75V7.25V8H16.25V7.25ZM7.75 7.25H8.5V5.25H7.75H7V7.25H7.75ZM7.75 5.25H8.5C8.5 4.83579 8.83579 4.5 9.25 4.5V3.75V3C8.00736 3 7 4.00736 7 5.25H7.75ZM9.25 3.75V4.5H9.75V3.75V3H9.25V3.75ZM9.75 3.75H10.5V3.25H9.75H9V3.75H9.75ZM9.75 3.25H10.5C10.5 2.83579 10.8358 2.5 11.25 2.5V1.75V1C10.0074 1 9 2.00736 9 3.25H9.75ZM11.25 1.75V2.5H12.75V1.75V1H11.25V1.75Z" fill="currentColor"/>\n<path d="M8 11.75H16" stroke="currentColor" stroke-width="1.5"/>\n<path d="M8 14.75H16" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#8ad9d0",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/form-trigger.svg",
+        },
+        "Loop Over Items": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M10.5 10.25L14 6.75L10.5 3.25" stroke="currentColor" stroke-width="1.5"/>\n<path d="M14 6.75H8C5.10051 6.75 2.75 9.10051 2.75 12C2.75 14.8995 5.10051 17.25 8 17.25H16C18.8995 17.25 21.25 14.8995 21.25 12C21.25 9.44246 19.4212 7.31205 17 6.84512" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#8ad9b0",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/loop-over-items.svg",
+        },
+        "Execute Workflow": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M8 20.25L5.25 20.25C4.42157 20.25 3.75 19.5784 3.75 18.75L3.75 5.25C3.75 4.42157 4.42157 3.75 5.25 3.75L8 3.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M15 17.5L20.5 12L15 6.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M20.5 12L7 12" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#ff886d",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/execute-sub-workflow.svg",
+        },
+        "Execute Sub-workflow Trigger": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M16 20.25L18.75 20.25C19.5784 20.25 20.25 19.5784 20.25 18.75L20.25 5.25C20.25 4.42157 19.5784 3.75 18.75 3.75L16 3.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M11 17.5L16.5 12L11 6.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M16.5 12L3 12" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e0e2e7",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/sub-workflow-trigger.svg",
+        },
+        Code: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M9 3.75H6.25C5.42157 3.75 4.75 4.42157 4.75 5.25V9.37868C4.75 9.7765 4.59197 10.158 4.31066 10.4393L2.75 12L4.31066 13.5607C4.59196 13.842 4.75 14.2235 4.75 14.6213V18.75C4.75 19.5784 5.42157 20.25 6.25 20.25H9" stroke="currentColor" stroke-width="1.5"/>\n<path d="M15 3.75H17.75C18.5784 3.75 19.25 4.42157 19.25 5.25V9.37868C19.25 9.7765 19.408 10.158 19.6893 10.4393L21.25 12L19.6893 13.5607C19.408 13.842 19.25 14.2235 19.25 14.6213V18.75C19.25 19.5784 18.5784 20.25 17.75 20.25H15" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e9cd85",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/code.svg",
+        },
+        Merge: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M2 5.75H21.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M2 18.25H6.06014C7.36475 18.25 8.5198 17.4069 8.91742 16.1643L11.5826 7.83568C11.9802 6.59314 13.1352 5.75 14.4399 5.75H21.5" stroke="currentColor" stroke-width="1.5"/>\n<path d="M18.5 2.75L21.5 5.75L18.5 8.75" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#90baf2",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/merge.svg",
+        },
+        Wait: {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path d="M18.25 20.25H5.75V17.6213C5.75 17.2235 5.90803 16.842 6.18934 16.5607L9.89645 12.8536C10.1228 12.6272 10.25 12.3201 10.25 12C10.25 11.6799 10.1228 11.3728 9.89645 11.1464L6.18934 7.43934C5.90803 7.15803 5.75 6.7765 5.75 6.37868V3.75H18.25V6.37868C18.25 6.7765 18.092 7.15804 17.8107 7.43934L14.1036 11.1464C13.8772 11.3728 13.75 11.6799 13.75 12C13.75 12.3201 13.8772 12.6272 14.1036 12.8536L17.8107 16.5607C18.092 16.842 18.25 17.2235 18.25 17.6213V20.25Z" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#e9a4b0",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/wait.svg",
+        },
+        "Stop and Error": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<circle cx="12" cy="12" r="8.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M5.82001 5.82001L18.1799 18.1799" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#ff886d",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/stop-and-error.svg",
+        },
+        "HTTP Request": {
+          svg: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n<circle cx="12" cy="12" r="8.75" stroke="currentColor" stroke-width="1.5"/>\n<ellipse cx="12" cy="12" rx="3.75" ry="8.75" stroke="currentColor" stroke-width="1.5"/>\n<path d="M3 12H21" stroke="currentColor" stroke-width="1.5"/>\n</svg>',
+          color: "#8ad9d0",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/@n8n/design-system/src/components/N8nIcon/nodes/http-request.svg",
+        },
+        "Google Drive": {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 81 73"><use xlink:href="#node-__ICON_INSTANCE__-a" x=".5" y=".5"/><symbol id="node-__ICON_INSTANCE__-a" overflow="visible"><g fill-rule="nonzero" stroke="none"><path fill="#0066da" d="m6.048 61.26 3.528 6.094c.733 1.283 1.787 2.291 3.024 3.024l12.6-21.81H0a8.3 8.3 0 0 0 1.1 4.124z"/><path fill="#00ac47" d="M40 22.91 27.4 1.1c-1.237.733-2.291 1.741-3.024 3.024L1.1 44.445A8.3 8.3 0 0 0 0 48.568h25.2z"/><path fill="#ea4335" d="M67.4 70.378c1.237-.733 2.291-1.741 3.024-3.024l1.466-2.52 7.01-12.142a8.3 8.3 0 0 0 1.1-4.124H54.798l5.363 10.538z"/><path fill="#00832d" d="M40 22.91 52.6 1.1C51.363.367 49.943 0 48.477 0H31.524c-1.466 0-2.887.412-4.124 1.1z"/><path fill="#2684fc" d="M54.799 48.568H25.2l-12.6 21.81c1.237.733 2.657 1.1 4.124 1.1h46.552c1.466 0 2.887-.412 4.124-1.1z"/><path fill="#ffba00" d="M67.262 24.284 55.624 4.124C54.891 2.841 53.837 1.833 52.6 1.1L40 22.91l14.8 25.659h25.155a8.3 8.3 0 0 0-1.1-4.124z"/></g></symbol></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Google/Drive/googleDrive.svg",
+        },
+        "Google Sheets": {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path fill="#28B446" d="M35.69 1 52 17.225v39.087a3.67 3.67 0 0 1-1.084 2.61A3.7 3.7 0 0 1 48.293 60H12.707a3.7 3.7 0 0 1-2.623-1.078A3.67 3.67 0 0 1 9 56.312V4.688a3.67 3.67 0 0 1 1.084-2.61A3.7 3.7 0 0 1 12.707 1z"/><path fill="#6ACE7C" d="M35.69 1 52 17.225H39.397c-2.054 0-3.707-1.829-3.707-3.872z"/><path fill="#219B38" d="M39.211 17.225 52 22.48v-5.255z"/><path fill="#FFF" d="M20.12 31.975c0-.817.662-1.475 1.483-1.475h17.794c.821 0 1.482.658 1.482 1.475v15.487c0 .818-.661 1.475-1.482 1.475H21.603a1.476 1.476 0 0 1-1.482-1.474V31.974zm2.225 1.475h6.672v2.212h-6.672zm0 5.162h6.672v2.213h-6.672zm0 5.163h6.672v2.212h-6.672zm9.638-10.325h6.672v2.212h-6.672zm0 5.162h6.672v2.213h-6.672zm0 5.163h6.672v2.212h-6.672z"/><path fill="#28B446" d="M34.69 0 51 16.225v39.087a3.67 3.67 0 0 1-1.084 2.61A3.7 3.7 0 0 1 47.293 59H11.707a3.7 3.7 0 0 1-2.623-1.078A3.67 3.67 0 0 1 8 55.312V3.688a3.67 3.67 0 0 1 1.084-2.61A3.7 3.7 0 0 1 11.707 0z"/><path fill="#6ACE7C" d="M34.69 0 51 16.225H38.397c-2.054 0-3.707-1.829-3.707-3.872z"/><path fill="#219B38" d="M38.211 16.225 51 21.48v-5.255z"/><path fill="#FFF" d="M19.12 30.975c0-.817.662-1.475 1.483-1.475h17.794c.821 0 1.482.658 1.482 1.475v15.487c0 .818-.661 1.475-1.482 1.475H20.603a1.476 1.476 0 0 1-1.482-1.474V30.974zm2.225 1.475h6.672v2.212h-6.672zm0 5.162h6.672v2.213h-6.672zm0 5.163h6.672v2.212h-6.672zm9.638-10.325h6.672v2.212h-6.672zm0 5.162h6.672v2.213h-6.672zm0 5.163h6.672v2.212h-6.672z"/></g></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Google/Sheet/googleSheets.svg",
+        },
+        Gmail: {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="256" height="193" preserveAspectRatio="xMidYMid" viewBox="0 0 256 193"><path fill="#4285F4" d="M58.182 192.05V93.14L27.507 65.077 0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455z"/><path fill="#34A853" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837-27.026 25.798z"/><path fill="#EA4335" d="m58.182 93.14-4.174-38.647 4.174-36.989L128 69.868l69.818-52.364 4.67 34.992-4.67 40.644L128 145.504z"/><path fill="#FBBC04" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945z"/><path fill="#C5221F" d="m0 49.504 26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23z"/></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Google/Gmail/gmail.svg",
+        },
+        Slack: {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 150.852 150.852"><use xlink:href="#node-__ICON_INSTANCE__-a" x=".926" y=".926"/><symbol id="node-__ICON_INSTANCE__-a" overflow="visible"><g stroke-width="1.852"><path fill="#e01e5a" stroke="#e01e5a" d="M40.741 93.55c0-8.735 6.607-15.772 14.815-15.772s14.815 7.037 14.815 15.772v38.824c0 8.737-6.607 15.774-14.815 15.774s-14.815-7.037-14.815-15.772z"/><path fill="#ecb22d" stroke="#ecb22d" d="M93.55 107.408c-8.735 0-15.772-6.607-15.772-14.815s7.037-14.815 15.772-14.815h38.826c8.735 0 15.772 6.607 15.772 14.815s-7.037 14.815-15.772 14.815z"/><path fill="#2fb67c" stroke="#2fb67c" d="M77.778 15.772C77.778 7.037 84.385 0 92.593 0s14.815 7.037 14.815 15.772v38.826c0 8.735-6.607 15.772-14.815 15.772s-14.815-7.037-14.815-15.772z"/><path fill="#36c5f1" stroke="#36c5f1" d="M15.772 70.371C7.037 70.371 0 63.763 0 55.556s7.037-14.815 15.772-14.815h38.826c8.735 0 15.772 6.607 15.772 14.815s-7.037 14.815-15.772 14.815z"/><g stroke-linejoin="miter"><path fill="#ecb22d" stroke="#ecb22d" d="M77.778 133.333c0 8.208 6.607 14.815 14.815 14.815s14.815-6.607 14.815-14.815-6.607-14.815-14.815-14.815H77.778z"/><path fill="#2fb67c" stroke="#2fb67c" d="M133.334 70.371h-14.815V55.556c0-8.207 6.607-14.815 14.815-14.815s14.815 6.607 14.815 14.815-6.607 14.815-14.815 14.815z"/><path fill="#e01e5a" stroke="#e01e5a" d="M14.815 77.778H29.63v14.815c0 8.207-6.607 14.815-14.815 14.815S0 100.8 0 92.593s6.607-14.815 14.815-14.815z"/><path fill="#36c5f1" stroke="#36c5f1" d="M70.371 14.815V29.63H55.556c-8.207 0-14.815-6.607-14.815-14.815S47.348 0 55.556 0s14.815 6.607 14.815 14.815z"/></g></g></symbol></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Slack/slack.svg",
+        },
+        "Google BigQuery": {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 66 58"><use xlink:href="#node-__ICON_INSTANCE__-a" x=".5" y=".5"/><symbol id="node-__ICON_INSTANCE__-a" overflow="visible"><g fill-rule="nonzero" stroke="none"><path fill="#4386fa" d="M14.48 54.473.558 30.359a4.16 4.16 0 0 1 0-4.164L14.48 2.082A4.16 4.16 0 0 1 18.08 0h27.857c1.48.007 2.845.8 3.585 2.082l13.92 24.113a4.16 4.16 0 0 1 0 4.164L49.52 54.473a4.16 4.16 0 0 1-3.6 2.082H18.07a4.17 4.17 0 0 1-3.593-2.082z"/><path fill="#000" d="M40.697 20.512s3.87 9.283-1.406 14.545-14.883 1.894-14.883 1.894L43.95 56.547h1.984a4.16 4.16 0 0 0 3.6-2.082l9.216-15.958z" opacity=".1"/><path d="M45.266 39.507 41 35.23a.7.7 0 0 0-.158-.12 11.63 11.63 0 0 0-1.499-15.859 11.63 11.63 0 0 0-16.396 16.436 11.63 11.63 0 0 0 15.863 1.46.7.7 0 0 0 .113.15l4.277 4.277a.67.67 0 0 0 .947 0l1.12-1.12a.67.67 0 0 0 0-.947zM31.64 36.741a8.75 8.75 0 0 1-6.188-14.937 8.75 8.75 0 0 1 14.937 6.188 8.75 8.75 0 0 1-8.749 8.749m-5.593-9.216v3.616a6.4 6.4 0 0 0 2.338 2.375v-6.013zm4.375-2.998v9.772a6.5 6.5 0 0 0 2.338 0v-9.772zm6.764 6.606v-2.142H34.85v4.5a6.43 6.43 0 0 0 2.338-2.368z"/></g></symbol></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Google/BigQuery/googleBigQuery.svg",
+        },
+        "Postgres / MySQL": {
+          svg: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 79 81"><use xlink:href="#node-__ICON_INSTANCE__-a" x=".5" y=".5"/><symbol id="node-__ICON_INSTANCE__-a" overflow="visible"><g fill-rule="nonzero" stroke="none"><path fill="#000" d="M77.391 47.922c-.466-1.412-1.688-2.396-3.268-2.632-.745-.111-1.598-.064-2.608.144-1.76.363-3.065.501-4.018.528 3.596-6.072 6.521-12.997 8.204-19.515 2.722-10.54 1.268-15.341-.432-17.513C70.77 3.185 64.206.097 56.287.002c-4.224-.052-7.933.782-9.867 1.382a37 37 0 0 0-5.77-.528c-3.809-.061-7.174.77-10.05 2.476a46 46 0 0 0-7.098-1.782C16.561.411 10.968 1.299 6.876 4.19 1.922 7.689-.375 13.77.05 22.262c.135 2.696 1.643 10.9 4.018 18.68 1.365 4.472 2.82 8.185 4.326 11.038 2.135 4.046 4.419 6.428 6.984 7.284 1.438.479 4.049.814 6.797-1.473a6 6 0 0 0 1.429 1.23c.783.494 1.74.897 2.696 1.136 3.446.862 6.674.646 9.427-.561l.041 1.362.06 1.899c.163 4.064.44 7.223 1.259 9.434.045.122.105.307.169.503.409 1.251 1.092 3.346 2.83 4.987 1.8 1.699 3.978 2.22 5.972 2.22 1 0 1.955-.131 2.792-.311 2.984-.639 6.373-1.614 8.824-5.104 2.318-3.3 3.444-8.27 3.648-16.101l.074-.634.048-.414.546.048.141.01c3.039.138 6.755-.506 9.037-1.566 1.803-.837 7.582-3.888 6.221-8.007"/><path fill="#336791" d="M72.195 48.723c-9.036 1.864-9.657-1.195-9.657-1.195 9.541-14.157 13.529-32.127 10.087-36.525C63.235-.994 46.981 4.68 46.71 4.827l-.087.016c-1.785-.371-3.783-.591-6.029-.628-4.089-.067-7.19 1.072-9.544 2.857 0 0-28.995-11.945-27.647 15.023.287 5.737 8.223 43.41 17.689 32.031 3.46-4.161 6.803-7.679 6.803-7.679 1.66 1.103 3.648 1.666 5.732 1.463l.162-.137a6.3 6.3 0 0 0 .065 1.62c-2.439 2.725-1.722 3.203-6.597 4.206-4.933 1.017-2.035 2.826-.143 3.299 2.294.574 7.6 1.386 11.185-3.633l-.143.573c.956.765 1.626 4.978 1.514 8.797s-.188 6.441.565 8.489 1.503 6.656 7.912 5.282c5.355-1.148 8.13-4.121 8.516-9.081.274-3.526.894-3.005.933-6.158l.497-1.493c.573-4.78.091-6.322 3.39-5.605l.802.07c2.428.11 5.606-.391 7.471-1.257 4.016-1.864 6.398-4.976 2.438-4.158"/><path d="M32.747 24.66c-.814-.113-1.552-.008-1.925.274a.7.7 0 0 0-.292.47c-.047.336.188.707.333.898.409.542 1.006.915 1.598.997a2 2 0 0 0 .256.018c.986 0 1.883-.768 1.962-1.335.099-.71-.932-1.183-1.931-1.322m26.975.022c-.078-.556-1.068-.715-2.007-.584s-1.848.554-1.772 1.112c.061.434.844 1.174 1.771 1.174q.117 0 .237-.016c.619-.086 1.073-.479 1.288-.705.329-.345.518-.73.484-.98m15.477 23.828c-.345-1.042-1.453-1.377-3.296-.997-5.471 1.129-7.43.347-8.073-.127 4.252-6.478 7.75-14.308 9.637-21.614.894-3.461 1.388-6.675 1.428-9.294.045-2.876-.445-4.988-1.455-6.279-4.072-5.203-10.048-7.994-17.283-8.07-4.973-.056-9.175 1.217-9.99 1.575a25 25 0 0 0-5.622-.722c-3.734-.06-6.961.834-9.633 2.655a43 43 0 0 0-7.828-2.052c-6.342-1.021-11.381-.248-14.978 2.3-4.291 3.04-6.272 8.475-5.888 16.152.129 2.583 1.601 10.529 3.923 18.139 3.057 10.016 6.38 15.686 9.877 16.852a4.4 4.4 0 0 0 1.402.232c1.276 0 2.839-.575 4.466-2.531a161 161 0 0 1 6.156-6.966 9.9 9.9 0 0 0 4.429 1.191l.01.121c-.31.368-.564.69-.781.965-1.07 1.358-1.293 1.641-4.738 2.351-.98.202-3.582.738-3.62 2.563-.041 1.993 3.076 2.83 3.431 2.919 1.238.31 2.43.463 3.568.463 2.766 0 5.2-.909 7.145-2.668-.06 7.106.236 14.107 1.089 16.241.699 1.746 2.406 6.014 7.798 6.014.791 0 1.662-.092 2.62-.297 5.627-1.207 8.071-3.694 9.016-9.177.506-2.93 1.374-9.928 1.782-13.682.862.269 1.971.392 3.17.392 2.501 0 5.387-.531 7.197-1.372 2.033-.944 5.702-3.261 5.037-5.274zM61.8 23.147c-.019 1.108-.171 2.114-.333 3.164-.174 1.129-.354 2.297-.399 3.715-.045 1.379.128 2.814.294 4.2.337 2.801.682 5.685-.655 8.531a11 11 0 0 1-.592-1.218c-.166-.403-.527-1.05-1.027-1.946-1.944-3.487-6.497-11.652-4.167-14.984.694-.992 2.456-2.011 6.879-1.463zM56.439 4.374c6.482.143 11.609 2.568 15.24 7.207 2.784 3.558-.282 19.749-9.158 33.716l-.269-.339-.112-.14c2.294-3.788 1.845-7.536 1.446-10.859-.164-1.364-.319-2.652-.28-3.861.041-1.283.21-2.382.374-3.446.202-1.311.407-2.667.35-4.265a1.8 1.8 0 0 0 .037-.601c-.144-1.533-1.894-6.12-5.462-10.273-1.951-2.271-4.797-4.813-8.682-6.527a29.3 29.3 0 0 1 6.515-.612zM20.167 53.298c-1.793 2.155-3.031 1.742-3.438 1.607-2.653-.885-5.73-6.491-8.444-15.382-2.348-7.693-3.72-15.428-3.829-17.597-.343-6.86 1.32-11.641 4.943-14.21 5.896-4.181 15.589-1.679 19.484-.409l-.17.163c-6.391 6.455-6.24 17.483-6.224 18.157a22 22 0 0 0 .051 1.135c.11 1.855.315 5.307-.232 9.217-.508 3.633.612 7.189 3.072 9.756q.383.398.795.75a164 164 0 0 0-6.008 6.814zm6.83-9.113c-1.983-2.069-2.884-4.947-2.471-7.896.577-4.13.364-7.727.25-9.659l-.039-.694c.934-.828 5.261-3.146 8.346-2.439 1.408.323 2.266 1.281 2.623 2.931 1.846 8.539.244 12.098-1.043 14.957-.265.589-.516 1.146-.73 1.722l-.166.445c-.42 1.126-.811 2.173-1.053 3.167-2.108-.006-4.159-.907-5.718-2.534zm.324 11.516a5 5 0 0 1-1.494-.642c.271-.128.754-.301 1.591-.474 4.052-.834 4.678-1.423 6.045-3.158.313-.398.669-.849 1.16-1.398.733-.821 1.068-.682 1.676-.43.493.204.972.821 1.167 1.501.092.321.195.93-.143 1.404-2.855 3.997-7.015 3.946-10.003 3.198zm21.207 19.735c-4.957 1.062-6.713-1.467-7.869-4.359-.747-1.867-1.113-10.285-.853-19.582a1.1 1.1 0 0 0-.048-.356 5 5 0 0 0-.139-.657c-.387-1.353-1.331-2.484-2.462-2.953-.45-.186-1.275-.528-2.267-.274.212-.871.578-1.855.976-2.921l.167-.448c.188-.505.423-1.029.673-1.583 1.347-2.992 3.192-7.091 1.19-16.35-.75-3.468-3.254-5.161-7.05-4.768-2.276.235-4.358 1.154-5.396 1.68q-.334.169-.618.329c.29-3.494 1.385-10.024 5.481-14.156 2.579-2.601 6.014-3.886 10.199-3.817 8.246.135 13.534 4.367 16.518 7.893 2.571 3.039 3.964 6.1 4.52 7.751-4.179-.425-7.022.4-8.463 2.46-3.135 4.481 1.715 13.178 4.046 17.358.427.766.796 1.428.912 1.709.759 1.839 1.742 3.067 2.459 3.964.22.275.433.541.596.774-1.266.365-3.539 1.208-3.332 5.422-.167 2.115-1.356 12.016-1.959 15.514-.797 4.621-2.497 6.343-7.279 7.368zm20.693-23.68c-1.294.601-3.46 1.052-5.518 1.148-2.273.107-3.43-.255-3.702-.477-.128-2.626.85-2.901 1.884-3.191.163-.046.321-.09.474-.144a4 4 0 0 0 .313.23c1.827 1.206 5.085 1.336 9.685.386l.05-.01c-.62.58-1.682 1.359-3.187 2.058z"/></g></symbol></svg>',
+          color: "",
+          source:
+            "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/nodes-base/nodes/Postgres/postgres.svg",
+        },
+      };
+      function nodeLabel(name) {
+        return name === "Execute Workflow" ? "Execute Sub-workflow" : name;
+      }
+      let nodeIconInstance = 0;
+      function nodeIcon(name) {
+        const entry = nodeIcons[name];
+        if (entry)
+          return (
+            '<span class="actual-node-icon" style="color:' +
+            (entry.color || "inherit") +
+            '" aria-hidden="true">' +
+            entry.svg.replaceAll(
+              "__ICON_INSTANCE__",
+              String(++nodeIconInstance),
+            ) +
+            "</span>"
+          );
+        const node = nodes.find((n) => n.name === name);
+        return (
+          '<span aria-hidden="true">' +
+          escapeHTML(node?.icon || "◇") +
+          "</span>"
+        );
+      }
+      // All Drive IDs, dates, rows and receipts below are fictitious teaching fixtures.
+      const monthlyScenario = {
+        year: true,
+        month: false,
+        report: false,
+        source: "bigquery",
+        verified: true,
+      };
+      const demoItems = (...rows) => rows.map((json) => ({ json }));
+      function monthlyStep(
+        key,
+        phase,
+        node,
+        title,
+        why,
+        setup,
+        input,
+        output,
+        extra = {},
+      ) {
+        return {
+          key,
+          phase,
+          node,
+          title,
+          why,
+          setup,
+          input,
+          output,
+          outputLabel: "Salida ilustrativa del paso",
+          ...extra,
+        };
+      }
+      function buildMonthlyExample(scenario) {
+        const context = {
+          proceso: "Ventas",
+          periodo: "2026-10",
+          anio: "2026",
+          mes: "10",
+          rootFolderId: "demo-proceso",
+          templateId: "demo-template",
+          runId: "ventas-2026-10",
+          desde: "2026-10-01",
+          hasta: "2026-11-01",
+        };
+        const steps = [
+          monthlyStep(
+            "schedule",
+            "01 · Período",
+            "Schedule Trigger",
+            "Iniciar el cierre mensual",
+            "El disparador corre al comenzar el mes; el reporte corresponde al mes anterior.",
+            [
+              "Programá el día 1 a las 09:00 y configurá America/Argentina/Buenos_Aires. Publicá el workflow para habilitar la programación.",
+              "En este ejemplo el disparo es 2026-11-01 y el período cerrado es 2026-10; no se usa la fecha de tu computadora.",
+            ],
+            [],
+            demoItems({ timestamp: "2026-11-01T09:00:00-03:00" }),
+          ),
+          monthlyStep(
+            "context",
+            "01 · Período",
+            "Set / Edit Fields",
+            "Contexto del reporte",
+            "Conservamos nombres e IDs aunque Drive o una consulta reemplacen los datos del item.",
+            [
+              "Nombrá este nodo Contexto del reporte. Definí proceso, rootFolderId, templateId, runId y el intervalo [desde, hasta).",
+              'Para el mes anterior: {{ $now.startOf("month").minus({ months: 1 }).toFormat("yyyy-MM") }} en la zona del workflow. Para reejecuciones, usá el período guardado del run, no recalcules con $now.',
+              "La plantilla debe ser un Google Spreadsheet nativo con pestañas Datos y Control. Una copia de XLSX no se convierte automáticamente en un documento de Google Sheets.",
+            ],
+            demoItems({ timestamp: "2026-11-01T09:00:00-03:00" }),
+            demoItems(context),
+          ),
+        ];
+        let resolved = { ...context },
+          contextNode = "Contexto del reporte";
+        for (const spec of [
+          {
+            key: "year",
+            phase: "02 · Carpeta del año",
+            name: "2026",
+            parent: "rootFolderId",
+            field: "yearFolderId",
+            kind: "folder",
+          },
+          {
+            key: "month",
+            phase: "03 · Carpeta del mes",
+            name: "10",
+            parent: "yearFolderId",
+            field: "monthFolderId",
+            kind: "folder",
+          },
+          {
+            key: "report",
+            phase: "04 · Archivo del reporte",
+            name: "Reporte Ventas 2026-10",
+            parent: "monthFolderId",
+            field: "reportId",
+            kind: "report",
+          },
+        ]) {
+          const exists = scenario[spec.key],
+            id = "demo-" + spec.key + "-" + (exists ? "existing" : "created");
+          const mime =
+            spec.kind === "folder"
+              ? "application/vnd.google-apps.folder"
+              : "application/vnd.google-apps.spreadsheet";
+          const query =
+            "name = '" +
+            spec.name +
+            "' and '" +
+            resolved[spec.parent] +
+            "' in parents and mimeType = '" +
+            mime +
+            "' and trashed = false";
+          const searchOutput = exists
+            ? demoItems({ id, name: spec.name })
+            : demoItems({});
+          steps.push(
+            monthlyStep(
+              spec.key + "-search",
+              spec.phase,
+              "Google Drive",
+              "Buscar " +
+                (spec.kind === "folder" ? "carpeta: " : "reporte: ") +
+                spec.name,
+              "Buscamos dentro del padre correcto con nombre exacto, tipo de archivo y fuera de la papelera.",
+              [
+                "Elegí File/Folder → Search y Advanced Search / Query. Pedí id y name, Return All desactivado y Limit = 2 para detectar nombres duplicados.",
+                "Consulta del ejemplo: " + query,
+                "En Settings activá Always Output Data. Sin coincidencias, el siguiente nodo recibe un item vacío; sin esa opción, el IF podría no ejecutarse.",
+                "Search → Create no es atómico. Serializá ejecuciones o usá un bloqueo persistente por proceso/período para evitar creaciones concurrentes.",
+              ],
+              demoItems(resolved),
+              searchOutput,
+              {
+                outputLabel: exists
+                  ? "Coincidencia encontrada"
+                  : "Item vacío por Always Output Data",
+              },
+            ),
+          );
+          const normalized = {
+            ...resolved,
+            matchCount: exists ? 1 : 0,
+            candidateId: exists ? id : null,
+          };
+          const code =
+            "const context = $('" +
+            contextNode +
+            "').first().json;\nconst matches = $input.all().map(item => item.json)\n  .filter(file => typeof file.id === 'string' && file.id.length > 0);\nif (matches.length > 1) throw new Error('Nombre duplicado: revisar antes de continuar');\nreturn [{ json: { ...context, matchCount: matches.length, candidateId: matches[0]?.id ?? null } }];";
+          steps.push(
+            monthlyStep(
+              spec.key + "-normalize",
+              spec.phase,
+              "Code",
+              "Validar coincidencias y recuperar contexto",
+              "Normalizamos cero o una coincidencia y detenemos el flujo si el nombre es ambiguo.",
+              [
+                "Modo JavaScript → Run Once for All Items. Usá el código de este paso; sus referencias apuntan a los nombres de nodo de la guía.",
+                "El filtro descarta el item vacío. Dos coincidencias provocan un error: no se toma arbitrariamente el primer ID.",
+              ],
+              searchOutput,
+              demoItems(normalized),
+              {
+                snippet: code,
+                snippetLabel: "Normalización (Code · JavaScript)",
+                snippetLanguage: "javascript",
+              },
+            ),
+          );
+          steps.push(
+            monthlyStep(
+              spec.key + "-if",
+              spec.phase,
+              "IF",
+              "¿Existe " +
+                (spec.kind === "folder" ? "la carpeta" : "el reporte") +
+                "?",
+              "True reutiliza el recurso; false crea solo lo que falta.",
+              [
+                "Condición: {{ $json.candidateId }} → String → is not empty.",
+                spec.kind === "report"
+                  ? "True → Fijar reportId. False → Google Drive Copy File → Fijar reportId."
+                  : "True → Set del ID. False → Create Folder → el mismo Set del ID.",
+                "Las rutas son excluyentes. No uses un Merge que espere dos ramas que nunca llegan juntas.",
+              ],
+              demoItems(normalized),
+              {
+                true: exists ? demoItems(normalized) : [],
+                false: exists ? [] : demoItems(normalized),
+              },
+              {
+                outputLabel: "Salidas true / false (vista didáctica)",
+                route: exists ? "true · reutilizar" : "false · crear",
+                branch: exists
+                  ? "Ruta activa: existe → fijar el ID encontrado. Se omite la creación."
+                  : "Ruta activa: no existe → crear o copiar → fijar el ID devuelto.",
+                alternative: {
+                  node: exists ? "Google Drive" : "Set / Edit Fields",
+                  label: exists
+                    ? spec.kind === "report"
+                      ? "false → Copy File"
+                      : "false → Create Folder"
+                    : "true → reutilizar ID",
+                },
+              },
+            ),
+          );
+          if (!exists)
+            steps.push(
+              monthlyStep(
+                spec.key + "-create",
+                spec.phase,
+                "Google Drive",
+                spec.kind === "report"
+                  ? "Copiar la plantilla del reporte"
+                  : "Crear la carpeta que falta",
+                "La ruta false devuelve el ID del nuevo recurso.",
+                spec.kind === "report"
+                  ? [
+                      "Elegí File → Copy. File By ID = templateId; Name = Reporte Ventas 2026-10.",
+                      "Desactivá Copy in the same folder / Same Folder y elegí monthFolderId como carpeta destino.",
+                      "No copies la plantilla en cada reejecución. Si el reporte existe, conservá reportId y revisá las páginas del run que ya se cargaron.",
+                    ]
+                  : [
+                      "Elegí Folder → Create. Name = " +
+                        spec.name +
+                        "; Parent Folder By ID = " +
+                        resolved[spec.parent] +
+                        ".",
+                      "La carpeta del año va dentro del proceso; la del mes, dentro del año.",
+                    ],
+                demoItems(normalized),
+                demoItems({ id, name: spec.name, mimeType: mime }),
+                { route: "false · crear" },
+              ),
+            );
+          resolved = { ...resolved, [spec.field]: id };
+          steps.push(
+            monthlyStep(
+              spec.key + "-set",
+              spec.phase,
+              "Set / Edit Fields",
+              "Fijar " + spec.field,
+              "El resto del flujo recibe el mismo campo, tanto si el recurso existía como si se creó.",
+              [
+                "Nombrá este nodo Fijar " +
+                  spec.field +
+                  ". Conservá el contexto de la normalización anterior y definí " +
+                  spec.field +
+                  " con candidateId (true) o id devuelto por Drive (false).",
+                "ID de muestra: " +
+                  id +
+                  ". En el workflow real, mapeá el ID recibido; no pegues este valor ficticio.",
+                spec.kind === "report"
+                  ? "reportId es el ID del archivo y también el spreadsheetId. El ID de la pestaña (gid) es diferente."
+                  : "Preservá período, runId y los IDs ya resueltos: la respuesta de Drive no contiene ese contexto.",
+              ],
+              exists
+                ? demoItems(normalized)
+                : demoItems({ id, name: spec.name }),
+              demoItems(resolved),
+            ),
+          );
+          contextNode = "Fijar " + spec.field;
+        }
+        const queryRows = demoItems(
+          { fecha: "2026-10-01", total: 12000 },
+          { fecha: "2026-10-02", total: 8000 },
+          { fecha: "2026-10-03", total: 5000 },
+        );
+        const tick = String.fromCharCode(96);
+        const bqQuery =
+          "SELECT fecha, SUM(importe) AS total\nFROM " +
+          tick +
+          "demo-project.reportes.ventas" +
+          tick +
+          "\nWHERE fecha >= DATE(@desde) AND fecha < DATE(@hasta)\nGROUP BY fecha\nORDER BY fecha";
+        const sqlQuery =
+          "SELECT fecha, SUM(importe) AS total\nFROM ventas\nWHERE fecha >= $1::date AND fecha < $2::date\nGROUP BY fecha\nORDER BY fecha;";
+        steps.push(
+          monthlyStep(
+            "query",
+            "05 · Consultar y escribir",
+            scenario.source === "bigquery"
+              ? "Google BigQuery"
+              : "Postgres / MySQL",
+            "Consultar el período",
+            "Filtrar columnas y período y agregar en el motor reduce lo que viaja hacia n8n.",
+            [
+              scenario.source === "bigquery"
+                ? "Google BigQuery → Execute Query y GoogleSQL. Parámetros nombrados desde y hasta como strings, con DATE() en la consulta; configurá proyecto, ubicación y credencial."
+                : "Esta variante usa PostgreSQL: Execute Query con $1 y $2 enlazados a desde y hasta. Adaptá placeholders y tipos para MySQL; no interpoles texto del usuario en SQL.",
+              "La consulta agrupa por día y devuelve tres filas de muestra para [2026-10-01, 2026-11-01).",
+              "Para resultados grandes, usá el caso de paginación y subworkflows. Loop Over Items después de cargar todo no reduce el payload inicial.",
+              "En BigQuery, maxResults limita cada página, no el total que puede devolver el nodo. timeoutMs es la espera de la consulta, no el timeout global del workflow.",
+            ],
+            demoItems(resolved),
+            queryRows,
+            {
+              snippet: scenario.source === "bigquery" ? bqQuery : sqlQuery,
+              snippetLabel:
+                scenario.source === "bigquery"
+                  ? "Consulta ilustrativa (GoogleSQL)"
+                  : "Consulta ilustrativa (PostgreSQL)",
+              snippetLanguage: "sql",
+            },
+          ),
+        );
+        const sheetRows = queryRows.map(({ json }) => ({
+          json: {
+            runId: context.runId,
+            rowKey: context.runId + "|" + json.fecha,
+            ...json,
+          },
+        }));
+        steps.push(
+          monthlyStep(
+            "map",
+            "05 · Consultar y escribir",
+            "Set / Edit Fields",
+            "Preparar las filas del reporte",
+            "Las claves estables permiten identificar filas al validar o reintentar.",
+            [
+              'Nombrá este nodo Preparar las filas del reporte. Conservá fecha y total. Agregá runId desde Fijar reportId y rowKey = runId + "|" + fecha.',
+              "Definí tipos de columna y una sola moneda. No lleves JSON anidados o campos que el reporte no utiliza.",
+            ],
+            queryRows,
+            sheetRows,
+          ),
+        );
+        steps.push(
+          monthlyStep(
+            "append",
+            "05 · Consultar y escribir",
+            "Google Sheets",
+            "Anexar datos al archivo resuelto",
+            "El destino es reportId, tanto para un reporte nuevo como para uno existente.",
+            [
+              'Append Row. Document → By ID: {{ $("Fijar reportId").first().json.reportId }}. Pestaña: Datos. Mapeá runId, rowKey, fecha y total.',
+              "Antes de reanudar, consultá las páginas ya confirmadas. Append no es idempotente: ante timeout de escritura, reconciliá el destino antes de reenviar.",
+              "Append or Update Row con rowKey es una alternativa por fila, pero no ofrece una garantía transaccional frente a ejecuciones concurrentes.",
+            ],
+            sheetRows,
+            sheetRows,
+            {
+              outputLabel:
+                "Filas propuestas para Append; no se escribe desde esta página",
+            },
+          ),
+        );
+        const readback = scenario.verified ? sheetRows : sheetRows.slice(0, 2);
+        steps.push(
+          monthlyStep(
+            "readback",
+            "06 · Confirmar y notificar",
+            "Google Sheets",
+            "Verificar lo escrito",
+            "Comprobamos el destino, no solo el éxito del nodo de envío.",
+            [
+              "Leé las filas de Datos filtradas por runId después de terminar la carga. Activá Always Output Data para que la conciliación también se ejecute si la lectura no encuentra filas.",
+              "Esta muestra es pequeña. En grandes volúmenes conciliá por lote, rango y manifiesto, sin volver a cargar toda la hoja en memoria.",
+              "Compará claves, duplicados, cantidad y totales con los controles esperados de la fuente.",
+            ],
+            demoItems({ reportId: resolved.reportId, runId: context.runId }),
+            readback,
+            {
+              outputLabel: scenario.verified
+                ? "Tres filas recuperadas de muestra"
+                : "Carga incompleta: falta una fila",
+            },
+          ),
+        );
+        const receipt = {
+          ...resolved,
+          expectedRows: 3,
+          rowsWritten: readback.length,
+          expectedTotal: 25000,
+          writtenTotal: scenario.verified ? 25000 : 20000,
+          duplicateKeys: 0,
+          verified: scenario.verified,
+        };
+        const verifyCode =
+          'const expected = $("Preparar las filas del reporte").all().map(i => i.json);\nconst actual = $input.all().map(i => i.json).filter(r => r.rowKey);\nconst keys = rows => rows.map(r => r.rowKey).sort();\nconst sum = rows => rows.reduce((n, r) => n + Number(r.total), 0);\nconst duplicateKeys = actual.length - new Set(keys(actual)).size;\nconst verified = duplicateKeys === 0 && JSON.stringify(keys(expected)) === JSON.stringify(keys(actual)) && sum(expected) === sum(actual);\nreturn [{ json: { ...$("Fijar reportId").first().json, expectedRows: expected.length, rowsWritten: actual.length, expectedTotal: sum(expected), writtenTotal: sum(actual), duplicateKeys, verified } }];';
+        steps.push(
+          monthlyStep(
+            "verify",
+            "06 · Confirmar y notificar",
+            "Code",
+            "Conciliar el reporte",
+            "Una respuesta exitosa no demuestra que el reporte esté completo.",
+            [
+              "Run Once for All Items. El código concilia claves y totales de esta muestra; validá números y redondeo monetario según el modelo real.",
+              "Con páginas, además deben estar confirmadas todas las entradas del manifiesto, sin escrituras ambiguas ni pendientes.",
+            ],
+            readback,
+            demoItems(receipt),
+            {
+              snippet: verifyCode,
+              snippetLabel: "Conciliación de la muestra (Code · JavaScript)",
+              snippetLanguage: "javascript",
+            },
+          ),
+        );
+        steps.push(
+          monthlyStep(
+            "confirmed",
+            "06 · Confirmar y notificar",
+            "IF",
+            "¿La carga está confirmada?",
+            "El email final sale únicamente por la rama verificada.",
+            [
+              "Condición Boolean: {{ $json.verified }} is true.",
+              "True → registrar cierre/notificación y enviar email. False → Stop and Error o revisión; no se envía el email de éxito.",
+            ],
+            demoItems(receipt),
+            {
+              true: scenario.verified ? demoItems(receipt) : [],
+              false: scenario.verified ? [] : demoItems(receipt),
+            },
+            {
+              route: scenario.verified
+                ? "true · confirmado"
+                : "false · detener",
+              branch: scenario.verified
+                ? "Las comprobaciones de esta muestra coinciden. Se habilita la notificación."
+                : "Falta una fila. No se considera completo el reporte y no se habilita Gmail.",
+              alternative: {
+                node: scenario.verified ? "Stop and Error" : "Gmail",
+                label: scenario.verified
+                  ? "false → detener"
+                  : "true → enviar email",
+              },
+            },
+          ),
+        );
+        steps.push(
+          scenario.verified
+            ? monthlyStep(
+                "email",
+                "06 · Confirmar y notificar",
+                "Gmail",
+                "Notificar el reporte confirmado",
+                "Se envía un enlace al documento verificado, no el dataset entero.",
+                [
+                  "Send a message con el enlace https://docs.google.com/spreadsheets/d/{reportId}/edit, reemplazando el ID ficticio por el real.",
+                  "Registrá la notificación por runId y reconciliá envíos ambiguos. Un reintento no debería repetir el mismo correo.",
+                  "Configurá permisos del documento antes de compartir el enlace.",
+                ],
+                demoItems(receipt),
+                {
+                  para: "reportes@empresa.example",
+                  asunto: "Reporte Ventas 2026-10 confirmado",
+                  reportId: resolved.reportId,
+                  rows: 3,
+                },
+                {
+                  outputLabel: "Email propuesto; no se envía desde esta página",
+                },
+              )
+            : monthlyStep(
+                "stop",
+                "06 · Confirmar y notificar",
+                "Stop and Error",
+                "Detener por carga incompleta",
+                "Conservamos el checkpoint para investigar o reanudar sin duplicar lo escrito.",
+                [
+                  "Lanzá un error con runId y la diferencia esperada/obtenida. El error workflow puede avisar al equipo.",
+                  "No marques completo ni envíes el email de éxito. Reconciliá lo pendiente antes de reanudar.",
+                ],
+                demoItems(receipt),
+                {
+                  status: "incomplete",
+                  emailSent: false,
+                  expectedRows: 3,
+                  rowsWritten: 2,
+                },
+                { outputLabel: "Estado ilustrativo; la ruta termina aquí" },
+              ),
+        );
+        return {
+          id: "reporte-mensual",
+          area: "administracion",
+          level: "Proceso completo",
+          title: "Construir el reporte mensual desde una plantilla",
+          need: "Cada mes, un proceso necesita su carpeta del año, la del mes y un reporte único que se carga desde BigQuery o SQL.",
+          result: scenario.verified
+            ? "Se resuelven yearFolderId, monthFolderId y reportId; se anexan y verifican tres filas antes del email."
+            : "Se resuelve el documento, pero la validación detecta una fila faltante: no hay email de éxito.",
+          pattern:
+            "Buscar / crear → fijar IDs → consultar → anexar → confirmar → email",
+          requires: [
+            "Credenciales de Drive, Sheets, Gmail y BigQuery o PostgreSQL; acceso al proceso y a la plantilla.",
+            "Google Spreadsheet nativo con pestaña Datos (runId, rowKey, fecha, total) y un registro de control persistente.",
+            "Un run por proceso/período, con bloqueo o serialización y checkpoints para retomar sin repetir efectos.",
+          ],
+          tags: [
+            "BigQuery",
+            "SQL",
+            "mensual",
+            "carpetas",
+            "template",
+            "copy file",
+            "subworkflows",
+            "paginación",
+          ],
+          steps,
+          exercise:
+            "Si el reporte existe y la carga anterior quedó a medias, ¿copiamos de nuevo la plantilla y anexamos todo?",
+          answer:
+            "No. Reutilizá reportId, consultá páginas confirmadas y reconciliá escrituras ambiguas. Reanudá lo pendiente y verificá el resultado antes del email.",
+          production:
+            "Encontrar un archivo no significa que la carga esté completa. Search/Create puede competir con otra ejecución; Append y email pueden duplicarse al reintentar. Conservá un manifiesto por runId y página y conciliá antes de declarar éxito.",
+          monthly: true,
+          performance: true,
+        };
+      }
+      const chunkContext = {
+        runId: "ventas-2026-10",
+        reportId: "demo-report-existing",
+        projectId: "demo-project",
+        jobId: "demo-job",
+        location: "US",
+        pageToken: null,
+        pageSize: 2,
+      };
+      const chunkAck = {
+        runId: chunkContext.runId,
+        chunkKey: "demo-job:page-1",
+        rowsWritten: 2,
+        nextPageToken: "demo-page-2",
+        done: false,
+      };
+      const chunkExample = {
+        id: "lotes-subworkflows",
+        area: "operaciones",
+        level: "Volumen y recuperación",
+        title: "Paginar grandes resultados con subworkflows",
+        need: "Un resultado grande no debe viajar entero entre nodos ni entre el workflow padre y sus hijos.",
+        result:
+          "La fuente entrega páginas; el hijo escribe una página y devuelve un recibo pequeño. El padre confirma el manifiesto al terminar.",
+        pattern: "Cursor → subworkflow → página → escritura → recibo → repetir",
+        requires: [
+          "Workflow padre e hijo con Execute Sub-workflow Trigger, credenciales de fuente/destino y registro persistente.",
+          "Un resultado BigQuery con jobId y location, o una consulta SQL con cursor estable y un período cerrado.",
+          "Registro por runId y pageKey: lectura, escritura confirmada, reintentos y casos ambiguos.",
+        ],
+        tags: [
+          "BigQuery",
+          "SQL",
+          "chunks",
+          "payload",
+          "timeout",
+          "paginación",
+          "Loop Over Items",
+        ],
+        performance: true,
+        steps: [
+          monthlyStep(
+            "parent-context",
+            "PADRE · Coordinar",
+            "Set / Edit Fields",
+            "Preparar un descriptor de página",
+            "El padre no descarga primero todas las filas.",
+            [
+              "Guardá runId, reportId, jobId, location, pageToken y pageSize. Dos registros por página son solo una muestra didáctica, no una recomendación de tamaño.",
+              "Filtrá columnas y período en la fuente. En BigQuery ejecutá el job una vez y leé su resultado por páginas; no repitas la consulta completa por cada página.",
+              "Para SQL usá clave estable, orden determinista y límite superior del snapshot. Evitá OFFSET creciente cuando un cursor por clave sea viable.",
+            ],
+            [],
+            demoItems(chunkContext),
+          ),
+          monthlyStep(
+            "parent-call",
+            "PADRE · Coordinar",
+            "Execute Workflow",
+            "Llamar al trabajador de una página",
+            "Al hijo viajan IDs y un cursor, no el array del reporte.",
+            [
+              "En el editor se llama Execute Sub-workflow. Elegí el hijo y Run once with all items para pasar un único descriptor.",
+              "Configurá el trigger del hijo con esos campos o Accept all data. Para este ejemplo secuencial activá Wait for Sub-Workflow Completion.",
+              "Esperar al hijo no elimina el timeout del padre: el presupuesto incluye lectura, escritura, esperas y reintentos de todos los lotes.",
+            ],
+            demoItems(chunkContext),
+            demoItems(chunkContext),
+            {
+              outputLabel:
+                "Contrato de entrada del hijo; no es el resultado del nodo padre",
+            },
+          ),
+          monthlyStep(
+            "child-trigger",
+            "HIJO · Procesar una página",
+            "Execute Sub-workflow Trigger",
+            "Recibir el descriptor",
+            "Cada ejecución del hijo trabaja con una página y contexto mínimo.",
+            [
+              "Agregá When Executed by Another Workflow / Execute Sub-workflow Trigger.",
+              "Validá que el workflow llamador esté permitido y que IDs, pageSize y cursor correspondan al run.",
+            ],
+            demoItems(chunkContext),
+            demoItems(chunkContext),
+          ),
+          monthlyStep(
+            "child-fetch",
+            "HIJO · Procesar una página",
+            "HTTP Request",
+            "Leer una página desde BigQuery",
+            "Controlamos la lectura en la fuente; partir el array después de descargarlo entero llega tarde.",
+            [
+              "BigQuery: API jobs.getQueryResults con proyecto, jobId y location. Enviá maxResults = pageSize y pageToken solo cuando exista.",
+              "Si jobComplete=false, esperá y consultá otra vez con reintentos acotados. Un job pendiente no equivale a final de datos.",
+              "El nodo nativo BigQuery puede devolver todas las páginas aunque maxResults sea pequeño. Para esta frontera por página controlá la API o verificá el comportamiento de tu versión.",
+              "En SQL usá las columnas necesarias con WHERE id > cursor AND id <= highWatermark ORDER BY id LIMIT tamaño, parámetros enlazados y un snapshot/clave estable.",
+            ],
+            demoItems(chunkContext),
+            {
+              jobComplete: true,
+              totalRows: "5",
+              rows: [
+                { id: "1", fecha: "2026-10-01", total: 12000 },
+                { id: "2", fecha: "2026-10-02", total: 8000 },
+              ],
+              pageToken: "demo-page-2",
+            },
+            {
+              outputLabel:
+                "Página normalizada para enseñar el patrón; la API real usa schema y rows.f.v",
+              snippet:
+                "SELECT id, fecha, total\nFROM reporte_snapshot\nWHERE periodo = $1\n  AND id > $2\n  AND id <= $3\nORDER BY id\nLIMIT $4;",
+              snippetLabel: "Alternativa SQL por cursor (PostgreSQL)",
+              snippetLanguage: "sql",
+            },
+          ),
+          monthlyStep(
+            "child-write",
+            "HIJO · Procesar una página",
+            "Google Sheets",
+            "Escribir y conciliar este lote",
+            "Se normalizan solo las filas de la página y se usan claves estables.",
+            [
+              "Convertí schema y rows.f.v de BigQuery a columnas tipadas antes de Sheets. No envíes la respuesta cruda como una sola celda.",
+              "Escribí al reportId y pestaña resueltos. Incluí runId y rowKey estable por fila.",
+              "Acotá cada petición por bytes además de filas; verificá cuántas llamadas realiza tu versión del nodo para ese lote.",
+              "Registrá chunkKey, rango y cantidad confirmada. Ante timeout de escritura, conciliá antes de repetir Append: el servidor pudo haber escrito.",
+            ],
+            demoItems(
+              {
+                runId: chunkContext.runId,
+                rowKey: "ventas-2026-10|1",
+                fecha: "2026-10-01",
+                total: 12000,
+              },
+              {
+                runId: chunkContext.runId,
+                rowKey: "ventas-2026-10|2",
+                fecha: "2026-10-02",
+                total: 8000,
+              },
+            ),
+            {
+              chunkKey: "demo-job:page-1",
+              confirmedRows: 2,
+              status: "confirmed",
+            },
+            {
+              outputLabel:
+                "Recibo del registro de control; no es una respuesta nativa de Sheets",
+            },
+          ),
+          monthlyStep(
+            "child-return",
+            "HIJO · Procesar una página",
+            "Set / Edit Fields",
+            "Devolver solo el recibo",
+            "Los datos pesados no vuelven al padre.",
+            [
+              "El último nodo del hijo devuelve solo runId, chunkKey, rowsWritten, nextPageToken y done.",
+              "Emití el recibo después de la escritura confirmada y su checkpoint. No conviertas un error en un recibo de éxito.",
+              "No devuelvas rows, valores de celdas, binarios ni el objeto completo de la consulta.",
+            ],
+            demoItems({
+              chunkKey: "demo-job:page-1",
+              confirmedRows: 2,
+              status: "confirmed",
+              pageToken: "demo-page-2",
+            }),
+            demoItems(chunkAck),
+          ),
+          monthlyStep(
+            "parent-next",
+            "PADRE · Repetir o finalizar",
+            "IF",
+            "¿Quedan páginas?",
+            "La próxima llamada usa el cursor confirmado de la anterior.",
+            [
+              "Boolean: done is false. True → guardar nextPageToken, pasar por Wait/revisión de presupuesto y volver a Execute Sub-workflow. False → conciliar el manifiesto.",
+              "Evaluá el final después de jobComplete=true y de confirmar la página actual; una página corta no implica necesariamente final.",
+              "Loop Over Items sirve para descriptores o particiones pequeños ya conocidos. No cargues todas las filas para luego intentar ahorrar memoria partiéndolas.",
+            ],
+            demoItems(chunkAck),
+            {
+              true: demoItems({
+                ...chunkContext,
+                pageToken: chunkAck.nextPageToken,
+              }),
+              false: [],
+            },
+            {
+              route: "true · siguiente cursor",
+              branch:
+                "True pasa por la espera/presupuesto y vuelve a Execute Sub-workflow. Cuando done=true, false permite la conciliación final. Este recorrido muestra una iteración y luego la condición de cierre.",
+            },
+          ),
+          monthlyStep(
+            "parent-wait",
+            "PADRE · Repetir o finalizar",
+            "Wait",
+            "Respetar cuotas y presupuesto",
+            "Una pausa regula el ritmo, pero también consume tiempo del proceso.",
+            [
+              "Para 429 y errores transitorios usá backoff exponencial con jitter, máximo de intentos y presupuesto total.",
+              "Antes de otra página, revisá el tiempo restante. Si no alcanza, persistí el cursor y continuá en una nueva ejecución controlada.",
+              "Con hijos asíncronos, un coordinador persistente debe esperar todos los estados confirmados. Lanzarlos sin esperar no habilita el email de éxito.",
+            ],
+            demoItems({ ...chunkContext, pageToken: "demo-page-2" }),
+            {
+              cursorPersistido: "demo-page-2",
+              accion: "continuar o reprogramar según presupuesto",
+            },
+            {
+              outputLabel:
+                "Decisión del coordinador; esta guía no implementa una cola",
+            },
+          ),
+          monthlyStep(
+            "parent-confirm",
+            "PADRE · Confirmar",
+            "IF",
+            "Confirmar todas las páginas",
+            "El padre consulta un manifiesto compacto de resultados confirmados.",
+            [
+              "La muestra completa tiene tres páginas: 2, 2 y 1 filas. Comprobá 5 esperadas, 5 escritas, todas las páginas confirmadas y cero escrituras ambiguas.",
+              "Guardá el control en almacenamiento persistente; no acumules la respuesta completa de cada lote en el padre.",
+              "Totales coincidentes no detectan por sí solos duplicados: conciliá claves/rangos y un control independiente de la fuente.",
+            ],
+            {
+              expectedRows: 5,
+              confirmedRows: 5,
+              confirmedPages: 3,
+              pendingPages: 0,
+              ambiguousWrites: 0,
+              allPagesComplete: true,
+            },
+            {
+              true: demoItems({
+                runId: chunkContext.runId,
+                reportId: chunkContext.reportId,
+                verified: true,
+              }),
+              false: [],
+            },
+            {
+              branch:
+                "Solo true continúa. Si falta una página se detiene o reanuda, sin email de éxito.",
+            },
+          ),
+          monthlyStep(
+            "parent-email",
+            "PADRE · Confirmar",
+            "Gmail",
+            "Enviar una sola confirmación",
+            "La notificación depende del cierre confirmado de todo el run.",
+            [
+              "Enviá el enlace y las filas verificadas; registrá la notificación por runId.",
+              "No envíes un email por página ni declares completo el reporte apenas se lanzó un hijo asíncrono.",
+            ],
+            demoItems({
+              runId: chunkContext.runId,
+              reportId: chunkContext.reportId,
+              verified: true,
+            }),
+            {
+              para: "reportes@empresa.example",
+              asunto: "Carga confirmada",
+              filasVerificadas: 5,
+            },
+            { outputLabel: "Email propuesto; no se envía desde esta página" },
+          ),
+        ],
+        exercise:
+          "¿Loop Over Items con batch size 500 evita exceder el payload si antes descargaste un millón de filas?",
+        answer:
+          "No. Ya cargaste todo el resultado. Paginá en la fuente, pasá solo el descriptor al hijo y devolvé un recibo. El tamaño depende de bytes, memoria, cuotas y duración, no solo de filas.",
+        production:
+          "No existe un tamaño universal seguro de chunk. Medí bytes serializados, memoria máxima, duración y llamadas reales. Acotá concurrencia, intentos y tiempo. Si el hijo devuelve todos los datos o el padre espera todos los lotes, todavía pueden superarse límites.",
+      };
+      businessExamples.push(buildMonthlyExample(monthlyScenario), chunkExample);
+
       const stateKey = "automationhub.n8n.learning.v1";
       let state = { favorites: [], mastered: [], solved: [], tasks: [] };
       const validNames = new Set(nodes.map((n) => n.name));
@@ -5635,7 +7303,7 @@
           .map(({ n, i }) => {
             const favorite = state.favorites.includes(n.name),
               mastered = state.mastered.includes(n.name);
-            return `<article class="card"><button class="card-open" data-open="${i}" aria-label="Ver operaciones de ${escapeHTML(n.name)}"><div class="card-head"><span class="node-icon" style="background:${n.iconBg}" aria-hidden="true">${n.icon}</span><div><h3 class="node-name">${escapeHTML(n.name)}</h3><div class="node-cat" style="color:${catColors[n.cat]}">${categories[n.cat]}</div></div><span style="margin-left:auto;color:var(--muted)" aria-hidden="true">→</span></div><p class="node-desc">${escapeHTML(n.desc)}</p><div class="tags">${n.tags.map((t) => `<span class="tag">${escapeHTML(t)}</span>`).join("")}</div></button><div class="card-bottom"><button data-favorite="${i}" aria-pressed="${favorite}" aria-label="${favorite ? "Quitar de" : "Agregar a"} favoritos: ${escapeHTML(n.name)}">${favorite ? "★ Guardado" : "☆ Guardar"}</button><button data-mastered="${i}" aria-pressed="${mastered}" aria-label="${mastered ? "Marcar pendiente" : "Marcar aprendido"}: ${escapeHTML(n.name)}">${mastered ? "✓ Aprendido" : "○ Por aprender"}</button></div></article>`;
+            return `<article class="card"><button class="card-open" data-open="${i}" aria-label="Ver operaciones de ${escapeHTML(n.name)}"><div class="card-head"><span class="node-icon" style="background:${n.iconBg}" aria-hidden="true">${nodeIcon(n.name)}</span><div><h3 class="node-name">${escapeHTML(n.name)}</h3><div class="node-cat" style="color:${catColors[n.cat]}">${categories[n.cat]}</div></div><span style="margin-left:auto;color:var(--muted)" aria-hidden="true">→</span></div><p class="node-desc">${escapeHTML(n.desc)}</p><div class="tags">${n.tags.map((t) => `<span class="tag">${escapeHTML(t)}</span>`).join("")}</div></button><div class="card-bottom"><button data-favorite="${i}" aria-pressed="${favorite}" aria-label="${favorite ? "Quitar de" : "Agregar a"} favoritos: ${escapeHTML(n.name)}">${favorite ? "★ Guardado" : "☆ Guardar"}</button><button data-mastered="${i}" aria-pressed="${mastered}" aria-label="${mastered ? "Marcar pendiente" : "Marcar aprendido"}: ${escapeHTML(n.name)}">${mastered ? "✓ Aprendido" : "○ Por aprender"}</button></div></article>`;
           })
           .join("");
         $("resultCount").textContent =
@@ -5725,7 +7393,7 @@
         modalIndex = index;
         const n = nodes[index];
         modalReturnFocus = document.activeElement;
-        $("modalIcon").textContent = n.icon;
+        $("modalIcon").innerHTML = nodeIcon(n.name);
         $("modalIcon").style.background = n.iconBg;
         $("modalName").textContent = n.name;
         $("modalCat").textContent = categories[n.cat];
@@ -6085,6 +7753,16 @@
         soporte: "Soporte",
       };
       const exampleDocPaths = {
+        "Google Drive": "app-nodes/n8n-nodes-base.googledrive",
+        "Google BigQuery": "app-nodes/n8n-nodes-base.googlebigquery",
+        "Postgres / MySQL": "app-nodes/n8n-nodes-base.postgres",
+        Code: "core-nodes/n8n-nodes-base.code",
+        "Execute Workflow": "core-nodes/n8n-nodes-base.executeworkflow",
+        "Execute Sub-workflow Trigger":
+          "core-nodes/n8n-nodes-base.executeworkflowtrigger",
+        "Loop Over Items": "core-nodes/n8n-nodes-base.splitinbatches",
+        Wait: "core-nodes/n8n-nodes-base.wait",
+        "Stop and Error": "core-nodes/n8n-nodes-base.stopanderror",
         "Manual Trigger": "core-nodes/n8n-nodes-base.manualworkflowtrigger",
         "Set / Edit Fields": "core-nodes/n8n-nodes-base.set",
         "Split Out": "core-nodes/n8n-nodes-base.splitout",
@@ -6125,6 +7803,7 @@
                   example.need,
                   example.result,
                   example.pattern,
+                  ...(example.tags || []),
                   ...example.steps.map((step) => step.node),
                 ].join(" "),
               ).includes(query)),
@@ -6166,12 +7845,8 @@
         $("exampleRequires").innerHTML = example.requires
           .map((text) => `<li>${escapeHTML(text)}</li>`)
           .join("");
-        $("exampleJourney").innerHTML = example.steps
-          .map(
-            (step, i) =>
-              `<button data-example-step="${i}"><span>PASO ${String(i + 1).padStart(2, "0")}</span>${escapeHTML(step.node)}</button>`,
-          )
-          .join("");
+        renderMonthlyControls(example);
+        renderExampleFlow(example);
         $("exampleQuestion").textContent = example.exercise;
         $("exampleAnswer").textContent = example.answer;
         $("exampleProduction").textContent = example.production;
@@ -6193,6 +7868,12 @@
         $("exampleSetup").innerHTML = step.setup
           .map((text) => `<li>${escapeHTML(text)}</li>`)
           .join("");
+        const snippet = step.snippet || example.snippet;
+        $("exampleSnippet").hidden = !snippet;
+        $("exampleSnippet").open = false;
+        $("exampleSnippetText").textContent = snippet || "";
+        $("exampleSnippetLabel").textContent =
+          step.snippetLabel || example.snippetLabel || "";
         $("exampleInput").textContent = JSON.stringify(step.input, null, 2);
         $("exampleOutput").textContent = JSON.stringify(step.output, null, 2);
         $("exampleOutputLabel").textContent = step.outputLabel;
@@ -6311,6 +7992,16 @@
             "```",
           );
           if (step.branch) lines.push("", step.branch);
+          if (step.snippet) {
+            const fence = String.fromCharCode(96).repeat(3);
+            lines.push(
+              "",
+              step.snippetLabel,
+              fence + (step.snippetLanguage || "text"),
+              step.snippet,
+              fence,
+            );
+          }
           lines.push("", `Documentación: ${exampleDoc(step.node)}`);
         }
         if (example.snippet)
@@ -6366,6 +8057,204 @@
         $("nodeDialog").close();
       });
 
+      function renderExampleFlow(example) {
+        const groups = [];
+        example.steps.forEach((step, i) => {
+          const phase = step.phase || "";
+          if (!groups.length || groups[groups.length - 1].phase !== phase)
+            groups.push({ phase, steps: [] });
+          groups[groups.length - 1].steps.push({ step, i });
+        });
+        $("exampleJourney").classList.toggle(
+          "grouped-flow",
+          groups.some((group) => group.phase),
+        );
+        $("exampleJourney").innerHTML = groups
+          .map((group) => {
+            const buttons = group.steps
+              .map(
+                ({ step, i }) =>
+                  '<button class="flow-node" data-example-step="' +
+                  i +
+                  '" data-step-key="' +
+                  escapeHTML(step.key || String(i)) +
+                  '" data-node="' +
+                  escapeHTML(step.node) +
+                  '" aria-label="Paso ' +
+                  (i + 1) +
+                  ": " +
+                  escapeHTML(nodeLabel(step.node)) +
+                  " · " +
+                  escapeHTML(step.title) +
+                  '">' +
+                  nodeIcon(step.node) +
+                  '<span class="flow-caption"><span class="flow-count">PASO ' +
+                  String(i + 1).padStart(2, "0") +
+                  "</span><strong>" +
+                  escapeHTML(nodeLabel(step.node)) +
+                  '</strong><span class="flow-operation">' +
+                  escapeHTML(step.title) +
+                  "</span></span></button>",
+              )
+              .join("");
+            const alternate = group.steps
+              .filter(({ step }) => step.alternative)
+              .map(
+                ({ step }) =>
+                  '<div class="flow-alternative">' +
+                  nodeIcon(step.alternative.node) +
+                  "<span>Otra rama: " +
+                  escapeHTML(step.alternative.label) +
+                  " · cambiá el escenario para explorarla</span></div>",
+              )
+              .join("");
+            return (
+              '<div class="flow-stage">' +
+              (group.phase
+                ? '<p class="flow-stage-title">' +
+                  escapeHTML(group.phase) +
+                  "</p>"
+                : "") +
+              '<div class="flow-track">' +
+              buttons +
+              "</div>" +
+              alternate +
+              "</div>"
+            );
+          })
+          .join("");
+      }
+      function renderMonthlyControls(example) {
+        $("monthlyControls").hidden = !example.monthly;
+        $("performancePanel").hidden = !example.performance;
+        if (example.monthly) {
+          $("monthlyYear").checked = monthlyScenario.year;
+          $("monthlyMonth").checked = monthlyScenario.month;
+          $("monthlyReport").checked = monthlyScenario.report;
+          $("monthlyVerified").checked = monthlyScenario.verified;
+          $("monthlyMonth").disabled = !monthlyScenario.year;
+          $("monthlyReport").disabled = !monthlyScenario.month;
+          $("monthlySource").value = monthlyScenario.source;
+          $("monthlyStatus").textContent =
+            "Año " +
+            (monthlyScenario.year ? "reutilizado" : "creado") +
+            " · Mes " +
+            (monthlyScenario.month ? "reutilizado" : "creado") +
+            " · Reporte " +
+            (monthlyScenario.report ? "reutilizado" : "copiado") +
+            " · " +
+            (monthlyScenario.verified
+              ? "Carga completa"
+              : "Carga incompleta: sin email de éxito");
+        }
+      }
+      function rebuildMonthly() {
+        const previousKey = currentExample().steps[exampleStep]?.key;
+        const index = businessExamples.findIndex(
+          (example) => example.id === "reporte-mensual",
+        );
+        businessExamples[index] = buildMonthlyExample(monthlyScenario);
+        if (selectedExample === "reporte-mensual") {
+          const next = businessExamples[index].steps.findIndex(
+            (step) => step.key === previousKey,
+          );
+          exampleStep = Math.max(0, next);
+        }
+        renderExamples();
+      }
+      $("monthlyControls").addEventListener("change", (event) => {
+        const field = {
+          monthlyYear: "year",
+          monthlyMonth: "month",
+          monthlyReport: "report",
+          monthlyVerified: "verified",
+        }[event.target.id];
+        if (field) monthlyScenario[field] = event.target.checked;
+        if (event.target.id === "monthlySource")
+          monthlyScenario.source = event.target.value;
+        if (!monthlyScenario.year) monthlyScenario.month = false;
+        if (!monthlyScenario.month) monthlyScenario.report = false;
+        rebuildMonthly();
+      });
+      $("monthlyControls").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-monthly-preset]");
+        if (!button) return;
+        const preset = button.dataset.monthlyPreset;
+        monthlyScenario.year = preset !== "new";
+        monthlyScenario.month = preset === "existing";
+        monthlyScenario.report = preset === "existing";
+        rebuildMonthly();
+      });
+      function updateBatchBudget() {
+        const fields = {
+          rows: "budgetRows",
+          batch: "budgetBatch",
+          bytes: "budgetBytes",
+          seconds: "budgetSeconds",
+          pause: "budgetPause",
+          timeout: "budgetTimeout",
+          payload: "budgetPayload",
+        };
+        const values = {};
+        let invalid = false;
+        for (const [key, id] of Object.entries(fields)) {
+          const input = $(id),
+            value = input.valueAsNumber;
+          values[key] = value;
+          const valid = Number.isFinite(value) && input.validity.valid;
+          input.setAttribute("aria-invalid", String(!valid));
+          invalid ||= !valid;
+        }
+        $("budgetError").hidden = !invalid;
+        $("budgetResults").hidden = invalid;
+        $("budgetAdvice").hidden = invalid;
+        if (invalid) {
+          $("budgetError").textContent =
+            "Completá valores válidos: filas y bytes enteros positivos, tiempos de trabajo y presupuesto positivos, y pausa de cero o más.";
+          return;
+        }
+        const count = Math.ceil(values.rows / values.batch);
+        const payload =
+          (Math.min(values.rows, values.batch) * values.bytes) / 1024;
+        const duration =
+          count * values.seconds + Math.max(0, count - 1) * values.pause;
+        $("budgetBatchCount").textContent = count.toLocaleString("es-AR");
+        $("budgetBatchSize").textContent = payload.toLocaleString("es-AR", {
+          maximumFractionDigits: 1,
+        });
+        $("budgetDuration").textContent = duration.toLocaleString("es-AR", {
+          maximumFractionDigits: 1,
+        });
+        const notes = [];
+        if (payload > values.payload)
+          notes.push(
+            "El payload estimado supera tu objetivo. Reducí filas por lote o columnas; medí también el envoltorio JSON y la memoria real.",
+          );
+        else
+          notes.push(
+            "El payload de filas queda bajo tu objetivo, sin contar envoltorio JSON ni copias en memoria.",
+          );
+        if (duration >= values.timeout)
+          notes.push(
+            "La duración estimada alcanza o supera el presupuesto del padre. Persistí cursor/estado y planificá continuación en otra ejecución; esperar a los hijos no reinicia ese presupuesto.",
+          );
+        else
+          notes.push(
+            "La duración estimada cabe en el presupuesto ingresado. Reservá margen para latencia, consultas, validaciones, cuotas y reintentos.",
+          );
+        notes.push(
+          "Menos filas reduce el payload por llamada, pero aumenta las páginas y sus costos de coordinación. Validá ambos límites.",
+        );
+        $("budgetAdvice").textContent = notes.join(" ");
+      }
+      document
+        .querySelectorAll(".budget-inputs input")
+        .forEach((input) => input.addEventListener("input", updateBatchBudget));
+      updateBatchBudget();
+
+      $("examplesNavCount").textContent = businessExamples.length;
+      $("examplesGuideCount").textContent =
+        businessExamples.length + " GUÍAS PRÁCTICAS";
       updateStats();
       renderExamples();
       renderCards();
